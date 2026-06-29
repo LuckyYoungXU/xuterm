@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XuTerm - 强大的 SSH 终端客户端</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: var(--text); line-height: 1.6; }
+    a { color: var(--primary); text-decoration: none; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
+    nav .inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    nav .logo { font-size: 20px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    nav .logo span { font-size: 24px; }
+    nav .links { display: flex; gap: 24px; align-items: center; font-size: 14px; }
+    nav .links a { color: var(--text-light); transition: color .2s; }
+    nav .links a:hover { color: var(--primary); }
+
+    /* Hero */
+    .hero { padding: 140px 24px 80px; text-align: center; background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 100%); }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .hero h1 em { font-style: normal; color: var(--primary); }
+    .hero p { font-size: 18px; color: var(--text-light); max-width: 600px; margin: 0 auto 32px; }
+    .hero .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: var(--bg); color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: #eff6ff; }
+    .hero-imgs { max-width: 900px; margin: 48px auto 0; display: flex; gap: 24px; justify-content: center; align-items: flex-end; }
+    .hero-imgs .device { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+    .hero-imgs .phone { width: 220px; }
+    .hero-imgs .phone .placeholder { width: 100%; aspect-ratio: 9/19.5; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 13px; }
+    .hero-imgs .tablet { width: 440px; }
+    .hero-imgs .tablet .placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 13px; }
+
+    /* Features */
+    .features { padding: 80px 24px; background: var(--bg-alt); }
+    .features .inner { max-width: 1120px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 48px; }
+    .section-title h2 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+    .section-title p { color: var(--text-light); font-size: 16px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .feature-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all .2s; }
+    .feature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .feature-card .icon { width: 44px; height: 44px; border-radius: 10px; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+    .feature-card p { font-size: 14px; color: var(--text-light); }
+
+    /* Highlight Sections */
+    .highlight { padding: 80px 24px; }
+    .highlight .inner { max-width: 1120px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+    .highlight.reverse { flex-direction: row-reverse; background: var(--bg-alt); }
+    .highlight .text { flex: 1; }
+    .highlight .text h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+    .highlight .text p { color: var(--text-light); margin-bottom: 16px; font-size: 15px; }
+    .highlight .text ul { list-style: none; }
+    .highlight .text li { padding: 6px 0; font-size: 14px; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
+    .highlight .text li::before { content: '✓'; color: var(--primary); font-weight: 700; }
+    .highlight .image { flex: 1; display: flex; gap: 16px; justify-content: center; align-items: flex-end; }
+    .highlight .image .device { border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
+    .highlight .image .phone { width: 180px; }
+    .highlight .image .phone .placeholder { width: 100%; aspect-ratio: 9/19.5; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 12px; }
+    .highlight .image .tablet { width: 320px; }
+    .highlight .image .tablet .placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 12px; }
+
+    /* Security */
+    .security { padding: 80px 24px; background: #0f172a; color: #fff; }
+    .security .inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+    .security h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
+    .security > .inner > p { color: #94a3b8; margin-bottom: 40px; font-size: 16px; }
+    .security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .security-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; text-align: left; }
+    .security-card .icon { font-size: 28px; margin-bottom: 12px; }
+    .security-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+    .security-card p { font-size: 14px; color: #94a3b8; }
+
+    /* CTA */
+    .cta { padding: 80px 24px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, #eff6ff 100%); }
+    .cta h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
+    .cta p { color: var(--text-light); margin-bottom: 28px; font-size: 16px; }
+
+    /* Footer */
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-light); font-size: 13px; }
+    footer a { color: var(--text-light); }
+    footer a:hover { color: var(--primary); }
+    footer .links { display: flex; gap: 20px; justify-content: center; margin-bottom: 12px; }
+
+    /* Modal */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; }
+    .modal-overlay.active { display: flex; }
+    .modal-box { background: var(--bg); border-radius: 16px; padding: 36px 32px 28px; max-width: 360px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    .modal-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .modal-box p { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+    .modal-box .btn { width: 100%; justify-content: center; }
+
+    /* Hamburger */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: all .3s; border-radius: 2px; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      nav .links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); flex-direction: column; padding: 12px 24px; gap: 12px; }
+      nav .links.open { display: flex; }
+      nav .links .hide-mobile { display: block; }
+      .hero { padding: 110px 20px 60px; }
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 15px; }
+      .hero .buttons { flex-direction: column; align-items: center; }
+      .hero .buttons .btn { width: 100%; max-width: 280px; justify-content: center; }
+      .hero-imgs { flex-direction: column; align-items: center; gap: 16px; }
+      .hero-imgs .phone { width: 160px; }
+      .hero-imgs .tablet { width: 90%; max-width: 360px; }
+      .highlight .inner { flex-direction: column; gap: 32px; }
+      .highlight.reverse .inner { flex-direction: column; }
+      .highlight .text h2 { font-size: 22px; }
+      .highlight .image { flex-direction: column; align-items: center; gap: 16px; }
+      .highlight .image .phone { width: 140px; }
+      .highlight .image .tablet { width: 80%; max-width: 300px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .section-title h2, .security h2, .cta h2 { font-size: 24px; }
+      .features, .highlight, .security, .cta { padding: 48px 16px; }
+      .security-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-imgs .phone { width: 180px; }
+      .hero-imgs .tablet { width: 360px; }
+      .highlight .image .phone { width: 150px; }
+      .highlight .image .tablet { width: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="inner">
+      <div class="logo"><img src="assets/images/logo48.png" alt="XuTerm" style="height:32px;width:32px;border-radius:6px"> XuTerm</div>
+      <div class="links" id="navLinks">
+        <a href="#features" class="hide-mobile">功能特性</a>
+        <a href="#security" class="hide-mobile">安全保障</a>
+        <a href="privacy-policy-zh.html">隐私政策</a>
+        <a href="index.html">English</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>强大的 SSH 终端<br>尽在<em>掌中</em></h1>
+    <p>XuTerm 是一款面向 iOS 和 Android 的专业 SSH 终端客户端，随时随地管理服务器、执行命令、保持连接。</p>
+    <div class="buttons">
+      <a href="#" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('iosModal').classList.add('active')">⬇ iOS 下载</a>
+      <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">⬇ Android 下载</a>
+    </div>
+    <div class="hero-imgs">
+      <div class="device phone"><div class="placeholder"><img src="assets/images/sp1-zh.png" style="width:100%;border-radius:16px;"></div></div>
+      <div class="device tablet"><div class="placeholder"><img src="assets/images/bp1-zh.png" style="width:100%;border-radius:16px;"></div></div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="inner">
+      <div class="section-title">
+        <h2>你所需的一切</h2>
+        <p>从连接管理到高级终端功能，一应俱全</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="icon">&#128274;</div>
+          <h3>SSH 密钥认证</h3>
+          <p>生成、导入和管理 SSH 密钥，支持 RSA、ECDSA、Ed25519，密钥加密存储。</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#128279;</div>
+          <h3>代理跳转</h3>
+          <p>通过堡垒机和跳板机无缝连接，支持多跳代理链路。</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#128269;</div>
+          <h3>终端搜索</h3>
+          <p>实时搜索终端输出内容，高亮匹配结果，快速定位关键信息。</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#128241;</div>
+          <h3>手势缩放</h3>
+          <p>双指缩放终端文字，适配不同屏幕，编码更舒适。</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#127912;</div>
+          <h3>多主题支持</h3>
+          <p>内置深色/浅色主题及自定义配色方案，你的终端你做主。</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#128196;</div>
+          <h3>选择复制</h3>
+          <p>直观的文本选择与复制粘贴，长按选择，拖拽扩展。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight">
+    <div class="inner">
+      <div class="text">
+        <h2>原生 tmux 集成</h2>
+        <p>内置完整的 tmux 支持，不只是兼容，而是深度集成，让 tmux 在手机上也如丝般顺滑。</p>
+        <ul>
+          <li>可视化窗口标签栏，快速切换</li>
+          <li>分屏视图支持</li>
+          <li>自定义 tmux 主题样式</li>
+          <li>后台保活，长会话不断</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp2-zh.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp2-zh.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight reverse">
+    <div class="inner">
+      <div class="text">
+        <h2>Mosh — 移动 Shell</h2>
+        <p>在 SSH 和 Mosh 协议之间自由切换。Mosh 优雅应对间歇性连接、网络漫游和高延迟环境。</p>
+        <ul>
+          <li>智能协议自动检测</li>
+          <li>无缝网络漫游</li>
+          <li>高延迟下即时响应</li>
+          <li>自动重连机制</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp3.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp3.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight">
+    <div class="inner">
+      <div class="text">
+        <h2>多会话 &amp; 文件传输</h2>
+        <p>同时连接多台服务器，通过 SFTP 浏览文件，智能网络优化传输。</p>
+        <ul>
+          <li>多会话标签管理</li>
+          <li>内置 SFTP 文件浏览器</li>
+          <li>本地/远程端口转发</li>
+          <li>网络感知传输优化</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp4-zh.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp4-zh.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight reverse">
+    <div class="inner">
+      <div class="text">
+        <h2>快捷命令 &amp; 快捷键</h2>
+        <p>保存常用命令，通过二维码分享配置。内置键盘快捷键栏，高效移动端输入。</p>
+        <ul>
+          <li>自定义快捷命令库</li>
+          <li>二维码配置分享</li>
+          <li>SSH 密钥管理中心</li>
+          <li>智能键盘快捷键栏</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp5-zh.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp5-zh.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight">
+    <div class="inner">
+      <div class="text">
+        <h2>数据 &amp; 同步</h2>
+        <p>你的配置随身而行。iOS 支持 iCloud 同步，全平台支持导入导出，会话快照快速恢复。</p>
+        <ul>
+          <li>iCloud 同步（iOS）</li>
+          <li>配置导入导出</li>
+          <li>会话快照与恢复</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp6-zh.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp6-zh.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="security" id="security">
+    <div class="inner">
+      <h2>安全与隐私优先</h2>
+      <p>你的数据留在你的设备上，我们绝不收集或传输个人信息。</p>
+      <div class="security-grid">
+        <div class="security-card">
+          <div class="icon">&#128272;</div>
+          <h3>生物识别锁</h3>
+          <p>通过 Face ID、Touch ID 或指纹保护应用，未经授权无法访问。</p>
+        </div>
+        <div class="security-card">
+          <div class="icon">&#128273;</div>
+          <h3>AES 加密</h3>
+          <p>所有敏感数据——密码、密钥、配置——均使用 AES-256 加密存储。</p>
+        </div>
+        <div class="security-card">
+          <div class="icon">&#128737;</div>
+          <h3>零数据收集</h3>
+          <p>无分析、无追踪。你的服务器凭证和操作记录从不外传。</p>
+        </div>
+        <div class="security-card">
+          <div class="icon">&#128196;</div>
+          <h3>公开隐私政策</h3>
+          <p>清晰透明的隐私政策，点击<a href="privacy-policy-zh.html" style="color:#60a5fa">查看</a>。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>准备就绪？</h2>
+    <p>下载 XuTerm，随时随地掌控你的服务器。</p>
+    <div class="buttons">
+      <a href="#" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('iosModal').classList.add('active')">iOS 下载</a>
+      <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">Android 下载</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="privacy-policy-zh.html">隐私政策</a>
+      <a href="mailto:xuterm@gmail.com">联系我们</a>
+      <a href="index.html">English</a>
+    </div>
+    <p>&copy; 2026 XuTerm. 保留所有权利。</p>
+  </footer>
+  <div class="modal-overlay" id="iosModal" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <h3>iOS 即将上线</h3>
+      <p>iOS 版本即将上线，敬请期待！</p>
+      <button class="btn btn-primary" onclick="document.getElementById('iosModal').classList.remove('active')">好的</button>
+    </div>
+  </div>
+
+</body>
+</html>

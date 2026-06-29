@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XuTerm - Powerful SSH Terminal Client</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; }
+    a { color: var(--primary); text-decoration: none; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
+    nav .inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    nav .logo { font-size: 20px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    nav .logo span { font-size: 24px; }
+    nav .links { display: flex; gap: 24px; align-items: center; font-size: 14px; }
+    nav .links a { color: var(--text-light); transition: color .2s; }
+    nav .links a:hover { color: var(--primary); }
+
+    /* Hero */
+    .hero { padding: 140px 24px 80px; text-align: center; background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 100%); }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .hero h1 em { font-style: normal; color: var(--primary); }
+    .hero p { font-size: 18px; color: var(--text-light); max-width: 600px; margin: 0 auto 32px; }
+    .hero .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-outline { background: var(--bg); color: var(--primary); border: 2px solid var(--primary); }
+    .btn-outline:hover { background: #eff6ff; }
+    .hero-imgs { max-width: 900px; margin: 48px auto 0; display: flex; gap: 24px; justify-content: center; align-items: flex-end; }
+    .hero-imgs .device { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+    .hero-imgs .phone { width: 220px; }
+    .hero-imgs .phone .placeholder { width: 100%; aspect-ratio: 9/19.5; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 13px; }
+    .hero-imgs .tablet { width: 440px; }
+    .hero-imgs .tablet .placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 13px; }
+
+    /* Features */
+    .features { padding: 80px 24px; background: var(--bg-alt); }
+    .features .inner { max-width: 1120px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 48px; }
+    .section-title h2 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+    .section-title p { color: var(--text-light); font-size: 16px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .feature-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all .2s; }
+    .feature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .feature-card .icon { width: 44px; height: 44px; border-radius: 10px; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+    .feature-card p { font-size: 14px; color: var(--text-light); }
+
+    /* Highlight Sections */
+    .highlight { padding: 80px 24px; }
+    .highlight .inner { max-width: 1120px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
+    .highlight.reverse { flex-direction: row-reverse; background: var(--bg-alt); }
+    .highlight .text { flex: 1; }
+    .highlight .text h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+    .highlight .text p { color: var(--text-light); margin-bottom: 16px; font-size: 15px; }
+    .highlight .text ul { list-style: none; }
+    .highlight .text li { padding: 6px 0; font-size: 14px; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
+    .highlight .text li::before { content: '✓'; color: var(--primary); font-weight: 700; }
+    .highlight .image { flex: 1; display: flex; gap: 16px; justify-content: center; align-items: flex-end; }
+    .highlight .image .device { border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
+    .highlight .image .phone { width: 180px; }
+    .highlight .image .phone .placeholder { width: 100%; aspect-ratio: 9/19.5; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 12px; }
+    .highlight .image .tablet { width: 320px; }
+    .highlight .image .tablet .placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 12px; }
+
+    /* Security */
+    .security { padding: 80px 24px; background: #0f172a; color: #fff; }
+    .security .inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+    .security h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
+    .security > .inner > p { color: #94a3b8; margin-bottom: 40px; font-size: 16px; }
+    .security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .security-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; text-align: left; }
+    .security-card .icon { font-size: 28px; margin-bottom: 12px; }
+    .security-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+    .security-card p { font-size: 14px; color: #94a3b8; }
+
+    /* CTA */
+    .cta { padding: 80px 24px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, #eff6ff 100%); }
+    .cta h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
+    .cta p { color: var(--text-light); margin-bottom: 28px; font-size: 16px; }
+
+    /* Footer */
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-light); font-size: 13px; }
+    footer a { color: var(--text-light); }
+    footer a:hover { color: var(--primary); }
+    footer .links { display: flex; gap: 20px; justify-content: center; margin-bottom: 12px; }
+
+    /* Modal */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; }
+    .modal-overlay.active { display: flex; }
+    .modal-box { background: var(--bg); border-radius: 16px; padding: 36px 32px 28px; max-width: 360px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    .modal-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .modal-box p { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+    .modal-box .btn { width: 100%; justify-content: center; }
+
+    /* Hamburger */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: all .3s; border-radius: 2px; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      nav .links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); flex-direction: column; padding: 12px 24px; gap: 12px; }
+      nav .links.open { display: flex; }
+      nav .links .hide-mobile { display: block; }
+      .hero { padding: 110px 20px 60px; }
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 15px; }
+      .hero .buttons { flex-direction: column; align-items: center; }
+      .hero .buttons .btn { width: 100%; max-width: 280px; justify-content: center; }
+      .hero-imgs { flex-direction: column; align-items: center; gap: 16px; }
+      .hero-imgs .phone { width: 160px; }
+      .hero-imgs .tablet { width: 90%; max-width: 360px; }
+      .highlight .inner { flex-direction: column; gap: 32px; }
+      .highlight.reverse .inner { flex-direction: column; }
+      .highlight .text h2 { font-size: 22px; }
+      .highlight .image { flex-direction: column; align-items: center; gap: 16px; }
+      .highlight .image .phone { width: 140px; }
+      .highlight .image .tablet { width: 80%; max-width: 300px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .section-title h2, .security h2, .cta h2 { font-size: 24px; }
+      .features, .highlight, .security, .cta { padding: 48px 16px; }
+      .security-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-imgs .phone { width: 180px; }
+      .hero-imgs .tablet { width: 360px; }
+      .highlight .image .phone { width: 150px; }
+      .highlight .image .tablet { width: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="inner">
+      <div class="logo"><img src="assets/images/logo48.png" alt="XuTerm" style="height:32px;width:32px;border-radius:6px"> XuTerm</div>
+      <div class="links" id="navLinks">
+        <a href="#features" class="hide-mobile">Features</a>
+        <a href="#security" class="hide-mobile">Security</a>
+        <a href="privacy-policy-en.html">Privacy</a>
+        <a href="index-zh.html">中文</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Powerful SSH Terminal<br>in Your <em>Pocket</em></h1>
+    <p>XuTerm is a professional SSH terminal client for iOS &amp; Android. Manage servers, run commands, and stay connected — anywhere.</p>
+    <div class="buttons">
+      <a href="#" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('iosModal').classList.add('active')">⬇ Download for iOS</a>
+      <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">⬇ Download for Android</a>
+    </div>
+    <div class="hero-imgs">
+      <div class="device phone"><div class="placeholder"><img src="assets/images/sp1.png" style="width:100%;border-radius:16px;"></div></div>
+      <div class="device tablet"><div class="placeholder"><img src="assets/images/bp1.png" style="width:100%;border-radius:16px;"></div></div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="inner">
+      <div class="section-title">
+        <h2>Everything You Need</h2>
+        <p>From connection management to advanced terminal features</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="icon">&#128274;</div>
+          <h3>SSH Key Authentication</h3>
+          <p>Generate, import, and manage SSH keys. Support for RSA, ECDSA, and Ed25519 with encrypted storage.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#128279;</div>
+          <h3>Proxy Jump</h3>
+          <p>Seamlessly connect through bastion hosts and jump servers with multi-hop proxy chain support.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#128269;</div>
+          <h3>Terminal Search</h3>
+          <p>Find anything in your terminal output with real-time search and highlight.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#128241;</div>
+          <h3>Gesture Zoom</h3>
+          <p>Pinch to zoom the terminal for the perfect text size. Comfortable coding on any screen.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#127912;</div>
+          <h3>Multi-Theme Support</h3>
+          <p>Built-in dark and light themes plus custom color schemes. Your terminal, your style.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">&#128196;</div>
+          <h3>Select to Copy</h3>
+          <p>Intuitive text selection with copy/paste. Long press to select, drag to extend.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight">
+    <div class="inner">
+      <div class="text">
+        <h2>Native tmux Integration</h2>
+        <p>Full tmux support built right in — not just compatibility, but deep integration that makes tmux feel native on mobile.</p>
+        <ul>
+          <li>Visual window tab bar for quick switching</li>
+          <li>Split-pane view support</li>
+          <li>Custom tmux theme styling</li>
+          <li>Background keep-alive for long sessions</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp2.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp2.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight reverse">
+    <div class="inner">
+      <div class="text">
+        <h2>Mosh — Mobile Shell</h2>
+        <p>Switch between SSH and Mosh protocols. Mosh handles intermittent connections, roaming, and high-latency networks gracefully.</p>
+        <ul>
+          <li>Smart protocol auto-detection</li>
+          <li>Seamless network roaming</li>
+          <li>Instant response on high-latency links</li>
+          <li>Automatic reconnection</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp3.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp3.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight">
+    <div class="inner">
+      <div class="text">
+        <h2>Multi-Session &amp; File Transfer</h2>
+        <p>Work with multiple servers simultaneously. Browse files over SFTP and transfer with network-aware optimization.</p>
+        <ul>
+          <li>Multi-session tab management</li>
+          <li>Built-in SFTP file browser</li>
+          <li>Local &amp; remote port forwarding</li>
+          <li>Network-aware transfer optimization</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp4.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp4.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight reverse">
+    <div class="inner">
+      <div class="text">
+        <h2>Quick Commands &amp; Shortcuts</h2>
+        <p>Save your frequently used commands and share configurations via QR code. Built-in keyboard shortcuts for efficient mobile input.</p>
+        <ul>
+          <li>Custom quick command library</li>
+          <li>QR code config sharing</li>
+          <li>SSH key management hub</li>
+          <li>Smart keyboard shortcut bar</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp5.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp5.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight">
+    <div class="inner">
+      <div class="text">
+        <h2>Data &amp; Sync</h2>
+        <p>Your configurations travel with you. iCloud sync on iOS, import/export on all platforms, and session snapshots for quick recovery.</p>
+        <ul>
+          <li>iCloud sync (iOS)</li>
+          <li>Config import &amp; export</li>
+          <li>Session snapshot &amp; restore</li>
+        </ul>
+      </div>
+      <div class="image">
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp6.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp6.png" style="width:100%;border-radius:16px;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="security" id="security">
+    <div class="inner">
+      <h2>Security &amp; Privacy First</h2>
+      <p>Your data stays on your device. We never collect or transmit personal information.</p>
+      <div class="security-grid">
+        <div class="security-card">
+          <div class="icon">&#128272;</div>
+          <h3>Biometric Lock</h3>
+          <p>Protect the app with Face ID, Touch ID, or fingerprint. No one accesses your servers without you.</p>
+        </div>
+        <div class="security-card">
+          <div class="icon">&#128273;</div>
+          <h3>AES Encryption</h3>
+          <p>All sensitive data — passwords, keys, configs — encrypted with AES-256 before storage.</p>
+        </div>
+        <div class="security-card">
+          <div class="icon">&#128737;</div>
+          <h3>No Data Collection</h3>
+          <p>Zero analytics, zero tracking. Your server credentials and activity are never sent anywhere.</p>
+        </div>
+        <div class="security-card">
+          <div class="icon">&#128196;</div>
+          <h3>Open Privacy Policy</h3>
+          <p>Clear, straightforward privacy policy. Read it <a href="privacy-policy-en.html" style="color:#60a5fa">here</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to Take Control?</h2>
+    <p>Download XuTerm and manage your servers from anywhere.</p>
+    <div class="buttons">
+      <a href="#" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('iosModal').classList.add('active')">Download for iOS</a>
+      <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">Download for Android</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="privacy-policy-en.html">Privacy Policy</a>
+      <a href="mailto:xuterm@gmail.com">Contact</a>
+      <a href="index-zh.html">中文</a>
+    </div>
+    <p>&copy; 2026 XuTerm. All rights reserved.</p>
+  </footer>
+  <div class="modal-overlay" id="iosModal" onclick="if(event.target===this)this.classList.remove('active')">
+    <div class="modal-box">
+      <h3>iOS Coming Soon</h3>
+      <p>XuTerm for iOS is coming soon. Stay tuned!</p>
+      <button class="btn btn-primary" onclick="document.getElementById('iosModal').classList.remove('active')">OK</button>
+    </div>
+  </div>
+
+</body>
+</html>
