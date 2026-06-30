@@ -38,6 +38,21 @@
     .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
     .btn-outline { background: var(--bg); color: var(--primary); border: 2px solid var(--primary); }
     .btn-outline:hover { background: #eff6ff; }
+    .btn-disabled { background: #e2e8f0; color: #94a3b8; cursor: default; }
+    .btn-disabled:hover { transform: none; }
+    .download-channels { max-width: 600px; margin: 0 auto; }
+    .download-channels h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+    .channel-list { display: flex; flex-direction: column; gap: 10px; }
+    .channel-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; transition: all .2s; }
+    .channel-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .channel-item .channel-info { display: flex; align-items: center; gap: 12px; }
+    .channel-item .channel-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .channel-item .channel-icon.ios { background: #f0f0f0; }
+    .channel-item .channel-icon.huawei { background: #fff3e0; }
+    .channel-item .channel-icon.apkpure { background: #e8f5e9; }
+    .channel-item .channel-name { font-weight: 600; font-size: 14px; }
+    .channel-item .channel-desc { font-size: 12px; color: var(--text-light); }
+    .channel-item .channel-action .btn { padding: 8px 18px; font-size: 13px; border-radius: 8px; }
     .hero-imgs { max-width: 900px; margin: 48px auto 0; display: flex; gap: 24px; justify-content: center; align-items: flex-end; }
     .hero-imgs .device { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
     .hero-imgs .phone { width: 220px; }
@@ -117,6 +132,11 @@
       .hero { padding: 110px 20px 60px; }
       .hero h1 { font-size: 28px; }
       .hero p { font-size: 15px; }
+      .download-channels { max-width: 100%; }
+      .channel-item { padding: 10px 12px; }
+      .channel-item .channel-name { font-size: 13px; }
+      .channel-item .channel-desc { font-size: 11px; }
+      .channel-item .channel-action .btn { padding: 6px 14px; font-size: 12px; }
       .hero .buttons { flex-direction: column; align-items: center; }
       .hero .buttons .btn { width: 100%; max-width: 280px; justify-content: center; }
       .hero-imgs { flex-direction: column; align-items: center; gap: 16px; }
@@ -160,9 +180,46 @@
   <section class="hero">
     <h1>强大的 SSH 终端<br>尽在<em>掌中</em></h1>
     <p>XuTerm 是一款面向 iOS 和 Android 的专业 SSH 终端客户端，随时随地管理服务器、执行命令、保持连接。</p>
-    <div class="buttons">
-      <a href="#" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('iosModal').classList.add('active')">⬇ iOS 下载</a>
-      <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">⬇ Android 下载</a>
+    <div class="download-channels">
+      <h3>下载 XuTerm</h3>
+      <div class="channel-list">
+        <div class="channel-item">
+          <div class="channel-info">
+            <div class="channel-icon ios">&#127822;</div>
+            <div>
+              <div class="channel-name">App Store</div>
+              <div class="channel-desc">iOS — 即将上线，敬请期待</div>
+            </div>
+          </div>
+          <div class="channel-action">
+            <button class="btn btn-disabled" onclick="event.preventDefault();document.getElementById('iosModal').classList.add('active')">即将上线</button>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-info">
+            <div class="channel-icon huawei">&#128241;</div>
+            <div>
+              <div class="channel-name">华为应用市场</div>
+              <div class="channel-desc">Android — 华为设备</div>
+            </div>
+          </div>
+          <div class="channel-action">
+            <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">下载</a>
+          </div>
+        </div>
+        <div class="channel-item">
+          <div class="channel-info">
+            <div class="channel-icon apkpure">&#129302;</div>
+            <div>
+              <div class="channel-name">APKPure</div>
+              <div class="channel-desc">Android — 全部设备</div>
+            </div>
+          </div>
+          <div class="channel-action">
+            <a href="https://apkpure.com/p/com.yongqing.xuterm" class="btn btn-outline">下载</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="hero-imgs">
       <div class="device phone"><div class="placeholder"><img src="assets/images/sp1-zh.png" style="width:100%;border-radius:16px;"></div></div>
@@ -338,8 +395,8 @@
     <h2>准备就绪？</h2>
     <p>下载 XuTerm，随时随地掌控你的服务器。</p>
     <div class="buttons">
-      <a href="#" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('iosModal').classList.add('active')">iOS 下载</a>
-      <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">Android 下载</a>
+      <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-primary">华为应用市场下载</a>
+      <a href="https://apkpure.com/p/com.yongqing.xuterm" class="btn btn-outline">APKPure 下载</a>
     </div>
   </section>
 
