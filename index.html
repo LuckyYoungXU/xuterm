@@ -49,8 +49,8 @@
     .channel-item .channel-info { display: flex; align-items: center; gap: 12px; }
     .channel-item .channel-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
     .channel-item .channel-icon.ios { background: #f0f0f0; }
-    .channel-item .channel-icon.huawei { background: #fff3e0; }
-    .channel-item .channel-icon.apkpure { background: #e8f5e9; }
+    .channel-item .channel-icon.huawei { background: transparent; }
+    .channel-item .channel-icon.apkpure { background: transparent; }
     .channel-item .channel-icon.appteka { background: linear-gradient(135deg, #16a34a, #65a30d); box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
     .channel-item .channel-name { font-weight: 600; font-size: 14px; }
     .channel-item .channel-desc { font-size: 12px; color: var(--text-light); }
@@ -199,7 +199,7 @@
         </div>
         <div class="channel-item">
           <div class="channel-info">
-            <div class="channel-icon huawei"><img src="assets/images/huawei.png" alt="Huawei" style="width:22px;height:22px;border-radius:4px"></div>
+            <div class="channel-icon huawei"><img src="assets/images/huawei.png" alt="Huawei" style="width:100%;height:100%;border-radius:8px"></div>
             <div>
               <div class="channel-name">Huawei AppGallery</div>
               <div class="channel-desc">Android — Huawei devices</div>
@@ -211,7 +211,7 @@
         </div>
         <div class="channel-item">
           <div class="channel-info">
-            <div class="channel-icon apkpure"><img src="assets/images/apkpure.png" alt="APKPure" style="width:22px;height:22px;border-radius:4px"></div>
+            <div class="channel-icon apkpure"><img src="assets/images/apkpure.png" alt="APKPure" style="width:100%;height:100%;border-radius:8px"></div>
             <div>
               <div class="channel-name">APKPure</div>
               <div class="channel-desc">Android — All devices</div>
