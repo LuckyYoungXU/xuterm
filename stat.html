@@ -1,0 +1,28 @@
+<div>总访问量：<span id="pv">加载中...</span></div>
+<div>下载按钮点击：<span id="download">加载中...</span></div>
+<button id="downloadBtn">下载App</button>
+
+<script>
+// 页面加载PV自增
+(async () => {
+  try {
+    const res = await fetch("/api/stats?action=pageview");
+    const data = await res.json();
+    document.getElementById("pv").innerText = data.pageView;
+  } catch(err) {
+    document.getElementById("pv").innerText = "统计异常";
+    console.error(err);
+  }
+})();
+
+// 下载按钮点击计数
+document.getElementById("downloadBtn").addEventListener("click", async () => {
+  try {
+    const res = await fetch("/api/stats?action=download");
+    const data = await res.json();
+    document.getElementById("download").innerText = data.downloadClick;
+  } catch(err) {
+    console.error("点击统计失败", err);
+  }
+});
+</script>
