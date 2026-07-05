@@ -10,7 +10,8 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/stat.html"
+      "destination": "/stat.html",
+      "fallback": true
     }
   ]
 }
