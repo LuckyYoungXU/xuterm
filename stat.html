@@ -6,7 +6,7 @@
 // 页面加载PV自增
 (async () => {
   try {
-    const res = await fetch("/api/stats?action=pageview");
+    const res = await fetch("https://xuterm-fgxtdeno8-xuyq1113-7560s-projects.vercel.app/api/stats?action=pageview");
     // 先判断接口返回是否正常
     if (!res.ok) throw new Error(`接口响应异常，状态码：${res.status}`);
     const data = await res.json();
@@ -22,7 +22,7 @@
 // 下载按钮点击计数
 document.getElementById("downloadBtn").addEventListener("click", async () => {
   try {
-    const res = await fetch("/api/stats?action=download");
+    const res = await fetch("https://xuterm-fgxtdeno8-xuyq1113-7560s-projects.vercel.app/api/stats?action=download");
     if (!res.ok) throw new Error(`接口响应异常，状态码：${res.status}`);
     const data = await res.json();
     document.getElementById("download").innerText = data.downloadClick;
