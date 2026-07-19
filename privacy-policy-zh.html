@@ -141,7 +141,7 @@
   </header>
 
   <div class="card">
-    <p class="update-date">更新日期：2026年6月20日</p>
+    <p class="update-date">更新日期：2026年7月18日</p>
 
     <p>XuTerm（以下简称「本应用」）非常重视用户隐私保护。本隐私政策旨在向您说明我们如何收集、使用、存储和保护您的个人信息。</p>
 
@@ -155,6 +155,7 @@
     <h3>1. 您主动提供的信息</h3>
     <ul>
       <li><strong>SSH 连接信息：</strong>主机地址、端口、用户名、密码/密钥（仅用于建立 SSH 连接，存储在本地设备）</li>
+      <li><strong>TOTP两步验证密钥：</strong>仅用于生成验证码，存储在本地设备</li>
       <li><strong>快捷命令配置：</strong>您自定义的快捷命令（仅存储在本地设备）</li>
       <li><strong>端口转发规则：</strong>您配置的端口转发规则（仅存储在本地设备）</li>
       <li><strong>终端设置：</strong>字体、主题、快捷键等偏好设置（仅存储在本地设备）</li>
@@ -171,6 +172,7 @@
     <p>您的信息仅用于以下目的：</p>
     <ol>
       <li>建立和管理 SSH / Mosh 连接</li>
+      <li>生成TOTP两步验证码</li>
       <li>保存和恢复您的配置偏好</li>
       <li>提供终端模拟功能</li>
       <li>提供 SFTP 文件传输功能</li>
@@ -182,6 +184,8 @@
     <ul>
       <li><strong>本地存储：</strong>所有数据均存储在您的本地设备上，使用应用沙盒存储机制保护。</li>
       <li><strong>数据加密：</strong>敏感数据（如 SSH 密码）通过 AES-256-CBC 加密存储。</li>
+      <li><strong>私钥硬件保护：</strong>SSH<b>私钥</b>使用设备安全硬件（Android Keystore / iOS Keychain）加密存储，仅在建立连接时临时解密到内存，不在磁盘留存明文。</li>
+      <li><strong>TOTP密钥保护：</strong>TOTP密钥作为连接配置的一部分存储在本地设备，受应用沙盒保护。</li>
       <li><strong>应用锁：</strong>本应用支持生物识别（指纹/人脸）或设备凭证锁功能，可防止未授权访问（需您主动开启）。</li>
       <li><strong>不联网上传：</strong>我们不会将您的数据上传至任何服务器。SSH 连接直接在您的设备与目标服务器之间建立。</li>
     </ul>

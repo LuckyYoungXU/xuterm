@@ -141,7 +141,7 @@
   </header>
 
   <div class="card">
-    <p class="update-date">Updated: June 20, 2026</p>
+    <p class="update-date">Updated: July 18, 2026</p>
 
     <p>XuTerm (hereinafter referred to as "this App") takes your privacy seriously. This Privacy Policy explains how we collect, use, store, and protect your personal information.</p>
 
@@ -155,6 +155,7 @@
     <h3>1.1 Information you provide</h3>
     <ul>
       <li><strong>SSH connection details:</strong> host address, port, username, password/key (used only for establishing SSH connections, stored locally)</li>
+      <li><strong>TOTP two-factor authentication secret:</strong> used only for generating verification codes, stored locally</li>
       <li><strong>Quick command configurations:</strong> your custom quick commands (stored locally only)</li>
       <li><strong>Port forwarding rules:</strong> port forwarding rules you configure (stored locally only)</li>
       <li><strong>Terminal preferences:</strong> font, theme, shortcuts and other preference settings (stored locally only)</li>
@@ -171,6 +172,7 @@
     <p>Your information is used only for the following purposes:</p>
     <ol>
       <li>Establishing and managing SSH / Mosh connections</li>
+      <li>Generating TOTP two-factor authentication codes</li>
       <li>Saving and restoring your configuration preferences</li>
       <li>Providing terminal emulation functionality</li>
       <li>Providing SFTP file transfer functionality</li>
@@ -182,6 +184,8 @@
     <ul>
       <li><strong>Local Storage:</strong> All data is stored locally on your device, protected by the app sandbox storage mechanism.</li>
       <li><strong>Data Encryption:</strong> Sensitive data (such as SSH passwords) is encrypted using AES-256-CBC.</li>
+      <li><strong>Private Key Hardware Protection:</strong> SSH <b>private keys</b> are encrypted and stored in device secure hardware (Android Keystore / iOS Keychain), decrypted to memory only during connection establishment, with no plaintext persisted on disk.</li>
+      <li><strong>TOTP Secret Protection:</strong> TOTP secrets are stored as part of connection configuration on the local device, protected by the app sandbox.</li>
       <li><strong>App Lock:</strong> This App supports biometric (fingerprint/face) or device credential lock to prevent unauthorized access (must be enabled by you).</li>
       <li><strong>No Online Upload:</strong> We do not upload your data to any server. SSH connections are established directly between your device and the target server.</li>
     </ul>
