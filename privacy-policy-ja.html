@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="XuTerm プライバシーポリシー - お客様の個人情報の保護について">
+<meta name="author" content="XuTerm">
+<title>XuTerm プライバシーポリシー</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Meiryo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.8;
+    color: #333;
+    background: #f5f7fa;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+    color: #fff;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(25, 118, 210, 0.2);
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  header .subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  header .lang-switch {
+    margin-top: 16px;
+    font-size: 13px;
+  }
+  header .lang-switch a {
+    color: #fff;
+    text-decoration: underline;
+    opacity: 0.95;
+    margin: 0 8px;
+  }
+  .card {
+    background: #fff;
+    padding: 32px 36px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 20px;
+  }
+  .update-date {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1976d2;
+    margin-top: 28px;
+    margin-bottom: 12px;
+    padding-left: 12px;
+    border-left: 4px solid #1976d2;
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  p {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #444;
+  }
+  ul, ol {
+    margin: 10px 0 10px 24px;
+  }
+  li {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #444;
+  }
+  li ul li {
+    font-size: 14px;
+    color: #555;
+  }
+  .highlight {
+    background: #e3f2fd;
+    padding: 16px 20px;
+    border-radius: 8px;
+    border-left: 4px solid #42a5f5;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .contact-box {
+    background: #f5f7fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .contact-box a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .contact-box a:hover { text-decoration: underline; }
+  footer {
+    text-align: center;
+    padding: 24px 0;
+    color: #999;
+    font-size: 13px;
+  }
+  @media (max-width: 600px) {
+    .container { padding: 20px 12px; }
+    .card { padding: 20px 18px; }
+    header h1 { font-size: 22px; }
+    h2 { font-size: 16px; }
+    p, li { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>XuTerm プライバシーポリシー</h1>
+    <p class="subtitle">SSH ターミナルクライアント · お客様のプライバシーはお客様自身の手の中に</p>
+    <p class="lang-switch">
+      <a href="privacy-policy-zh.html">中文</a>
+      <a href="privacy-policy-en.html">English</a>
+      <a href="privacy-policy-ru.html">Русский</a>
+    </p>
+  </header>
+
+  <div class="card">
+    <p class="update-date">更新日：2026年7月18日</p>
+
+    <p>XuTerm（以下「本アプリ」）はお客様のプライバシー保護を重視しています。本プライバシーポリシーは、お客様の個人情報の収集、使用、保存、保護の方法について説明するものです。</p>
+
+    <div class="highlight">
+      <strong>中核となる約束：</strong>本アプリは、お客様の個人情報を収集、アップロード、または第三者と共有することは一切ありません。すべてのデータはお客様のローカルデバイスにのみ保存されます。
+    </div>
+
+    <h2>1. 収集する情報</h2>
+    <p>本アプリはSSHターミナルクライアントツールであり、すべてのデータはお客様のローカルデバイスに保存されます。お客様の個人情報を能動的に収集、アップロード、または共有することはありません。</p>
+
+    <h3>1.1 お客様が提供する情報</h3>
+    <ul>
+      <li><strong>SSH接続情報：</strong>ホストアドレス、ポート、ユーザー名、パスワード/鍵（SSH接続の確立にのみ使用し、ローカルデバイスに保存）</li>
+      <li><strong>TOTP二段階認証シークレット：</strong>認証コードの生成にのみ使用し、ローカルデバイスに保存</li>
+      <li><strong>クイックコマンド設定：</strong>お客様がカスタマイズしたクイックコマンド（ローカルデバイスにのみ保存）</li>
+      <li><strong>ポートフォワーディングルール：</strong>お客様が設定したポートフォワーディングルール（ローカルデバイスにのみ保存）</li>
+      <li><strong>ターミナル設定：</strong>フォント、テーマ、ショートカットキーなどの設定（ローカルデバイスにのみ保存）</li>
+    </ul>
+
+    <h3>1.2 自動的に収集される情報</h3>
+    <ul>
+      <li>本アプリはデバイス情報、位置情報、使用行動データを自動的に収集することはありません。</li>
+      <li>本アプリはサードパーティの分析SDKを一切含みません。</li>
+      <li>本アプリは広告SDKやトラッキングツールを使用しません。</li>
+    </ul>
+
+    <h2>2. 情報の利用</h2>
+    <p>お客様の情報は以下の目的にのみ使用されます：</p>
+    <ol>
+      <li>SSH / Mosh接続の確立と管理</li>
+      <li>TOTP二段階認証コードの生成</li>
+      <li>設定の保存と復元</li>
+      <li>ターミナルエミュレーション機能の提供</li>
+      <li>SFTPファイル転送機能の提供</li>
+      <li>QRコードによる設定のインポート/エクスポート（お客様のデバイス上でのみ実行し、いかなるサーバーも経由しません）</li>
+    </ol>
+    <p>これら以外の目的でお客様の情報を使用することはありません。</p>
+
+    <h2>3. 情報の保存とセキュリティ</h2>
+    <ul>
+      <li><strong>ローカル保存：</strong>すべてのデータはお客様のローカルデバイスに保存され、アプリサンドボックスストレージ機構により保護されています。</li>
+      <li><strong>データ暗号化：</strong>機密データ（SSHパスワードなど）はAES-256-CBCにより暗号化して保存されます。</li>
+      <li><strong>秘密鍵のハードウェア保護：</strong>SSH<b>秘密鍵</b>はデバイスのセキュアハードウェア（Android Keystore / iOS Keychain）で暗号化して保存され、接続確立時にのみメモリ上で一時的に復号され、ディスク上に平文は保存されません。</li>
+      <li><strong>TOTPシークレットの保護：</strong>TOTPシークレットは接続設定の一部としてローカルデバイスに保存され、アプリサンドボックスにより保護されています。</li>
+      <li><strong>アプリロック：</strong>本アプリは生体認証（指紋/顔認証）またはデバイス資格情報によるロック機能をサポートし、不正アクセスを防止します（お客様が有効にする必要があります）。</li>
+      <li><strong>オンラインアップロードなし：</strong>お客様のデータをいかなるサーバーにもアップロードしません。SSH接続はお客様のデバイスと対象サーバー間で直接確立されます。</li>
+    </ul>
+
+    <h2>4. 情報の共有</h2>
+    <p>以下の場合を除き、お客様の個人情報を第三者と共有することはありません：</p>
+    <ol>
+      <li>お客様の明示的な同意がある場合</li>
+      <li>法令により要求される場合</li>
+      <li>政府機関により法的に要求される場合</li>
+    </ol>
+
+    <h2>5. データのエクスポートと削除</h2>
+    <ul>
+      <li>アプリのエクスポート機能により、いつでも設定データのバックアップが可能です（エクスポートされたファイルはお客様のデバイスにのみ保存されます）。</li>
+      <li>ホスト、鍵などのデータはいつでも削除できます。</li>
+      <li>本アプリをアンインストールすると、すべてのローカルデータが削除されます。</li>
+      <li>QRコードのインポート/エクスポート機能は、お客様のデバイス内でのみデータを処理し、いかなる中間サーバーも経由しません。</li>
+    </ul>
+
+    <h2>6. ネットワーク接続</h2>
+    <ul>
+      <li>本アプリはSSHプロトコルを使用してお客様が指定したリモートサーバーに接続します。接続データはお客様のデバイスと対象サーバー間で直接送信されます。</li>
+      <li>本アプリはいかなる中間サーバーを経由してSSH接続データを転送することはありません。</li>
+      <li>Mosh接続はUDPプロトコルを使用して対象サーバーに直接接続します。</li>
+      <li>すべてのSSH / Mosh接続のセキュリティは、SSHプロトコル自体の暗号化機構により保証されます。</li>
+    </ul>
+
+    <h2>7. パーミッションの使用</h2>
+    <ul>
+      <li><strong>ネットワーク：</strong>SSH / Mosh接続の確立に使用します。接続先サーバーはお客様が指定します。</li>
+      <li><strong>通知：</strong>SSH接続を安定させるフォアグラウンドサービスの維持に使用します（Androidのみ）。通知には接続状態のみが表示されます。</li>
+      <li><strong>生体認証：</strong>アプリロック機能に使用します（お客様が有効にする必要があります）。生体認証データはシステムのセキュリティサービスにより処理され、本アプリが生体認証データにアクセス、保存、またはアップロードすることはありません。</li>
+      <li><strong>カメラ：</strong>QRコードをスキャンして設定をインポートするために使用します（お客様が操作を開始する必要があります）。カメラ映像はお客様のデバイス上でのみ処理され、画像がアップロードまたは保存されることはありません。</li>
+      <li><strong>ストレージ：</strong>設定ファイルのインポート/エクスポートおよびSFTPファイル転送に使用します（お客様が指定したファイルにのみアクセスします）。</li>
+    </ul>
+
+    <h2>8. 未成年者の保護</h2>
+    <p>未成年者の個人情報の保護を重視しています。14歳未満の方は、保護者の指導の下で本アプリをご使用ください。</p>
+
+    <h2>9. プライバシーポリシーの変更</h2>
+    <p>本プライバシーポリシーを随時改訂することがあります。変更があった場合、アプリ内でお客様に通知し、再度同意を求めます。変更後のプライバシーポリシーに同意しない場合は、本アプリの使用を停止することができます。</p>
+
+    <h2>10. お問い合わせ</h2>
+    <p>本プライバシーポリシーに関するご質問やご提案がございましたら、以下の方法でお問い合わせください：</p>
+    <div class="contact-box">
+      <p><strong>メール：</strong><a href="mailto:xuterm@gmail.com">xuterm@gmail.com</a></p>
+      <p><strong>ウェブサイト：</strong><a href="https://xuterm.vercel.app/" target="_blank">https://xuterm.vercel.app</a></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 XuTerm. All Rights Reserved.</p>
+  </footer>
+
+</div>
+</body>
+</html>
