@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XuTerm - User Guide</title>
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --border: #e2e8f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.7; background: var(--bg); }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
+    nav .inner { max-width: 960px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+    nav .logo { font-size: 18px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    nav .links { display: flex; gap: 20px; align-items: center; font-size: 14px; }
+    nav .links a { color: var(--text-light); transition: color .2s; }
+    nav .links a:hover { color: var(--primary); text-decoration: none; }
+
+    /* Content */
+    .page-header { padding: 100px 24px 40px; text-align: center; background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 100%); }
+    .page-header h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 8px; }
+    .page-header p { color: var(--text-light); font-size: 16px; max-width: 600px; margin: 0 auto; }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* TOC */
+    .toc { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .toc h2 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: 15px; }
+    .toc li a { color: var(--text); }
+    .toc li a:hover { color: var(--primary); }
+    .toc > ol > li > ol { margin-top: 4px; padding-left: 18px; }
+    .toc > ol > li > ol > li { font-size: 14px; margin-bottom: 4px; }
+
+    /* Sections */
+    .guide-section { margin-top: 48px; }
+    .guide-section h2 { font-size: 26px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); display: inline-block; }
+    .guide-section h3 { font-size: 20px; font-weight: 600; margin: 28px 0 10px; color: var(--primary-dark); }
+    .guide-section h4 { font-size: 16px; font-weight: 600; margin: 18px 0 8px; }
+    .guide-section p { margin-bottom: 12px; font-size: 15px; color: var(--text); }
+    .guide-section ul, .guide-section ol { margin: 8px 0 14px 20px; font-size: 15px; }
+    .guide-section li { margin-bottom: 6px; }
+    .guide-section .note { background: #eff6ff; border-left: 4px solid var(--primary); border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+    .guide-section .tip { background: #f0fdf4; border-left: 4px solid #16a34a; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+    .guide-section .warning { background: #fef3c7; border-left: 4px solid #d97706; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 16px 0; font-size: 14px; }
+    .kbd { display: inline-block; background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 1px 6px; font-family: monospace; font-size: 13px; color: var(--text); }
+
+    /* Footer */
+    footer { padding: 32px 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-light); font-size: 13px; }
+    footer a { color: var(--text-light); }
+    footer a:hover { color: var(--primary); }
+    footer .links { display: flex; gap: 20px; justify-content: center; margin-bottom: 12px; }
+
+    /* Hamburger */
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: all .3s; border-radius: 2px; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      nav .links { display: none; position: absolute; top: 56px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); flex-direction: column; padding: 12px 24px; gap: 12px; }
+      nav .links.open { display: flex; }
+      .page-header { padding: 84px 16px 28px; }
+      .guide-section h2 { font-size: 22px; }
+      .guide-section h3 { font-size: 18px; }
+      .toc { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="inner">
+      <div class="logo"><img src="assets/images/logo48.png" alt="XuTerm" style="height:28px;width:28px;border-radius:6px"> XuTerm</div>
+      <div class="links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="privacy-policy-en.html">Privacy</a>
+        <a href="user-guide-zh.html">中文</a>
+      </div>
+      <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <h1>User Guide</h1>
+    <p>Everything you need to know about using XuTerm — the professional SSH terminal client for mobile.</p>
+  </div>
+
+  <div class="container">
+
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#getting-started">Getting Started</a>
+          <ol>
+            <li><a href="#install">Installation</a></li>
+            <li><a href="#first-connection">Your First SSH Connection</a></li>
+          </ol>
+        </li>
+        <li><a href="#host-management">Host Management</a>
+          <ol>
+            <li><a href="#add-host">Adding a Host</a></li>
+            <li><a href="#edit-host">Editing &amp; Copying a Host</a></li>
+            <li><a href="#groups">Groups &amp; Sorting</a></li>
+            <li><a href="#qr-share">QR Code Sharing</a></li>
+            <li><a href="#qr-scan">QR Code Scanning &amp; Import</a></li>
+            <li><a href="#batch-ops">Batch Operations</a></li>
+          </ol>
+        </li>
+        <li><a href="#terminal">Terminal</a>
+          <ol>
+            <li><a href="#terminal-basics">Basic Terminal Operations</a></li>
+            <li><a href="#search">Terminal Search</a></li>
+            <li><a href="#zoom">Gesture Zoom</a></li>
+            <li><a href="#select-copy">Select &amp; Copy</a></li>
+            <li><a href="#shortcut-bar">Keyboard Shortcut Bar</a></li>
+            <li><a href="#quick-commands">Quick Commands</a></li>
+            <li><a href="#command-snippets">Command Snippets</a></li>
+            <li><a href="#command-history">Command History</a></li>
+            <li><a href="#sudo-fill">sudo Password Auto-Fill</a></li>
+            <li><a href="#totp-fill">TOTP 2FA Code Fill</a></li>
+          </ol>
+        </li>
+        <li><a href="#mosh">Mosh — Mobile Shell</a>
+          <ol>
+            <li><a href="#enable-mosh">Enabling Mosh</a></li>
+            <li><a href="#mosh-settings">Mosh Configuration</a></li>
+          </ol>
+        </li>
+        <li><a href="#tmux">tmux Integration</a>
+          <ol>
+            <li><a href="#enable-tmux">Enabling tmux</a></li>
+            <li><a href="#tmux-bar">tmux Action Bar</a></li>
+            <li><a href="#tmux-theme">tmux Theme</a></li>
+          </ol>
+        </li>
+        <li><a href="#sftp">SFTP File Browser</a>
+          <ol>
+            <li><a href="#sftp-basics">Browsing Files</a></li>
+            <li><a href="#upload-download">Upload &amp; Download</a></li>
+            <li><a href="#file-ops">File Operations</a></li>
+            <li><a href="#file-preview">File Preview &amp; Editing</a></li>
+            <li><a href="#cellular">Cellular Data Transfer</a></li>
+            <li><a href="#hash">File Hash Verification</a></li>
+          </ol>
+        </li>
+        <li><a href="#trzsz">trzsz File Transfer</a></li>
+        <li><a href="#port-forwarding">Port Forwarding</a>
+          <ol>
+            <li><a href="#local-forward">Local Port Forwarding</a></li>
+            <li><a href="#remote-forward">Remote Port Forwarding</a></li>
+            <li><a href="#dynamic-forward">Dynamic (SOCKS) Forwarding</a></li>
+            <li><a href="#auto-start-forward">Auto-Start on Connection</a></li>
+          </ol>
+        </li>
+        <li><a href="#proxy-jump">Proxy Jump (Bastion Host)</a></li>
+        <li><a href="#ssh-keys">SSH Key Management</a>
+          <ol>
+            <li><a href="#generate-key">Generating a Key</a></li>
+            <li><a href="#import-key">Importing a Key</a></li>
+            <li><a href="#assign-key">Assigning a Key to a Host</a></li>
+          </ol>
+        </li>
+        <li><a href="#totp">TOTP Two-Factor Authentication</a>
+          <ol>
+            <li><a href="#add-totp">Adding a TOTP Token</a></li>
+            <li><a href="#use-totp">Using TOTP in Terminal</a></li>
+          </ol>
+        </li>
+        <li><a href="#server-monitor">Server Monitoring</a></li>
+        <li><a href="#session-snapshots">Session Snapshots</a></li>
+        <li><a href="#multi-session">Multi-Session Management</a></li>
+        <li><a href="#settings">Settings</a>
+          <ol>
+            <li><a href="#biometric">Biometric Lock</a></li>
+            <li><a href="#terminal-settings">Terminal Settings</a></li>
+            <li><a href="#font-settings">Font Settings</a></li>
+            <li><a href="#color-bar">Color Bar</a></li>
+            <li><a href="#connection-settings">Connection Settings</a></li>
+            <li><a href="#monitor-settings">Monitor Settings</a></li>
+            <li><a href="#theme">Theme &amp; Appearance</a></li>
+            <li><a href="#language">Language</a></li>
+          </ol>
+        </li>
+        <li><a href="#data-management">Data Management</a>
+          <ol>
+            <li><a href="#export">Exporting Configuration</a></li>
+            <li><a href="#import">Importing Configuration</a></li>
+            <li><a href="#icloud">iCloud Sync (iOS)</a></li>
+          </ol>
+        </li>
+        <li><a href="#security">Security &amp; Privacy</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. Getting Started -->
+    <div class="guide-section" id="getting-started">
+      <h2>1. Getting Started</h2>
+
+      <h3 id="install">1.1 Installation</h3>
+      <p>XuTerm is available on multiple platforms. Download from the channel that suits you best:</p>
+      <ul>
+        <li><strong>Huawei AppGallery</strong> — For Huawei devices, search "XuTerm" or use the direct link.</li>
+        <li><strong>APKPure</strong> — For all Android devices. Download and install the APK directly.</li>
+        <li><strong>Appteka.store</strong> — An alternative Android app store.</li>
+        <li><strong>App Store</strong> — iOS version is coming soon.</li>
+        <li><strong>Google Play</strong> — Coming soon.</li>
+      </ul>
+
+      <h3 id="first-connection">1.2 Your First SSH Connection</h3>
+      <ol>
+        <li>Open XuTerm. On first launch, you will see the host management screen.</li>
+        <li>Tap the <strong>+</strong> button in the top-right corner to add a new host.</li>
+        <li>Fill in the required fields:
+          <ul>
+            <li><strong>Name</strong> — A friendly label for this connection (e.g., "Production Web Server").</li>
+            <li><strong>Host</strong> — The server IP address or domain name.</li>
+            <li><strong>Port</strong> — SSH port (default: 22).</li>
+            <li><strong>Username</strong> — Your login username on the server.</li>
+          </ul>
+        </li>
+        <li>Choose an authentication method:
+          <ul>
+            <li><strong>Password</strong> — Enter the password. It will be encrypted and stored securely.</li>
+            <li><strong>SSH Key</strong> — Select a previously added key pair (see <a href="#ssh-keys">SSH Key Management</a>).</li>
+          </ul>
+        </li>
+        <li>Tap <strong>Save</strong>, then tap the host card to connect.</li>
+        <li>On first connection, Android may ask for notification permission — this is used for the background keep-alive service to prevent the OS from killing the connection.</li>
+      </ol>
+      <div class="tip">If your server is behind a bastion host / jump server, see <a href="#proxy-jump">Proxy Jump</a> to configure a multi-hop connection.</div>
+    </div>
+
+    <!-- 2. Host Management -->
+    <div class="guide-section" id="host-management">
+      <h2>2. Host Management</h2>
+
+      <h3 id="add-host">2.1 Adding a Host</h3>
+      <p>Tap the <strong>+</strong> button on the host management screen. The host form includes the following fields:</p>
+      <ul>
+        <li><strong>Name</strong> (required) — Display name for the host.</li>
+        <li><strong>Host</strong> (required) — IP address or domain name.</li>
+        <li><strong>Port</strong> — Default is 22.</li>
+        <li><strong>Username</strong> (required) — SSH login username.</li>
+        <li><strong>Password</strong> — Stored with AES-256 encryption after saving.</li>
+        <li><strong>SSH Key</strong> — Select a key pair for key-based authentication.</li>
+        <li><strong>Group</strong> — Assign to a group for organized management.</li>
+        <li><strong>Description</strong> — Optional notes about this host.</li>
+        <li><strong>Use Mosh</strong> — Toggle to connect via Mosh protocol instead of SSH (see <a href="#mosh">Mosh</a>).</li>
+        <li><strong>Use tmux</strong> — Automatically attach or create a tmux session on connect (see <a href="#tmux">tmux</a>).</li>
+        <li><strong>Auto Reconnect</strong> — Automatically reconnect when the connection drops. Configurable interval (default: 30 seconds).</li>
+        <li><strong>Agent Forwarding</strong> — Enable SSH agent forwarding for this host.</li>
+        <li><strong>Jump Host</strong> — Select a proxy host for bastion/jump connections (see <a href="#proxy-jump">Proxy Jump</a>).</li>
+        <li><strong>TOTP Token</strong> — Link a TOTP token for one-tap 2FA code fill (see <a href="#totp">TOTP</a>).</li>
+        <li><strong>Enable Server Monitor</strong> — Turn on real-time server resource monitoring for this host.</li>
+        <li><strong>trzsz Upload Path</strong> — Set a custom local directory for trzsz file downloads.</li>
+      </ul>
+
+      <h3 id="edit-host">2.2 Editing &amp; Copying a Host</h3>
+      <p>Long-press a host card to open the context menu with the following options:</p>
+      <ul>
+        <li><strong>Edit</strong> — Modify the host configuration.</li>
+        <li><strong>Copy</strong> — Duplicate the host with a new name (useful for creating similar configurations).</li>
+        <li><strong>Share</strong> — Generate a QR code for this host (see <a href="#qr-share">QR Code Sharing</a>).</li>
+        <li><strong>Disconnect</strong> — Close the active SSH connection to this host.</li>
+        <li><strong>Delete</strong> — Remove the host (with confirmation).</li>
+      </ul>
+
+      <h3 id="groups">2.3 Groups &amp; Sorting</h3>
+      <p>Organize your hosts with color-coded groups:</p>
+      <ul>
+        <li>Tap the <strong>group+</strong> button (next to the + button) to create a new group with a custom name and color.</li>
+        <li>Select a group from the horizontal chip bar at the top to filter hosts by group.</li>
+        <li><strong>Drag to reorder</strong>: Long-press a group chip and drag to reorder groups. Long-press without dragging to edit or delete a group.</li>
+        <li>In a group view, long-press and drag host cards to reorder them within the group.</li>
+        <li>In the "All" view, hosts are displayed grouped under their group headers, and can be reordered within their own group.</li>
+        <li>Groups that contain hosts cannot be deleted — you must move or delete the hosts first.</li>
+      </ul>
+      <div class="tip">Switch between compact and normal list mode using the <strong>view toggle</strong> button in the toolbar. On tablets, hosts are displayed in a grid layout.</div>
+
+      <h3 id="qr-share">2.4 QR Code Sharing</h3>
+      <p>Share host configurations instantly via QR code:</p>
+      <ol>
+        <li>Long-press a host card and select <strong>Share</strong>, or use batch share (see below).</li>
+        <li>A QR code is generated containing the host's connection details.</li>
+        <li>Another device can scan the QR code to import the host configuration.</li>
+      </ol>
+      <div class="note">For security, the password is not included in QR codes. You will need to enter the password manually after importing.</div>
+
+      <h3 id="qr-scan">2.5 QR Code Scanning &amp; Import</h3>
+      <p>Tap the <strong>QR scanner</strong> button in the toolbar to scan a XuTerm QR code. The scanned host configuration will be imported directly into your host list.</p>
+
+      <h3 id="batch-ops">2.6 Batch Operations</h3>
+      <p>Tap the <strong>checklist</strong> button in the toolbar to enter multi-select mode:</p>
+      <ul>
+        <li>Tap hosts to select/deselect them.</li>
+        <li>Use <strong>Select All</strong> to select all hosts in the current group.</li>
+        <li>Tap <strong>Share</strong> to generate a QR code for all selected hosts at once.</li>
+        <li>Tap <strong>Cancel</strong> or the back button to exit multi-select mode.</li>
+      </ul>
+    </div>
+
+    <!-- 3. Terminal -->
+    <div class="guide-section" id="terminal">
+      <h2>3. Terminal</h2>
+
+      <h3 id="terminal-basics">3.1 Basic Terminal Operations</h3>
+      <p>After connecting to a host, you are in the terminal screen. The top bar displays the connection status and host name. Key interactions:</p>
+      <ul>
+        <li><strong>Type commands</strong> — Use the on-screen keyboard or an external keyboard.</li>
+        <li><strong>Scroll</strong> — Swipe up/down to scroll through terminal output history.</li>
+        <li><strong>Back button</strong> — Returns to the host list while keeping the connection alive in the background.</li>
+        <li><strong>Connection indicator</strong> — Shows connection state: connected (green), reconnecting (yellow), or disconnected (red).</li>
+      </ul>
+
+      <h3 id="search">3.2 Terminal Search</h3>
+      <p>Search within the terminal output to quickly find information:</p>
+      <ol>
+        <li>Tap the <strong>search icon</strong> in the terminal toolbar to open the search bar.</li>
+        <li>Type your search term — all matches are highlighted in real time.</li>
+        <li>Use the <strong>up/down arrows</strong> to navigate between matches. The terminal auto-scrolls to the current match.</li>
+        <li>The match counter (e.g., "3/15") shows the current match position and total count.</li>
+        <li>Tap <strong>Close</strong> or the back button to exit search mode.</li>
+      </ol>
+
+      <h3 id="zoom">3.3 Gesture Zoom</h3>
+      <p>Use pinch-to-zoom gestures on the terminal to adjust the font size:</p>
+      <ul>
+        <li><strong>Pinch outward</strong> — Increase font size.</li>
+        <li><strong>Pinch inward</strong> — Decrease font size.</li>
+        <li>The font size changes smoothly and is applied immediately. Your preferred size is remembered per session.</li>
+      </ul>
+      <div class="tip">You can also set the default font size in Settings &gt; Terminal Font.</div>
+
+      <h3 id="select-copy">3.4 Select &amp; Copy</h3>
+      <p>Copy text from the terminal output:</p>
+      <ol>
+        <li><strong>Long-press</strong> on the terminal to enter selection mode.</li>
+        <li>Drag the selection handles to extend the selection range.</li>
+        <li>The selected text is automatically copied to the clipboard.</li>
+        <li><strong>Paste</strong>: Long-press the terminal input area and select Paste, or use the shortcut bar Paste button.</li>
+      </ol>
+
+      <h3 id="shortcut-bar">3.5 Keyboard Shortcut Bar</h3>
+      <p>The shortcut bar above the keyboard provides quick access to special keys and actions:</p>
+      <ul>
+        <li><strong>Tab</strong>, <strong>Ctrl</strong>, <strong>Alt</strong>, <strong>Esc</strong> — Modifier keys for terminal commands.</li>
+        <li><strong>Arrow keys</strong> — Up, Down, Left, Right for navigation.</li>
+        <li><strong>Home / End</strong> — Jump to the beginning or end of a line.</li>
+        <li><strong>Page Up / Page Down</strong> — Scroll by page.</li>
+        <li><strong>Function keys</strong> — F1 through F12.</li>
+        <li>Tap <strong>Ctrl</strong> or <strong>Alt</strong> to activate them as sticky modifiers — the next key press will be sent with the modifier held.</li>
+      </ul>
+      <div class="tip">You can customize which shortcut keys appear in the bar. Go to Settings &gt; Terminal &gt; Shortcut Keys to configure.</div>
+
+      <h3 id="quick-commands">3.6 Quick Commands</h3>
+      <p>Save frequently used commands for one-tap execution:</p>
+      <ol>
+        <li>In the terminal, tap the <strong>Quick Commands</strong> button (rocket icon) in the toolbar.</li>
+        <li>Browse your saved commands, organized by category.</li>
+        <li>Tap a command to send it directly to the terminal.</li>
+        <li>To manage commands, go to the Quick Commands management screen (accessible from Settings &gt; Terminal &gt; Quick Commands).</li>
+      </ol>
+      <p>Quick command management features:</p>
+      <ul>
+        <li><strong>Add</strong> — Create a new command with name, content, and category.</li>
+        <li><strong>Edit / Delete</strong> — Long-press a command for options.</li>
+        <li><strong>Reorder</strong> — Drag commands to rearrange them.</li>
+        <li><strong>QR Code Import/Export</strong> — Share and import quick commands via QR code.</li>
+      </ul>
+
+      <h3 id="command-snippets">3.7 Command Snippets</h3>
+      <p>Command Snippets are reusable multi-line script templates, more powerful than quick commands:</p>
+      <ol>
+        <li>In the terminal, tap the <strong>Snippets</strong> button in the toolbar.</li>
+        <li>Browse snippets by group.</li>
+        <li>Tap a snippet to paste its content into the terminal input.</li>
+      </ol>
+      <p>Snippet management (accessible from Settings &gt; Terminal &gt; Command Snippets):</p>
+      <ul>
+        <li><strong>Add</strong> — Create a snippet with name, content, and group.</li>
+        <li><strong>Drag to reorder</strong> — Rearrange snippets within a group.</li>
+        <li><strong>Edit / Delete</strong> — Long-press for options.</li>
+        <li>Supports custom grouping for organization.</li>
+      </ul>
+
+      <h3 id="command-history">3.8 Command History</h3>
+      <p>Quickly re-run previously executed commands:</p>
+      <ol>
+        <li>Tap the <strong>History</strong> button (clock icon) in the terminal toolbar.</li>
+        <li>Browse the list of previously executed commands for the current session.</li>
+        <li>Tap a command to send it to the terminal again.</li>
+      </ol>
+
+      <h3 id="sudo-fill">3.9 sudo Password Auto-Fill</h3>
+      <p>If you have stored a sudo password for a host, XuTerm detects sudo prompts automatically:</p>
+      <ol>
+        <li>When the terminal shows a <code>sudo</code> password prompt, a fill button appears.</li>
+        <li>Tap the button to automatically fill in the sudo password.</li>
+      </ol>
+      <div class="note">To store a sudo password, enable it in the host's configuration and enter the password when prompted. The password is stored with AES-256 encryption.</div>
+
+      <h3 id="totp-fill">3.10 TOTP 2FA Code Fill</h3>
+      <p>When a host has a linked TOTP token, XuTerm can auto-generate and fill 2FA codes:</p>
+      <ol>
+        <li>When the terminal shows a two-factor authentication prompt, a fill button appears.</li>
+        <li>Tap the button to generate and insert the current TOTP code.</li>
+      </ol>
+      <p>See <a href="#totp">TOTP Two-Factor Authentication</a> for setup instructions.</p>
+    </div>
+
+    <!-- 4. Mosh -->
+    <div class="guide-section" id="mosh">
+      <h2>4. Mosh — Mobile Shell</h2>
+      <p>Mosh (Mobile Shell) is an alternative to SSH that handles intermittent connections, network roaming, and high-latency networks gracefully. It provides instant responses and automatic reconnection.</p>
+
+      <h3 id="enable-mosh">4.1 Enabling Mosh</h3>
+      <ol>
+        <li>Edit the host configuration (see <a href="#edit-host">Editing a Host</a>).</li>
+        <li>Toggle <strong>Use Mosh</strong> to ON.</li>
+        <li>Save the host. The next connection will use the Mosh protocol.</li>
+      </ol>
+      <div class="note">The remote server must have <code>mosh-server</code> installed. Mosh connects via SSH first, then switches to the Mosh protocol (UDP). Make sure the server firewall allows UDP traffic on the Mosh port range (default: 60000-61000).</div>
+
+      <h3 id="mosh-settings">4.2 Mosh Configuration</h3>
+      <ul>
+        <li><strong>Mosh Port</strong> — Specify a particular UDP port for the Mosh connection. Leave empty for automatic selection.</li>
+        <li><strong>Mosh Server Path</strong> — If <code>mosh-server</code> is installed in a non-standard location, specify the full path here.</li>
+      </ul>
+      <p>When connected via Mosh, the terminal top bar displays a "Mosh" badge indicating the active protocol.</p>
+    </div>
+
+    <!-- 5. tmux -->
+    <div class="guide-section" id="tmux">
+      <h2>5. tmux Integration</h2>
+      <p>XuTerm provides deep integration with tmux, making multiplexer sessions feel native on mobile devices.</p>
+
+      <h3 id="enable-tmux">5.1 Enabling tmux</h3>
+      <ol>
+        <li>Edit the host configuration.</li>
+        <li>Toggle <strong>Use tmux</strong> to ON.</li>
+        <li>Optionally specify a <strong>tmux Session Name</strong>. If left empty, XuTerm creates a new session or attaches to the most recent session.</li>
+        <li>Save and connect. XuTerm automatically runs <code>tmux attach</code> or <code>tmux new-session</code> upon connection.</li>
+      </ol>
+      <div class="note">The remote server must have <code>tmux</code> installed. XuTerm auto-detects the tmux version and adapts its integration accordingly.</div>
+
+      <h3 id="tmux-bar">5.2 tmux Action Bar</h3>
+      <p>When a tmux session is active, a dedicated action bar appears at the bottom of the terminal:</p>
+      <ul>
+        <li><strong>Window tabs</strong> — Visual tabs for each tmux window. Tap to switch between windows instantly.</li>
+        <li><strong>New Window</strong> — Create a new tmux window.</li>
+        <li><strong>Kill Window</strong> — Close the current tmux window.</li>
+        <li><strong>Rename Window</strong> — Rename the current window.</li>
+        <li><strong>Split Pane</strong> — Split the current pane horizontally or vertically.</li>
+        <li><strong>Navigate Panes</strong> — Switch focus between split panes.</li>
+        <li><strong>Detach</strong> — Detach from the tmux session (the session continues running on the server).</li>
+      </ul>
+
+      <h3 id="tmux-theme">5.3 tmux Theme</h3>
+      <p>XuTerm applies a custom tmux theme optimized for mobile viewing. The status bar is styled to match the app theme and integrates seamlessly with the terminal display. This is applied automatically when tmux is enabled.</p>
+    </div>
+
+    <!-- 6. SFTP -->
+    <div class="guide-section" id="sftp">
+      <h2>6. SFTP File Browser</h2>
+      <p>XuTerm includes a built-in SFTP file browser for managing files on remote servers.</p>
+
+      <h3 id="sftp-basics">6.1 Browsing Files</h3>
+      <ol>
+        <li>While connected to a host, tap the <strong>SFTP</strong> button in the terminal toolbar to open the file browser.</li>
+        <li>The browser opens at the SSH session's working directory by default (or the home directory).</li>
+        <li>Navigate by tapping directories. Tap <strong>..</strong> or use the path bar to go up a level.</li>
+        <li>The path bar at the top shows the current directory — tap any segment to jump directly to that level.</li>
+        <li>Tap the <strong>home icon</strong> to jump to the home directory.</li>
+        <li>Use the <strong>sort button</strong> to sort files by name, size, or modification time.</li>
+        <li>Toggle <strong>show/hide hidden files</strong> using the eye icon in the toolbar (files starting with a dot).</li>
+        <li>Use the <strong>search</strong> icon to filter files by name in the current directory.</li>
+      </ol>
+
+      <h3 id="upload-download">6.2 Upload &amp; Download</h3>
+      <p><strong>Upload (local to remote):</strong></p>
+      <ol>
+        <li>Tap the <strong>upload</strong> button in the SFTP toolbar.</li>
+        <li>Select files from your device using the file picker.</li>
+        <li>Files are uploaded to the current remote directory.</li>
+        <li>A progress bar shows the transfer status in real time.</li>
+      </ol>
+      <p><strong>Download (remote to local):</strong></p>
+      <ol>
+        <li>Long-press a file or directory to select it, then tap <strong>Download</strong>.</li>
+        <li>Or tap a file to preview it first, then use the download option.</li>
+        <li>Downloaded files are saved to your device's Downloads directory (or the custom trzsz upload path).</li>
+      </ol>
+      <div class="note">When transferring over cellular data, XuTerm will warn you and ask for confirmation (see <a href="#cellular">Cellular Data Transfer</a>).</div>
+
+      <h3 id="file-ops">6.3 File Operations</h3>
+      <p>Long-press a file or directory to access the context menu:</p>
+      <ul>
+        <li><strong>Open / Preview</strong> — Open the file with the built-in viewer or an external app.</li>
+        <li><strong>Edit</strong> — Open the file in the built-in code editor (see <a href="#file-preview">File Preview &amp; Editing</a>).</li>
+        <li><strong>Rename</strong> — Change the file or directory name.</li>
+        <li><strong>Delete</strong> — Remove the file or directory (with confirmation).</li>
+        <li><strong>Permissions</strong> — View and modify file permissions (chmod).</li>
+        <li><strong>Download</strong> — Download to the local device.</li>
+        <li><strong>Copy Path</strong> — Copy the full file path to the clipboard.</li>
+        <li><strong>Hash</strong> — Calculate the file's MD5, SHA1, or SHA256 checksum.</li>
+      </ul>
+      <p>Additional toolbar actions:</p>
+      <ul>
+        <li><strong>New File</strong> — Create a new empty file in the current directory.</li>
+        <li><strong>New Directory</strong> — Create a new folder.</li>
+      </ul>
+
+      <h3 id="file-preview">6.4 File Preview &amp; Editing</h3>
+      <p>XuTerm can preview and edit various file types directly:</p>
+      <ul>
+        <li><strong>Text / Code files</strong> — Open in the built-in code editor with syntax highlighting for many languages (Python, JavaScript, Go, Rust, YAML, JSON, etc.). The editor supports find/replace, line numbers, and direct save back to the remote server.</li>
+        <li><strong>PDF files</strong> — View with the built-in PDF viewer. Supports zoom and page navigation.</li>
+        <li><strong>Excel / CSV files</strong> — Preview spreadsheet data in a tabular view.</li>
+        <li><strong>Images</strong> — View images (PNG, JPG, GIF, BMP, WebP, SVG) with pinch-to-zoom.</li>
+        <li><strong>Markdown</strong> — Render and preview Markdown files with proper formatting.</li>
+      </ol>
+      <div class="tip">In the code editor, use the <strong>Find</strong> feature to search within the file. Matched results are highlighted and you can navigate between them with previous/next buttons. The editor auto-detects the file language for syntax highlighting.</div>
+
+      <h3 id="cellular">6.5 Cellular Data Transfer</h3>
+      <p>By default, XuTerm warns you before transferring files over a cellular (mobile data) connection:</p>
+      <ol>
+        <li>When you initiate a file transfer on cellular data, a confirmation dialog appears.</li>
+        <li>You can choose to proceed or cancel.</li>
+        <li>To always allow cellular transfers, enable <strong>Allow Cellular Transfer</strong> in Settings &gt; Connection.</li>
+      </ol>
+
+      <h3 id="hash">6.6 File Hash Verification</h3>
+      <p>Verify file integrity by calculating checksums:</p>
+      <ol>
+        <li>Long-press a file and select <strong>Hash</strong>.</li>
+        <li>Choose the algorithm: MD5, SHA1, or SHA256.</li>
+        <li>The hash value is displayed and can be copied to the clipboard.</li>
+      </ol>
+    </div>
+
+    <!-- 7. trzsz -->
+    <div class="guide-section" id="trzsz">
+      <h2>7. trzsz File Transfer</h2>
+      <p>trzsz provides a terminal-based file transfer experience similar to lrzsz (rz/sz), but with tmux compatibility and better progress display.</p>
+      <ol>
+        <li>Ensure the remote server has <code>trzsz</code> installed (the Python package <code>trzsz</code> or <code>trzsz-go</code>).</li>
+        <li><strong>Upload</strong>: Type <code>trz</code> in the terminal. XuTerm opens a file picker. Select files and confirm.</li>
+        <li><strong>Download</strong>: Type <code>tsz &lt;filename&gt;</code> in the terminal. The file is downloaded to your device.</li>
+        <li>A real-time progress bar is displayed during the transfer, showing the file name, percentage, and transfer speed.</li>
+      </ol>
+      <div class="note">trzsz works seamlessly inside tmux sessions, unlike traditional rz/sz which break under tmux.</div>
+      <p>You can configure the default download directory in Settings &gt; Connection, or per-host via the <strong>trzsz Upload Path</strong> field.</p>
+    </div>
+
+    <!-- 8. Port Forwarding -->
+    <div class="guide-section" id="port-forwarding">
+      <h2>8. Port Forwarding</h2>
+      <p>XuTerm supports SSH port forwarding with three modes.</p>
+
+      <h3 id="local-forward">8.1 Local Port Forwarding (-L)</h3>
+      <p>Forward a local port to a remote address through the SSH tunnel. This is the most common type.</p>
+      <p>Example: Access a remote database that only listens on localhost:</p>
+      <ul>
+        <li><strong>Bind Address</strong>: 127.0.0.1</li>
+        <li><strong>Bind Port</strong>: 3306 (local port on your device)</li>
+        <li><strong>Target Address</strong>: 127.0.0.1 (from the remote server's perspective)</li>
+        <li><strong>Target Port</strong>: 3306 (the remote service's port)</li>
+      </ul>
+      <p>After enabling, connect to <code>127.0.0.1:3306</code> on your device to access the remote database.</p>
+
+      <h3 id="remote-forward">8.2 Remote Port Forwarding (-R)</h3>
+      <p>Forward a port on the remote server to a local address. Useful for exposing a local service to the remote network.</p>
+
+      <h3 id="dynamic-forward">8.3 Dynamic (SOCKS) Forwarding (-D)</h3>
+      <p>Create a SOCKS proxy that tunnels traffic through the SSH connection. Specify a local bind address and port, then configure your apps to use it as a SOCKS5 proxy.</p>
+
+      <h3 id="auto-start-forward">8.4 Auto-Start on Connection</h3>
+      <p>Port forwarding rules can be configured to start automatically when you connect to a host:</p>
+      <ol>
+        <li>Create port forwarding rules in the Port Forwarding screen (accessible from the terminal toolbar or Settings).</li>
+        <li>Toggle the <strong>Enabled</strong> switch for each rule to control whether it auto-starts.</li>
+        <li>When connecting, all enabled rules are established automatically.</li>
+      </ol>
+      <div class="tip">You can enable/disable port forwarding rules at any time without reconnecting — just toggle the switch.</div>
+    </div>
+
+    <!-- 9. Proxy Jump -->
+    <div class="guide-section" id="proxy-jump">
+      <h2>9. Proxy Jump (Bastion Host)</h2>
+      <p>Connect to a target server through an intermediate bastion host / jump server:</p>
+      <ol>
+        <li>First, add the <strong>bastion host</strong> as a regular host in XuTerm.</li>
+        <li>Edit the <strong>target host</strong> configuration.</li>
+        <li>In the <strong>Jump Host</strong> field, select the bastion host you added.</li>
+        <li>Save and connect. XuTerm establishes an SSH connection to the bastion first, then tunnels through to the target server.</li>
+      </ol>
+      <div class="note">Multi-hop proxy chains are supported. Host A can jump through Host B, which itself jumps through Host C, and so on.</div>
+    </div>
+
+    <!-- 10. SSH Keys -->
+    <div class="guide-section" id="ssh-keys">
+      <h2>10. SSH Key Management</h2>
+
+      <h3 id="generate-key">10.1 Generating a Key</h3>
+      <ol>
+        <li>Navigate to the <strong>SSH Keys</strong> management screen (accessible from Settings or the host form).</li>
+        <li>Tap <strong>Add</strong> and select <strong>Generate New Key</strong>.</li>
+        <li>Choose the key type:
+          <ul>
+            <li><strong>RSA</strong> — Widely compatible, 2048/3072/4096 bit.</li>
+            <li><strong>ECDSA</strong> — Modern, efficient, 256/384/521 bit.</li>
+            <li><strong>Ed25519</strong> — Recommended for new deployments, strongest security with smallest key size.</li>
+          </ul>
+        </li>
+        <li>Optionally set a passphrase for the private key.</li>
+        <li>Tap <strong>Generate</strong>. The key pair is created and stored securely on the device.</li>
+        <li>You can copy the <strong>public key</strong> to add it to the server's <code>~/.ssh/authorized_keys</code>.</li>
+      </ol>
+
+      <h3 id="import-key">10.2 Importing a Key</h3>
+      <ol>
+        <li>Tap <strong>Add</strong> and select <strong>Import Key</strong>.</li>
+        <li>Paste the private key content or select a key file from your device.</li>
+        <li>If the key is encrypted, provide the passphrase.</li>
+        <li>The key is imported and stored with AES-256 encryption.</li>
+      </ol>
+
+      <h3 id="assign-key">10.3 Assigning a Key to a Host</h3>
+      <ol>
+        <li>Edit a host configuration.</li>
+        <li>In the <strong>SSH Key</strong> dropdown, select the key pair you want to use.</li>
+        <li>Clear the password field if you want key-only authentication.</li>
+        <li>Save and connect.</li>
+      </ol>
+      <div class="tip">The SSH Key management screen shows each key's fingerprint and the number of hosts using it. Delete unused keys to keep your key list clean.</div>
+    </div>
+
+    <!-- 11. TOTP -->
+    <div class="guide-section" id="totp">
+      <h2>11. TOTP Two-Factor Authentication</h2>
+
+      <h3 id="add-totp">11.1 Adding a TOTP Token</h3>
+      <ol>
+        <li>Navigate to the <strong>TOTP Tokens</strong> management screen.</li>
+        <li>Tap <strong>Add</strong> to create a new token.</li>
+        <li>Enter the token details:
+          <ul>
+            <li><strong>Name</strong> — A label for this token (e.g., "GitHub 2FA").</li>
+            <li><strong>Secret</strong> — The base32-encoded secret from the service.</li>
+            <li><strong>Group</strong> — Organize tokens into groups.</li>
+          </ul>
+        </li>
+        <li>Alternatively, <strong>scan a QR code</strong> to auto-fill the secret.</li>
+        <li>Save the token. The current code and countdown timer are displayed.</li>
+      </ol>
+      <p>Token management features:</p>
+      <ul>
+        <li><strong>Edit / Delete</strong> — Modify or remove tokens.</li>
+        <li><strong>Groups</strong> — Organize tokens with custom groups and colors.</li>
+        <li><strong>QR Code Sharing</strong> — Share token configurations via QR code (secret is encrypted).</li>
+      </ul>
+
+      <h3 id="use-totp">11.2 Using TOTP in Terminal</h3>
+      <ol>
+        <li>Link a TOTP token to a host in the host's configuration (<strong>TOTP Token</strong> field).</li>
+        <li>When the terminal displays a 2FA prompt, a fill button appears.</li>
+        <li>Tap the button to generate and auto-fill the current 6-digit code.</li>
+      </ol>
+    </div>
+
+    <!-- 12. Server Monitor -->
+    <div class="guide-section" id="server-monitor">
+      <h2>12. Server Monitoring</h2>
+      <p>Monitor server resources in real time during an SSH session.</p>
+      <ol>
+        <li>Enable <strong>Server Monitor</strong> in the host configuration.</li>
+        <li>When connected, a monitoring bar appears at the top of the terminal showing:
+          <ul>
+            <li><strong>CPU usage</strong> — Real-time percentage with sparkline chart.</li>
+            <li><strong>Memory usage</strong> — Used vs. total with percentage.</li>
+            <li><strong>Disk usage</strong> — Used vs. total with percentage.</li>
+            <li><strong>Load average</strong> — 1-minute, 5-minute, 15-minute.</li>
+          </ul>
+        </li>
+        <li>Tap the monitor bar to open the detailed monitoring view, which includes:
+          <ul>
+            <li>CPU, memory, disk, and load details with visual charts.</li>
+            <li><strong>Process list</strong> — View running processes sorted by CPU or memory usage.</li>
+            <li><strong>Kill process</strong> — Select a process and send a kill signal.</li>
+          </ul>
+        </li>
+      </ol>
+      <p>Configure the refresh intervals in Settings &gt; Server Monitor:</p>
+      <ul>
+        <li><strong>Bar interval</strong> — How often the top-bar summary refreshes (3-60 seconds, default: 5).</li>
+        <li><strong>Detail interval</strong> — How often the detailed view refreshes (1-30 seconds, default: 3).</li>
+      </ul>
+    </div>
+
+    <!-- 13. Session Snapshots -->
+    <div class="guide-section" id="session-snapshots">
+      <h2>13. Session Snapshots</h2>
+      <p>Save and restore terminal session states for quick recovery:</p>
+      <ol>
+        <li>While connected, tap the <strong>Snapshot</strong> button in the terminal toolbar.</li>
+        <li>A snapshot of the current session is saved, including:
+          <ul>
+            <li>The host connection details.</li>
+            <li>The terminal scrollback buffer (visible output).</li>
+            <li>The timestamp.</li>
+          </ul>
+        </li>
+        <li>Access saved snapshots from the Session Snapshots management screen.</li>
+        <li>Tap a snapshot to restore the session state and reconnect to the host.</li>
+        <li>Delete snapshots you no longer need.</li>
+      </ol>
+    </div>
+
+    <!-- 14. Multi-Session -->
+    <div class="guide-section" id="multi-session">
+      <h2>14. Multi-Session Management</h2>
+      <p>XuTerm supports connecting to multiple servers simultaneously:</p>
+      <ul>
+        <li><strong>Connect to multiple hosts</strong> — Each connection opens a new terminal tab.</li>
+        <li><strong>Switch between sessions</strong> — Use the tab bar at the top of the terminal screen to switch between active connections.</li>
+        <li><strong>Background sessions</strong> — Connections stay alive in the background when you navigate away. The host list shows active connections with a badge counter.</li>
+        <li><strong>Re-enter a session</strong> — Tap a connected host in the host list to return to its terminal.</li>
+      </ul>
+      <div class="tip">On Android, the foreground service notification keeps your connections alive even when the app is in the background.</div>
+    </div>
+
+    <!-- 15. Settings -->
+    <div class="guide-section" id="settings">
+      <h2>15. Settings</h2>
+
+      <h3 id="biometric">15.1 Biometric Lock</h3>
+      <p>Protect XuTerm with biometric authentication:</p>
+      <ol>
+        <li>Go to Settings and toggle <strong>Biometric Unlock</strong>.</li>
+        <li>The app will use your device's biometric hardware (Face ID, Touch ID, or fingerprint).</li>
+        <li>After enabling, you'll need to authenticate each time you open the app.</li>
+      </ol>
+
+      <h3 id="terminal-settings">15.2 Terminal Settings</h3>
+      <p>Access via Settings &gt; Terminal. Configure:</p>
+      <ul>
+        <li><strong>Quick Commands</strong> — Manage your saved quick commands.</li>
+        <li><strong>Command Snippets</strong> — Manage command snippet groups and entries.</li>
+        <li><strong>Shortcut Keys</strong> — Customize which keys appear in the shortcut bar. Enable/disable individual keys, add custom key bindings.</li>
+        <li><strong>tmux</strong> — Configure tmux integration behavior.</li>
+      </ul>
+
+      <h3 id="font-settings">15.3 Font Settings</h3>
+      <p>Access via Settings &gt; Terminal Font. Configure:</p>
+      <ul>
+        <li><strong>Font Size</strong> — Default terminal font size (adjustable from 8 to 28).</li>
+        <li><strong>Line Height</strong> — Spacing between terminal lines (1.0x to 2.0x).</li>
+        <li><strong>Font Family</strong> — Choose from built-in monospace fonts:
+          <ul>
+            <li>Source Code Pro</li>
+            <li>JetBrains Mono</li>
+            <li>Fira Code</li>
+            <li>Cascadia Code</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 id="color-bar">15.4 Color Bar</h3>
+      <p>The color bar is a vertical colored strip on the left side of the terminal that visually distinguishes user input from server output:</p>
+      <ul>
+        <li>Go to Settings &gt; Color Bar to configure.</li>
+        <li><strong>Enable/Disable</strong> — Toggle the color bar on or off.</li>
+        <li><strong>Input Color</strong> — The color for lines you typed.</li>
+        <li><strong>Output Color</strong> — The color for server response lines.</li>
+      </ul>
+      <div class="tip">The color bar is especially useful when scrolling through long logs — it helps you quickly find where you entered a command and where the output begins.</div>
+
+      <h3 id="connection-settings">15.5 Connection Settings</h3>
+      <p>Access via Settings &gt; Connection. Configure:</p>
+      <ul>
+        <li><strong>Port Forwarding Auto-Start</strong> — Whether to automatically establish port forwarding rules when connecting.</li>
+        <li><strong>SFTP Show Hidden Files</strong> — Default visibility of hidden files in the SFTP browser.</li>
+        <li><strong>Allow Cellular Transfer</strong> — Skip the cellular data warning when transferring files.</li>
+        <li><strong>trzsz Settings</strong> — Configure default upload/download directories for trzsz.</li>
+      </ul>
+
+      <h3 id="monitor-settings">15.6 Monitor Settings</h3>
+      <p>Configure server monitoring refresh intervals (see <a href="#server-monitor">Server Monitoring</a>).</p>
+
+      <h3 id="theme">15.7 Theme &amp; Appearance</h3>
+      <p>Go to Settings and configure:</p>
+      <ul>
+        <li><strong>Theme Mode</strong> — Choose from:
+          <ul>
+            <li>Light Mode</li>
+            <li>Dark Mode</li>
+            <li>Follow System</li>
+          </ul>
+        </li>
+        <li><strong>Screen Orientation Lock</strong> — Lock the screen orientation to prevent rotation.</li>
+      </ul>
+
+      <h3 id="language">15.8 Language</h3>
+      <p>XuTerm supports multiple languages:</p>
+      <ul>
+        <li>Simplified Chinese</li>
+        <li>Traditional Chinese</li>
+        <li>English</li>
+        <li>Japanese</li>
+        <li>Russian</li>
+        <li>Follow System</li>
+      </ul>
+      <p>Go to Settings &gt; Language to change the display language. The change takes effect immediately.</p>
+    </div>
+
+    <!-- 16. Data Management -->
+    <div class="guide-section" id="data-management">
+      <h2>16. Data Management</h2>
+
+      <h3 id="export">16.1 Exporting Configuration</h3>
+      <p>Back up your XuTerm configuration to a file:</p>
+      <ol>
+        <li>Go to Settings &gt; Data Management &gt; Export.</li>
+        <li>Select which data to export:
+          <ul>
+            <li>Hosts</li>
+            <li>SSH Keys</li>
+            <li>Quick Commands</li>
+            <li>Command Snippets</li>
+            <li>Port Forwarding Rules</li>
+            <li>TOTP Tokens</li>
+          </ul>
+        </li>
+        <li>Optionally <strong>encrypt</strong> the export with a password for security.</li>
+        <li>Tap <strong>Export</strong> to save the configuration file to your device.</li>
+      </ol>
+
+      <h3 id="import">16.2 Importing Configuration</h3>
+      <p>Restore a previously exported configuration:</p>
+      <ol>
+        <li>Go to Settings &gt; Data Management &gt; Import.</li>
+        <li>Select the configuration file from your device.</li>
+        <li>If the file is encrypted, enter the password to decrypt it.</li>
+        <li>Review the contents and confirm the import.</li>
+        <li>Imported data is merged with existing data — duplicates are handled intelligently.</li>
+      </ol>
+
+      <h3 id="icloud">16.3 iCloud Sync (iOS)</h3>
+      <p>On iOS devices, XuTerm supports iCloud sync to keep your configuration consistent across all your Apple devices:</p>
+      <ol>
+        <li>Go to Settings &gt; Data Management &gt; iCloud Sync.</li>
+        <li>Enable iCloud sync. Your configuration is uploaded to iCloud automatically.</li>
+        <li>On another iOS device with the same Apple ID, enable iCloud sync to download the configuration.</li>
+        <li>Changes are synced bidirectionally.</li>
+      </ol>
+    </div>
+
+    <!-- 17. Security -->
+    <div class="guide-section" id="security">
+      <h2>17. Security &amp; Privacy</h2>
+      <p>XuTerm is designed with security and privacy as top priorities:</p>
+      <ul>
+        <li><strong>AES-256 Encryption</strong> — All sensitive data (passwords, SSH keys, TOTP secrets) is encrypted with AES-256 before storage.</li>
+        <li><strong>Secure Key Storage</strong> — SSH private keys and passwords are stored in the device's secure hardware (iOS Keychain / Android Keystore) when available.</li>
+        <li><strong>Biometric Protection</strong> — Optional Face ID / Touch ID / fingerprint lock prevents unauthorized access.</li>
+        <li><strong>Zero Data Collection</strong> — XuTerm does not collect, transmit, or share any personal data. There are no analytics, trackers, or ads.</li>
+        <li><strong>Local-Only Storage</strong> — All data is stored locally on your device. iCloud sync is optional and encrypted.</li>
+        <li><strong>Encrypted Exports</strong> — Configuration exports can be password-protected for safe transfer.</li>
+      </ul>
+      <div class="note">Read the full privacy policy <a href="privacy-policy-en.html">here</a>.</div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="privacy-policy-en.html">Privacy Policy</a>
+      <a href="user-guide-zh.html">中文教程</a>
+      <a href="mailto:xuterm@gmail.com">Contact</a>
+    </div>
+    <p>&copy; 2026 XuTerm. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
