@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="170" height="44" viewBox="0 0 170 44" xmlns="http://www.w3.org/2000/svg">
+  <!-- 外层胶囊白色底板 -->
+  <rect x="0" y="0" width="170" height="44" rx="22" fill="#ffffff"/>
+
+  <!-- 内层白色填充框，线条调整为1.6px，匹配参考图粗细 -->
+  <rect x="8" y="4" width="154" height="36" rx="8" fill="#ffffff" stroke="#ff6900" stroke-width="1.6"/>
+
+  <!-- S圆形图标 -->
+  <circle cx="24" cy="22" r="12" fill="#ff6900"/>
+  <text x="24" y="22" fill="#ffffff" font-family="Arial,sans-serif" font-size="16" font-weight="bold" text-anchor="middle" dominant-baseline="central">S</text>
+
+  <!-- 文字排版 -->
+  <text x="46" y="17" fill="#ff6900" font-family="Arial,sans-serif" font-size="9" letter-spacing="0.7">FEATURED ON</text>
+  <text x="46" y="31" fill="#ff6900" font-family="Arial,sans-serif" font-size="14" font-weight="700">Smol LaunchPad</text>
+</svg>
