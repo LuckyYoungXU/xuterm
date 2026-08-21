@@ -3,8 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XuTerm - 强大的 SSH 终端客户端</title>
+  <title>XuTerm - 免费 SSH & Mosh 终端客户端（安卓 / iOS）</title>
+  <meta name="description" content="XuTerm 是免费、隐私优先的 SSH & Mosh 终端客户端。原生 tmux 集成、SFTP 文件管理、trzsz 传输、TOTP 双重验证、服务器监控及 20+ 运维工具。无广告、无订阅。">
+  <link rel="canonical" href="https://xuterm.vercel.app/index-zh.html">
+  <link rel="alternate" hreflang="en" href="https://xuterm.vercel.app/">
+  <link rel="alternate" hreflang="zh-CN" href="https://xuterm.vercel.app/index-zh.html">
+  <link rel="alternate" hreflang="x-default" href="https://xuterm.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="XuTerm">
+  <meta property="og:title" content="XuTerm - 免费 SSH & Mosh 终端客户端">
+  <meta property="og:description" content="口袋里的强大 SSH 终端。原生 tmux、SFTP、Mosh、trzsz 与服务器监控。隐私优先，无广告无订阅。">
+  <meta property="og:url" content="https://xuterm.vercel.app/index-zh.html">
+  <meta property="og:image" content="https://xuterm.vercel.app/assets/images/h8.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="XuTerm - 免费 SSH & Mosh 终端客户端">
+  <meta name="twitter:description" content="口袋里的强大 SSH 终端。原生 tmux、SFTP、Mosh、trzsz 与服务器监控。">
+  <meta name="twitter:image" content="https://xuterm.vercel.app/assets/images/h8.png">
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "XuTerm",
+    "operatingSystem": "Android, iOS",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "免费、隐私优先的 SSH & Mosh 终端客户端，原生 tmux 集成、SFTP 文件管理、trzsz 传输、TOTP 双重验证与服务器监控。",
+    "url": "https://xuterm.vercel.app/index-zh.html",
+    "image": "https://xuterm.vercel.app/assets/images/h8.png",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": [
+      "SSH 与 Mosh 连接",
+      "原生 tmux 集成",
+      "SFTP 文件浏览与预览",
+      "trzsz 文件传输",
+      "TOTP 双重验证",
+      "服务器监控",
+      "端口转发",
+      "20+ 运维工具"
+    ]
+  }
+  </script>
   <style>
     :root {
       --primary: #2563eb;
@@ -63,6 +101,7 @@
     .featured-section { max-width: 680px; margin: 36px auto 0; }
     .featured-label { font-size: 13px; color: var(--text-light); margin-bottom: 16px; letter-spacing: .03em; }
     .featured-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+    .featured-badges.secondary { margin-top: 10px; }
     .featured-badges .listed-badge { margin-top: 0; height: 44px; padding: 6px 16px; }
     .featured-badges .listed-badge img,
     .featured-badges .listed-badge svg.dbadge { height: 30px; width: auto; }
@@ -189,6 +228,7 @@
         <a href="#security" class="hide-mobile">安全保障</a>
         <a href="user-guide-zh.html" class="hide-mobile">使用教程</a>
         <a href="privacy-policy-zh.html">隐私政策</a>
+        <a href="license-zh.html" class="hide-mobile">许可证</a>
         <a href="index.html">English</a>
       </div>
       <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
@@ -275,6 +315,18 @@
             <a href="https://appteka.store/user/566539" class="btn btn-outline">下载</a>
           </div>
         </div>
+        <div class="channel-item">
+          <div class="channel-info">
+            <div class="channel-icon" style="background:transparent"><svg viewBox="0 0 16 16" width="28" height="28"><path fill="#24292f" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></div>
+            <div>
+              <div class="channel-name">GitHub Releases</div>
+              <div class="channel-desc">Android — APK 直接下载</div>
+            </div>
+          </div>
+          <div class="channel-action">
+            <a href="https://github.com/LuckyYoungXU/tools/releases/latest" class="btn btn-outline">下载</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="featured-section">
@@ -289,12 +341,10 @@
       <span class="badge-text">Product Hunt</span>
     </a>
     <a href="https://www.saashub.com/u/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-      <img src="assets/images/saashub.png">
+      <img src="assets/images/saashub.png" alt="Saashub">
     </a>
-	<a href="https://github.com/LuckyYoungXu/tools/releases/latest" target="_blank" rel="noopener noreferrer" class="listed-badge">
-      <svg viewBox="0 0 16 16"><path fill="#24292f" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-      <span class="badge-text">GitHub</span>
-    </a>
+      </div>
+      <div class="featured-badges secondary">
 	<a href="https://lookingfortools.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
 	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">LookingFor Tools</text></svg>
 	</a>
@@ -376,7 +426,7 @@
       </div>
     </div>
     <div class="hero-banner">
-      <img src="assets/images/h8.png" alt="XuTerm 概览">
+      <img src="assets/images/h8.png" alt="XuTerm SSH 终端应用总览，含 tmux、SFTP 与服务器监控功能">
     </div>
     <div class="hero-imgs">
       <div class="device phone"><div class="placeholder"><img src="assets/images/sp1-zh.png" style="width:100%;border-radius:16px;"></div></div>
@@ -601,6 +651,7 @@
       <a href="https://apkpure.com/p/com.yongqing.xuterm" class="btn btn-outline">APKPure 下载</a>
 	  <a href="https://xuterm.en.uptodown.com/android" class="btn btn-outline">Uptodown 下载</a>
       <a href="https://appteka.store/user/566539" class="btn btn-outline">Appteka 下载</a>
+      <a href="https://github.com/LuckyYoungXU/tools/releases/latest" class="btn btn-outline">GitHub 下载</a>
     </div>
   </section>
 
@@ -608,6 +659,7 @@
     <div class="links">
       <a href="user-guide-zh.html">使用教程</a>
       <a href="privacy-policy-zh.html">隐私政策</a>
+      <a href="license-zh.html">许可证</a>
       <a href="mailto:xuterm@gmail.com">联系我们</a>
       <a href="index.html">English</a>
     </div>
