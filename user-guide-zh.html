@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="XuTerm 使用教程 - 学习如何使用 SSH & Mosh 连接服务器、操作 tmux、通过 SFTP 和 trzsz 传输文件，以及管理主机、密钥和 TOTP 令牌。">
+  <meta name="description" content="XuTerm 使用教程 - 学习如何使用 SSH & Mosh 连接服务器、操作 tmux、通过 SFTP 和 trzsz 传输文件、使用可视化运维面板管理服务与容器，以及使用工具箱和 TOTP 令牌等全部功能。">
   <link rel="canonical" href="https://xuterm.vercel.app/user-guide-zh.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="XuTerm">
   <meta property="og:title" content="XuTerm - 使用教程">
-  <meta property="og:description" content="学习如何使用 SSH & Mosh 连接服务器、操作 tmux、通过 SFTP 和 trzsz 传输文件，以及管理主机、密钥和 TOTP 令牌。">
+  <meta property="og:description" content="学习如何使用 SSH & Mosh 连接服务器、操作 tmux、通过 SFTP 和 trzsz 传输文件、使用可视化运维面板管理服务与容器，以及使用工具箱和 TOTP 令牌等全部功能。">
   <meta property="og:url" content="https://xuterm.vercel.app/user-guide-zh.html">
   <meta property="og:image" content="https://xuterm.vercel.app/assets/images/h8.png">
   <title>XuTerm - 使用教程</title>
@@ -189,6 +189,27 @@
           </ol>
         </li>
         <li><a href="#server-monitor">服务器监控</a></li>
+        <li><a href="#visual-ops">可视化运维面板</a>
+          <ol>
+            <li><a href="#visual-entry">进入面板</a></li>
+            <li><a href="#visual-summary">系统摘要</a></li>
+            <li><a href="#visual-disk">磁盘分析</a></li>
+            <li><a href="#visual-services">systemd 服务管理</a></li>
+            <li><a href="#visual-process">进程管理</a></li>
+            <li><a href="#visual-network">网络工具</a></li>
+            <li><a href="#visual-docker">Docker 容器管理</a></li>
+            <li><a href="#visual-firewall">防火墙管理</a></li>
+            <li><a href="#visual-cron">crontab 定时任务</a></li>
+          </ol>
+        </li>
+        <li><a href="#toolbox">工具箱</a>
+          <ol>
+            <li><a href="#toolbox-security">安全工具</a></li>
+            <li><a href="#toolbox-network">网络工具</a></li>
+            <li><a href="#toolbox-coding">编码与开发工具</a></li>
+            <li><a href="#toolbox-history">查询历史</a></li>
+          </ol>
+        </li>
         <li><a href="#session-snapshots">会话快照</a></li>
         <li><a href="#multi-session">多会话管理</a></li>
         <li><a href="#settings">应用设置</a>
@@ -719,9 +740,157 @@
       </ul>
     </div>
 
-    <!-- 13. 会话快照 -->
+    <!-- 13. 可视化运维 -->
+    <div class="guide-section" id="visual-ops">
+      <h2>13. 可视化运维面板</h2>
+      <p>可视化运维面板将常用服务器运维操作以图形化界面呈现，点击即达，无需记忆和输入命令。所有操作通过 SSH 通道在后台执行，与终端共用同一连接。</p>
+
+      <h3 id="visual-entry">13.1 进入面板</h3>
+      <ul>
+        <li>在主机列表中，点击主机卡片右侧的 <strong>可视化运维按钮</strong>（心率图标）即可进入。</li>
+        <li>无需先建立终端连接 — 面板会自动复用已有的 SSH 连接，或在需要时自动建立新连接。</li>
+        <li>面板顶部显示主机名与连接状态，并提供 <strong>终端</strong> 按钮（跳转到该主机的终端）和 <strong>刷新</strong> 按钮。</li>
+      </ul>
+      <div class="note">部分操作（如服务启停、防火墙开关、终止进程）需要远程用户具备 sudo 权限。若主机存储了 sudo 密码，将自动使用。</div>
+
+      <h3 id="visual-summary">13.2 系统摘要</h3>
+      <p>面板首页以卡片形式一屏总览服务器关键信息：</p>
+      <ul>
+        <li><strong>系统信息</strong> — 操作系统、主机名、内网 IP、开机时间。</li>
+        <li><strong>CPU</strong> — 核心数与实时使用率。</li>
+        <li><strong>内存</strong> — 已用/总量及百分比。</li>
+        <li><strong>磁盘</strong> — 已用/总量及百分比。</li>
+        <li><strong>负载</strong> — 1/5/15 分钟负载均值。</li>
+        <li><strong>网络</strong> — 实时网络速率。</li>
+      </ul>
+      <p>点击 <strong>刷新</strong> 可随时更新数据。</p>
+
+      <h3 id="visual-disk">13.3 磁盘分析</h3>
+      <p>查看磁盘分区占用并逐层定位大文件：</p>
+      <ol>
+        <li>磁盘分析页列出所有分区，显示使用率、文件系统类型、已用/可用空间。</li>
+        <li>点击任一分区卡片，进入该挂载点的目录空间分析。</li>
+        <li>分析结果按占用大小排序列出各子目录与文件。</li>
+        <li>使用顶部 <strong>面包屑导航</strong>，点击任意路径片段可切换到该层目录重新分析。</li>
+        <li>分析过程中可随时 <strong>取消</strong> 当前分析。</li>
+        <li>上次分析的目录会被记住，下次进入时直接恢复。</li>
+      </ol>
+
+      <h3 id="visual-services">13.4 systemd 服务管理</h3>
+      <p>以图形方式管理 systemd 服务：</p>
+      <ul>
+        <li><strong>服务列表</strong> — 显示每个服务的名称、运行状态与描述。</li>
+        <li><strong>搜索</strong> — 按名称快速过滤服务。</li>
+        <li><strong>状态过滤</strong> — 按 running / stopped / failed 筛选服务。</li>
+        <li><strong>服务详情</strong> — 点击服务查看详情，可执行：
+          <ul>
+            <li><strong>启动（start）</strong> — 启动已停止的服务。</li>
+            <li><strong>重启（restart）</strong> — 重启服务（需二次确认）。</li>
+            <li><strong>停止（stop）</strong> — 停止服务（需二次确认）。</li>
+            <li><strong>状态输出</strong> — 查看并复制 <code>systemctl status</code> 的完整输出。</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 id="visual-process">13.5 进程管理</h3>
+      <p>查看和管理服务器上运行的进程：</p>
+      <ul>
+        <li><strong>进程列表</strong> — 显示 PID、用户、CPU、内存、命令等信息。</li>
+        <li><strong>搜索</strong> — 按名称或 PID 过滤进程。</li>
+        <li><strong>排序</strong> — 按 CPU 或内存使用率排序。</li>
+        <li><strong>进程详情</strong> — 点击进程查看详情，可发送信号：
+          <ul>
+            <li><strong>TERM</strong> — 请求进程正常退出。</li>
+            <li><strong>KILL</strong> — 强制终止进程（需二次确认）。</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 id="visual-network">13.6 网络工具</h3>
+      <p>网络状态查看与连通性诊断：</p>
+      <ul>
+        <li><strong>网络接口</strong> — 接口名称、状态与 IP 地址，点击 IP 可复制。</li>
+        <li><strong>监听端口</strong> — 协议、监听地址及占用端口的进程。</li>
+        <li><strong>活动连接</strong> — 当前已建立的网络连接。</li>
+        <li><strong>Ping 诊断</strong> — 输入主机名或 IP 执行 ping 测试，查看延迟与丢包。查询自动记入历史（见 <a href="#toolbox-history">查询历史</a>）。</li>
+      </ul>
+
+      <h3 id="visual-docker">13.7 Docker 容器管理</h3>
+      <p>在手机上完成容器日常运维：</p>
+      <ul>
+        <li><strong>容器列表</strong> — 显示运行状态、所用镜像、端口映射，点击容器打开详情。</li>
+        <li><strong>容器操作</strong> — 详情页支持：
+          <ul>
+            <li><strong>启动 / 停止 / 重启</strong> 容器。</li>
+            <li><strong>查看日志</strong> — 查看容器运行日志。</li>
+            <li><strong>删除</strong> — 移除容器（需二次确认）。</li>
+          </ul>
+        </li>
+        <li><strong>镜像列表</strong> — 查看服务器上的 Docker 镜像。</li>
+      </ul>
+      <div class="note">远程服务器需安装 Docker，且当前用户可访问 Docker（通常需加入 docker 组或具备 sudo 权限）。</div>
+
+      <h3 id="visual-firewall">13.8 防火墙管理</h3>
+      <p>图形化管理服务器防火墙，支持 <strong>ufw</strong> 和 <strong>firewalld</strong> 两种后端（自动检测）：</p>
+      <ul>
+        <li><strong>状态总览</strong> — 显示防火墙后端与启用状态，一键开关。</li>
+        <li><strong>规则列表</strong> — 查看已放行的端口/服务规则。</li>
+        <li><strong>添加规则</strong> — 输入端口、协议（TCP/UDP）即可放行。</li>
+        <li><strong>删除规则</strong> — 移除不再需要的规则（需二次确认）。</li>
+      </ul>
+      <div class="warning">启用防火墙时，XuTerm 会检测当前 SSH 端口是否已放行，防止规则生效后将你锁在服务器之外。请谨慎操作远程防火墙。</div>
+
+      <h3 id="visual-cron">13.9 crontab 定时任务</h3>
+      <p>以可视化方式管理当前用户的 crontab：</p>
+      <ul>
+        <li><strong>任务列表</strong> — 每条任务以人话描述展示（如"每天 03:00 执行备份"），并估算下次运行时间。</li>
+        <li><strong>添加任务</strong> — 通过模板编辑器创建定时任务，无需记忆 cron 表达式语法。</li>
+        <li><strong>编辑 / 删除</strong> — 修改或移除已有任务。</li>
+        <li><strong>启用 / 停用</strong> — 一键注释或取消注释任务，临时停用而不删除。</li>
+      </ul>
+      <div class="tip">面板中还包含 SFTP 文件管理模块，功能与 <a href="#sftp">SFTP 文件浏览器</a>相同。</div>
+    </div>
+
+    <!-- 14. 工具箱 -->
+    <div class="guide-section" id="toolbox">
+      <h2>14. 工具箱</h2>
+      <p>工具箱提供 16 种内置运维小工具，全部在本地运行、无需连接服务器。通过底部导航栏的 <strong>工具箱</strong> 页签进入，支持列表/网格两种视图切换。</p>
+
+      <h3 id="toolbox-security">14.1 安全工具</h3>
+      <ul>
+        <li><strong>RSA 密钥生成</strong> — 生成 SSH 密钥对（支持 RSA 和 Ed25519），可设置密钥名称与密码短语。生成后可复制私钥 PEM、公钥字符串和指纹，直接用于主机配置。</li>
+        <li><strong>密码生成</strong> — 可配置长度、大小写字母、数字、特殊字符，并过滤易混淆字符（0/O、1/l 等），一键生成随机强密码并复制。</li>
+        <li><strong>JWT 工具</strong> — 粘贴 JWT 即可解码查看 header 与 payload；输入密钥可验证签名；也可使用 HS256 密钥生成新 token。</li>
+      </ul>
+
+      <h3 id="toolbox-network">14.2 网络工具</h3>
+      <ul>
+        <li><strong>DNS 解析</strong> — 输入域名查询解析记录。</li>
+        <li><strong>Whois</strong> — 查询域名注册信息（注册商、到期时间、DNS 服务器等）。</li>
+        <li><strong>SSL 证书查询</strong> — 查看目标站点的证书详情（颁发者、有效期、SAN 等）。</li>
+        <li><strong>TCP 端口测试</strong> — 输入主机与端口，检测 open / closed / timeout 状态及连接耗时。</li>
+        <li><strong>CIDR 计算</strong> — 输入 <code>IP/前缀</code>，计算网络地址、广播地址、子网掩码、通配符掩码、可用主机范围，并标注 IP 类别与是否私有地址。</li>
+      </ul>
+
+      <h3 id="toolbox-coding">14.3 编码与开发工具</h3>
+      <ul>
+        <li><strong>Base64 编解码</strong> — 支持标准 Base64、URL 安全、Hex、Unicode 等模式的编码与解码。</li>
+        <li><strong>JSON 格式化</strong> — 粘贴 JSON 自动格式化或压缩，容错修复常见格式问题，并精确定位错误位置。</li>
+        <li><strong>正则测试</strong> — 输入正则表达式与测试文本，实时查看匹配高亮并测试替换结果。</li>
+        <li><strong>时间戳转换</strong> — Unix 时间戳与日期时间互转。</li>
+        <li><strong>进制转换</strong> — 二进制/八进制/十进制/十六进制互转，支持大数（BigInt）。</li>
+        <li><strong>URL 解析</strong> — 拆解 URL 的协议、主机、端口、路径、查询参数、片段等组成部分。</li>
+        <li><strong>ASCII 表</strong> — 随时查阅 ASCII 字符对照表。</li>
+        <li><strong>二维码</strong> — 通过相机扫描或导入图片解码二维码内容。</li>
+      </ul>
+
+      <h3 id="toolbox-history">14.4 查询历史</h3>
+      <p>DNS、Whois、SSL、Ping 等查询工具会自动记录查询历史：相同查询自动去重并置顶，点击历史条目即可快速重新执行，免去重复输入。</p>
+    </div>
+
+    <!-- 15. 会话快照 -->
     <div class="guide-section" id="session-snapshots">
-      <h2>13. 会话快照</h2>
+      <h2>15. 会话快照</h2>
       <p>保存和恢复终端会话状态，快速恢复工作环境：</p>
       <ol>
         <li>连接状态下，点击终端工具栏的 <strong>快照</strong> 按钮。</li>
@@ -738,9 +907,9 @@
       </ol>
     </div>
 
-    <!-- 14. 多会话 -->
+    <!-- 16. 多会话 -->
     <div class="guide-section" id="multi-session">
-      <h2>14. 多会话管理</h2>
+      <h2>16. 多会话管理</h2>
       <p>XuTerm 支持同时连接多台服务器：</p>
       <ul>
         <li><strong>多主机连接</strong> — 每个连接打开一个新的终端标签页。</li>
@@ -751,11 +920,11 @@
       <div class="tip">在 Android 上，前台服务通知可保持你的连接在应用后台时仍然活跃。</div>
     </div>
 
-    <!-- 15. 设置 -->
+    <!-- 17. 设置 -->
     <div class="guide-section" id="settings">
-      <h2>15. 应用设置</h2>
+      <h2>17. 应用设置</h2>
 
-      <h3 id="biometric">15.1 生物识别锁</h3>
+      <h3 id="biometric">17.1 生物识别锁</h3>
       <p>使用生物识别保护 XuTerm：</p>
       <ol>
         <li>进入设置，打开 <strong>生物识别解锁</strong> 开关。</li>
@@ -763,7 +932,7 @@
         <li>启用后，每次打开应用都需要进行身份验证。</li>
       </ol>
 
-      <h3 id="terminal-settings">15.2 终端设置</h3>
+      <h3 id="terminal-settings">17.2 终端设置</h3>
       <p>通过 设置 &gt; 终端 访问，可配置：</p>
       <ul>
         <li><strong>快捷命令</strong> — 管理已保存的快捷命令。</li>
@@ -772,7 +941,7 @@
         <li><strong>tmux</strong> — 配置 tmux 集成行为。</li>
       </ul>
 
-      <h3 id="font-settings">15.3 字体设置</h3>
+      <h3 id="font-settings">17.3 字体设置</h3>
       <p>通过 设置 &gt; 终端字体 访问，可配置：</p>
       <ul>
         <li><strong>字体大小</strong> — 默认终端字体大小（8-28 可调）。</li>
@@ -787,7 +956,7 @@
         </li>
       </ul>
 
-      <h3 id="color-bar">15.4 竖向色条</h3>
+      <h3 id="color-bar">17.4 竖向色条</h3>
       <p>竖向色条是终端左侧的彩色竖条，从视觉上区分用户输入和服务端输出：</p>
       <ul>
         <li>进入 设置 &gt; 竖向色条 进行配置。</li>
@@ -797,7 +966,7 @@
       </ul>
       <div class="tip">色条在滚动查看长日志时特别有用 — 帮助你快速找到输入命令的位置和输出的起始位置。</div>
 
-      <h3 id="connection-settings">15.5 连接设置</h3>
+      <h3 id="connection-settings">17.5 连接设置</h3>
       <p>通过 设置 &gt; 连接 访问，可配置：</p>
       <ul>
         <li><strong>端口转发自动启动</strong> — 连接时是否自动建立端口转发规则。</li>
@@ -806,10 +975,10 @@
         <li><strong>trzsz 设置</strong> — 配置 trzsz 的默认上传/下载目录。</li>
       </ul>
 
-      <h3 id="monitor-settings">15.6 监控设置</h3>
+      <h3 id="monitor-settings">17.6 监控设置</h3>
       <p>配置服务器监控的刷新间隔（详见 <a href="#server-monitor">服务器监控</a>）。</p>
 
-      <h3 id="theme">15.7 主题与外观</h3>
+      <h3 id="theme">17.7 主题与外观</h3>
       <p>进入设置后可配置：</p>
       <ul>
         <li><strong>主题模式</strong> — 从以下选项选择：
@@ -822,7 +991,7 @@
         <li><strong>屏幕方向锁定</strong> — 锁定屏幕方向防止旋转。</li>
       </ul>
 
-      <h3 id="language">15.8 语言</h3>
+      <h3 id="language">17.8 语言</h3>
       <p>XuTerm 支持多种语言：</p>
       <ul>
         <li>简体中文</li>
@@ -835,11 +1004,11 @@
       <p>进入 设置 &gt; 语言 可更改显示语言，更改立即生效。</p>
     </div>
 
-    <!-- 16. 数据管理 -->
+    <!-- 18. 数据管理 -->
     <div class="guide-section" id="data-management">
-      <h2>16. 数据管理</h2>
+      <h2>18. 数据管理</h2>
 
-      <h3 id="export">16.1 导出配置</h3>
+      <h3 id="export">18.1 导出配置</h3>
       <p>将你的 XuTerm 配置备份到文件：</p>
       <ol>
         <li>进入 设置 &gt; 数据管理 &gt; 导出。</li>
@@ -857,7 +1026,7 @@
         <li>点击 <strong>导出</strong> 将配置文件保存到你的设备。</li>
       </ol>
 
-      <h3 id="import">16.2 导入配置</h3>
+      <h3 id="import">18.2 导入配置</h3>
       <p>恢复之前导出的配置：</p>
       <ol>
         <li>进入 设置 &gt; 数据管理 &gt; 导入。</li>
@@ -867,7 +1036,7 @@
         <li>导入的数据与现有数据合并 — 重复项将智能处理。</li>
       </ol>
 
-      <h3 id="icloud">16.3 iCloud 同步（iOS）</h3>
+      <h3 id="icloud">18.3 iCloud 同步（iOS）</h3>
       <p>在 iOS 设备上，XuTerm 支持 iCloud 同步，在所有 Apple 设备间保持配置一致：</p>
       <ol>
         <li>进入 设置 &gt; 数据管理 &gt; iCloud 同步。</li>
@@ -877,9 +1046,9 @@
       </ol>
     </div>
 
-    <!-- 17. 安全 -->
+    <!-- 19. 安全 -->
     <div class="guide-section" id="security">
-      <h2>17. 安全与隐私</h2>
+      <h2>19. 安全与隐私</h2>
       <p>XuTerm 以安全和隐私为最高优先级进行设计：</p>
       <ul>
         <li><strong>AES-256 加密</strong> — 所有敏感数据（密码、SSH 密钥、TOTP 密钥）在存储前均使用 AES-256 加密。</li>

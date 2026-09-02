@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="XuTerm user guide - Learn how to connect to servers with SSH & Mosh, use tmux, transfer files with SFTP and trzsz, and manage your hosts, keys and TOTP tokens.">
+  <meta name="description" content="XuTerm user guide - Learn how to connect to servers with SSH & Mosh, use tmux, transfer files with SFTP and trzsz, manage services and containers with the visual ops panel, and use the toolbox, TOTP tokens and all other features.">
   <link rel="canonical" href="https://xuterm.vercel.app/user-guide.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="XuTerm">
   <meta property="og:title" content="XuTerm - User Guide">
-  <meta property="og:description" content="Learn how to connect to servers with SSH & Mosh, use tmux, transfer files with SFTP and trzsz, and manage your hosts, keys and TOTP tokens.">
+  <meta property="og:description" content="Learn how to connect to servers with SSH & Mosh, use tmux, transfer files with SFTP and trzsz, manage services and containers with the visual ops panel, and use the toolbox, TOTP tokens and all other features.">
   <meta property="og:url" content="https://xuterm.vercel.app/user-guide.html">
   <meta property="og:image" content="https://xuterm.vercel.app/assets/images/h8.png">
   <title>XuTerm - User Guide</title>
@@ -189,6 +189,27 @@
           </ol>
         </li>
         <li><a href="#server-monitor">Server Monitoring</a></li>
+        <li><a href="#visual-ops">Visual Ops Panel</a>
+          <ol>
+            <li><a href="#visual-entry">Opening the Panel</a></li>
+            <li><a href="#visual-summary">System Summary</a></li>
+            <li><a href="#visual-disk">Disk Analysis</a></li>
+            <li><a href="#visual-services">systemd Service Management</a></li>
+            <li><a href="#visual-process">Process Management</a></li>
+            <li><a href="#visual-network">Network Tools</a></li>
+            <li><a href="#visual-docker">Docker Container Management</a></li>
+            <li><a href="#visual-firewall">Firewall Management</a></li>
+            <li><a href="#visual-cron">crontab Jobs</a></li>
+          </ol>
+        </li>
+        <li><a href="#toolbox">Toolbox</a>
+          <ol>
+            <li><a href="#toolbox-security">Security Tools</a></li>
+            <li><a href="#toolbox-network">Network Tools</a></li>
+            <li><a href="#toolbox-coding">Coding &amp; Dev Tools</a></li>
+            <li><a href="#toolbox-history">Query History</a></li>
+          </ol>
+        </li>
         <li><a href="#session-snapshots">Session Snapshots</a></li>
         <li><a href="#multi-session">Multi-Session Management</a></li>
         <li><a href="#settings">Settings</a>
@@ -719,9 +740,157 @@
       </ul>
     </div>
 
-    <!-- 13. Session Snapshots -->
+    <!-- 13. Visual Ops -->
+    <div class="guide-section" id="visual-ops">
+      <h2>13. Visual Ops Panel</h2>
+      <p>The Visual Ops panel turns everyday server administration into a tap-friendly graphical interface — no commands to memorize or type. All operations run over the SSH channel in the background, sharing the same connection as the terminal.</p>
+
+      <h3 id="visual-entry">13.1 Opening the Panel</h3>
+      <ul>
+        <li>On the host list, tap the <strong>Visual Ops button</strong> (heart-rate icon) on a host card to enter the panel.</li>
+        <li>No terminal session is required — the panel reuses an existing SSH connection or establishes a new one automatically.</li>
+        <li>The panel header shows the host name and connection state, plus a <strong>Terminal</strong> button (jump to the host's terminal) and a <strong>Refresh</strong> button.</li>
+      </ul>
+      <div class="note">Some operations (start/stop services, toggling the firewall, killing processes) require sudo privileges on the remote user. If the host has a stored sudo password, it is used automatically.</div>
+
+      <h3 id="visual-summary">13.2 System Summary</h3>
+      <p>The panel home shows key server information at a glance, in card form:</p>
+      <ul>
+        <li><strong>System info</strong> — Operating system, host name, internal IP, uptime.</li>
+        <li><strong>CPU</strong> — Core count and real-time usage.</li>
+        <li><strong>Memory</strong> — Used vs. total with percentage.</li>
+        <li><strong>Disk</strong> — Used vs. total with percentage.</li>
+        <li><strong>Load</strong> — 1/5/15-minute load averages.</li>
+        <li><strong>Network</strong> — Real-time network speeds.</li>
+      </ul>
+      <p>Tap <strong>Refresh</strong> to update the data at any time.</p>
+
+      <h3 id="visual-disk">13.3 Disk Analysis</h3>
+      <p>Inspect partition usage and drill down to locate large files:</p>
+      <ol>
+        <li>The Disk Analysis page lists all partitions with usage ratio, file system type, and used/available space.</li>
+        <li>Tap any partition card to analyze directory space on that mount point.</li>
+        <li>Results are listed by size, showing each subdirectory and file.</li>
+        <li>Use the <strong>breadcrumb navigation</strong> at the top — tap any path segment to switch to that directory and re-analyze.</li>
+        <li>You can <strong>cancel</strong> an ongoing analysis at any time.</li>
+        <li>The last analyzed directory is remembered and restored on your next visit.</li>
+      </ol>
+
+      <h3 id="visual-services">13.4 systemd Service Management</h3>
+      <p>Manage systemd services graphically:</p>
+      <ul>
+        <li><strong>Service list</strong> — Shows each service's name, run state, and description.</li>
+        <li><strong>Search</strong> — Filter services by name.</li>
+        <li><strong>State filter</strong> — Filter services by running / stopped / failed.</li>
+        <li><strong>Service detail</strong> — Tap a service to view details and take action:
+          <ul>
+            <li><strong>Start</strong> — Start a stopped service.</li>
+            <li><strong>Restart</strong> — Restart the service (confirmation required).</li>
+            <li><strong>Stop</strong> — Stop the service (confirmation required).</li>
+            <li><strong>Status output</strong> — View and copy the full <code>systemctl status</code> output.</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 id="visual-process">13.5 Process Management</h3>
+      <p>View and manage running processes on the server:</p>
+      <ul>
+        <li><strong>Process list</strong> — Shows PID, user, CPU, memory, command, and more.</li>
+        <li><strong>Search</strong> — Filter processes by name or PID.</li>
+        <li><strong>Sort</strong> — Sort by CPU or memory usage.</li>
+        <li><strong>Process detail</strong> — Tap a process to view details and send signals:
+          <ul>
+            <li><strong>TERM</strong> — Ask the process to exit gracefully.</li>
+            <li><strong>KILL</strong> — Force-terminate the process (confirmation required).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 id="visual-network">13.6 Network Tools</h3>
+      <p>Network status overview and connectivity diagnostics:</p>
+      <ul>
+        <li><strong>Network interfaces</strong> — Name, state, and IP addresses; tap an IP to copy it.</li>
+        <li><strong>Listening ports</strong> — Protocol, listen address, and the process holding the port.</li>
+        <li><strong>Active connections</strong> — Currently established network connections.</li>
+        <li><strong>Ping</strong> — Enter a hostname or IP to run a ping test and check latency and packet loss. Queries are recorded to history automatically (see <a href="#toolbox-history">Query History</a>).</li>
+      </ul>
+
+      <h3 id="visual-docker">13.7 Docker Container Management</h3>
+      <p>Handle day-to-day container operations from your phone:</p>
+      <ul>
+        <li><strong>Container list</strong> — Shows run state, image, and port mappings. Tap a container to open its details.</li>
+        <li><strong>Container actions</strong> — The detail sheet supports:
+          <ul>
+            <li><strong>Start / Stop / Restart</strong> the container.</li>
+            <li><strong>View logs</strong> — Inspect container logs.</li>
+            <li><strong>Delete</strong> — Remove the container (confirmation required).</li>
+          </ul>
+        </li>
+        <li><strong>Image list</strong> — Browse Docker images on the server.</li>
+      </ul>
+      <div class="note">The remote server must have Docker installed, and the user must be able to access it (typically membership in the docker group or sudo privileges).</div>
+
+      <h3 id="visual-firewall">13.8 Firewall Management</h3>
+      <p>Manage the server firewall graphically. Both <strong>ufw</strong> and <strong>firewalld</strong> backends are supported (auto-detected):</p>
+      <ul>
+        <li><strong>Status overview</strong> — Shows the firewall backend and enabled state, with a one-tap toggle.</li>
+        <li><strong>Rule list</strong> — View allowed port/service rules.</li>
+        <li><strong>Add rule</strong> — Enter a port and protocol (TCP/UDP) to allow it.</li>
+        <li><strong>Delete rule</strong> — Remove rules you no longer need (confirmation required).</li>
+      </ul>
+      <div class="warning">When enabling the firewall, XuTerm checks whether your current SSH port is allowed, preventing you from locking yourself out of the server. Always be careful when modifying a remote firewall.</div>
+
+      <h3 id="visual-cron">13.9 crontab Jobs</h3>
+      <p>Manage the current user's crontab visually:</p>
+      <ul>
+        <li><strong>Job list</strong> — Each job is shown in plain language (e.g., "run backup at 03:00 every day"), with the next run time estimated.</li>
+        <li><strong>Add job</strong> — Create scheduled jobs with a template editor — no need to memorize cron expression syntax.</li>
+        <li><strong>Edit / Delete</strong> — Modify or remove existing jobs.</li>
+        <li><strong>Enable / Disable</strong> — Comment out or restore a job with one tap, suspending it without deleting.</li>
+      </ul>
+      <div class="tip">The panel also includes an SFTP file management module, with the same features as the <a href="#sftp">SFTP File Browser</a>.</div>
+    </div>
+
+    <!-- 14. Toolbox -->
+    <div class="guide-section" id="toolbox">
+      <h2>14. Toolbox</h2>
+      <p>The Toolbox provides 16 built-in ops tools, all running locally with no server connection required. Open it from the <strong>Toolbox</strong> tab in the bottom navigation bar; list and grid views are both supported.</p>
+
+      <h3 id="toolbox-security">14.1 Security Tools</h3>
+      <ul>
+        <li><strong>RSA Key Generator</strong> — Generate SSH key pairs (RSA and Ed25519) with an optional name and passphrase. Copy the private key PEM, public key string, and fingerprint for direct use in host configuration.</li>
+        <li><strong>Password Generator</strong> — Configure length, upper/lowercase letters, digits, and special characters; optionally exclude confusable characters (0/O, 1/l). Generate and copy a strong random password in one tap.</li>
+        <li><strong>JWT Tool</strong> — Paste a JWT to decode its header and payload; verify the signature with a secret; or generate a new token signed with HS256.</li>
+      </ul>
+
+      <h3 id="toolbox-network">14.2 Network Tools</h3>
+      <ul>
+        <li><strong>DNS Resolver</strong> — Look up DNS records for a domain.</li>
+        <li><strong>Whois</strong> — Query domain registration details (registrar, expiry, name servers, etc.).</li>
+        <li><strong>SSL Certificate Checker</strong> — Inspect a site's certificate details (issuer, validity, SANs, etc.).</li>
+        <li><strong>TCP Port Tester</strong> — Enter a host and ports to check for open / closed / timeout status with connection latency.</li>
+        <li><strong>CIDR Calculator</strong> — Enter an <code>IP/prefix</code> to compute the network address, broadcast address, subnet mask, wildcard mask, and usable host range, plus the IP class and whether it is private.</li>
+      </ul>
+
+      <h3 id="toolbox-coding">14.3 Coding &amp; Dev Tools</h3>
+      <ul>
+        <li><strong>Base64 Codec</strong> — Encode and decode in standard Base64, URL-safe, hex, and Unicode modes.</li>
+        <li><strong>JSON Formatter</strong> — Paste JSON to pretty-print or minify it; tolerantly fixes common format issues and pinpoints error positions.</li>
+        <li><strong>Regex Tester</strong> — Enter a regex and sample text to see live match highlighting and test replacements.</li>
+        <li><strong>Timestamp Converter</strong> — Convert between Unix timestamps and dates.</li>
+        <li><strong>Radix Converter</strong> — Convert between binary/octal/decimal/hexadecimal, with BigInt support for large numbers.</li>
+        <li><strong>URL Parser</strong> — Break a URL into its scheme, host, port, path, query parameters, and fragment.</li>
+        <li><strong>ASCII Table</strong> — A handy ASCII character reference.</li>
+        <li><strong>QR Code</strong> — Decode QR codes via camera scan or image import.</li>
+      </ul>
+
+      <h3 id="toolbox-history">14.4 Query History</h3>
+      <p>Query tools such as DNS, Whois, SSL, and Ping automatically record your queries: duplicates are merged and moved to the top, and tapping a history entry re-runs it instantly — no retyping needed.</p>
+    </div>
+
+    <!-- 15. Session Snapshots -->
     <div class="guide-section" id="session-snapshots">
-      <h2>13. Session Snapshots</h2>
+      <h2>15. Session Snapshots</h2>
       <p>Save and restore terminal session states for quick recovery:</p>
       <ol>
         <li>While connected, tap the <strong>Snapshot</strong> button in the terminal toolbar.</li>
@@ -738,9 +907,9 @@
       </ol>
     </div>
 
-    <!-- 14. Multi-Session -->
+    <!-- 16. Multi-Session -->
     <div class="guide-section" id="multi-session">
-      <h2>14. Multi-Session Management</h2>
+      <h2>16. Multi-Session Management</h2>
       <p>XuTerm supports connecting to multiple servers simultaneously:</p>
       <ul>
         <li><strong>Connect to multiple hosts</strong> — Each connection opens a new terminal tab.</li>
@@ -751,11 +920,11 @@
       <div class="tip">On Android, the foreground service notification keeps your connections alive even when the app is in the background.</div>
     </div>
 
-    <!-- 15. Settings -->
+    <!-- 17. Settings -->
     <div class="guide-section" id="settings">
-      <h2>15. Settings</h2>
+      <h2>17. Settings</h2>
 
-      <h3 id="biometric">15.1 Biometric Lock</h3>
+      <h3 id="biometric">17.1 Biometric Lock</h3>
       <p>Protect XuTerm with biometric authentication:</p>
       <ol>
         <li>Go to Settings and toggle <strong>Biometric Unlock</strong>.</li>
@@ -763,7 +932,7 @@
         <li>After enabling, you'll need to authenticate each time you open the app.</li>
       </ol>
 
-      <h3 id="terminal-settings">15.2 Terminal Settings</h3>
+      <h3 id="terminal-settings">17.2 Terminal Settings</h3>
       <p>Access via Settings &gt; Terminal. Configure:</p>
       <ul>
         <li><strong>Quick Commands</strong> — Manage your saved quick commands.</li>
@@ -772,7 +941,7 @@
         <li><strong>tmux</strong> — Configure tmux integration behavior.</li>
       </ul>
 
-      <h3 id="font-settings">15.3 Font Settings</h3>
+      <h3 id="font-settings">17.3 Font Settings</h3>
       <p>Access via Settings &gt; Terminal Font. Configure:</p>
       <ul>
         <li><strong>Font Size</strong> — Default terminal font size (adjustable from 8 to 28).</li>
@@ -787,7 +956,7 @@
         </li>
       </ul>
 
-      <h3 id="color-bar">15.4 Color Bar</h3>
+      <h3 id="color-bar">17.4 Color Bar</h3>
       <p>The color bar is a vertical colored strip on the left side of the terminal that visually distinguishes user input from server output:</p>
       <ul>
         <li>Go to Settings &gt; Color Bar to configure.</li>
@@ -797,7 +966,7 @@
       </ul>
       <div class="tip">The color bar is especially useful when scrolling through long logs — it helps you quickly find where you entered a command and where the output begins.</div>
 
-      <h3 id="connection-settings">15.5 Connection Settings</h3>
+      <h3 id="connection-settings">17.5 Connection Settings</h3>
       <p>Access via Settings &gt; Connection. Configure:</p>
       <ul>
         <li><strong>Port Forwarding Auto-Start</strong> — Whether to automatically establish port forwarding rules when connecting.</li>
@@ -806,10 +975,10 @@
         <li><strong>trzsz Settings</strong> — Configure default upload/download directories for trzsz.</li>
       </ul>
 
-      <h3 id="monitor-settings">15.6 Monitor Settings</h3>
+      <h3 id="monitor-settings">17.6 Monitor Settings</h3>
       <p>Configure server monitoring refresh intervals (see <a href="#server-monitor">Server Monitoring</a>).</p>
 
-      <h3 id="theme">15.7 Theme &amp; Appearance</h3>
+      <h3 id="theme">17.7 Theme &amp; Appearance</h3>
       <p>Go to Settings and configure:</p>
       <ul>
         <li><strong>Theme Mode</strong> — Choose from:
@@ -822,7 +991,7 @@
         <li><strong>Screen Orientation Lock</strong> — Lock the screen orientation to prevent rotation.</li>
       </ul>
 
-      <h3 id="language">15.8 Language</h3>
+      <h3 id="language">17.8 Language</h3>
       <p>XuTerm supports multiple languages:</p>
       <ul>
         <li>Simplified Chinese</li>
@@ -835,11 +1004,11 @@
       <p>Go to Settings &gt; Language to change the display language. The change takes effect immediately.</p>
     </div>
 
-    <!-- 16. Data Management -->
+    <!-- 18. Data Management -->
     <div class="guide-section" id="data-management">
-      <h2>16. Data Management</h2>
+      <h2>18. Data Management</h2>
 
-      <h3 id="export">16.1 Exporting Configuration</h3>
+      <h3 id="export">18.1 Exporting Configuration</h3>
       <p>Back up your XuTerm configuration to a file:</p>
       <ol>
         <li>Go to Settings &gt; Data Management &gt; Export.</li>
@@ -857,7 +1026,7 @@
         <li>Tap <strong>Export</strong> to save the configuration file to your device.</li>
       </ol>
 
-      <h3 id="import">16.2 Importing Configuration</h3>
+      <h3 id="import">18.2 Importing Configuration</h3>
       <p>Restore a previously exported configuration:</p>
       <ol>
         <li>Go to Settings &gt; Data Management &gt; Import.</li>
@@ -867,7 +1036,7 @@
         <li>Imported data is merged with existing data — duplicates are handled intelligently.</li>
       </ol>
 
-      <h3 id="icloud">16.3 iCloud Sync (iOS)</h3>
+      <h3 id="icloud">18.3 iCloud Sync (iOS)</h3>
       <p>On iOS devices, XuTerm supports iCloud sync to keep your configuration consistent across all your Apple devices:</p>
       <ol>
         <li>Go to Settings &gt; Data Management &gt; iCloud Sync.</li>
@@ -877,9 +1046,9 @@
       </ol>
     </div>
 
-    <!-- 17. Security -->
+    <!-- 19. Security -->
     <div class="guide-section" id="security">
-      <h2>17. Security &amp; Privacy</h2>
+      <h2>19. Security &amp; Privacy</h2>
       <p>XuTerm is designed with security and privacy as top priorities:</p>
       <ul>
         <li><strong>AES-256 Encryption</strong> — All sensitive data (passwords, SSH keys, TOTP secrets) is encrypted with AES-256 before storage.</li>
