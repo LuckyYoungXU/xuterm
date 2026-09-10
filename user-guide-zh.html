@@ -200,6 +200,7 @@
             <li><a href="#visual-docker">Docker 容器管理</a></li>
             <li><a href="#visual-firewall">防火墙管理</a></li>
             <li><a href="#visual-cron">crontab 定时任务</a></li>
+            <li><a href="#visual-rsync">Rsync 可视化同步</a></li>
           </ol>
         </li>
         <li><a href="#toolbox">工具箱</a>
@@ -849,6 +850,49 @@
         <li><strong>启用 / 停用</strong> — 一键注释或取消注释任务，临时停用而不删除。</li>
       </ul>
       <div class="tip">面板中还包含 SFTP 文件管理模块，功能与 <a href="#sftp">SFTP 文件浏览器</a>相同。</div>
+
+      <h3 id="visual-rsync">13.10 Rsync 可视化同步</h3>
+      <p>以图形化界面配置和执行 <strong>rsync</strong> 同步任务，无需手写命令。入口：<strong>可视化运维面板 → Rsync 同步</strong>；也可在 <a href="#sftp">SFTP 文件浏览器</a>中把当前目录直接作为源路径调起。连接后自动探测远端 rsync 是否安装及版本（自动创建目标目录功能需要 rsync ≥ 3.2.3）。</p>
+
+      <h4>同步模式</h4>
+      <ul>
+        <li><strong>本机内</strong> — 同一台服务器上两个目录互相同步；无网络传输，压缩选项自动禁用。</li>
+        <li><strong>跨主机 · 推送</strong> — 以当前会话主机 A 为中转，将 A 上的目录推送到远程主机 B。</li>
+        <li><strong>跨主机 · 拉取</strong> — 从远程主机 B 拉取数据到 A。</li>
+      </ul>
+      <p>跨主机模式支持一次选择多台目标主机（可按分组多选/全选，也可手输内网 IP，如 <code>192.168.1.10</code> 或 <code>user@192.168.1.10</code>），任务按顺序串行逐台执行，每台主机可单独覆盖远程路径。要求主机 A 到各目标主机已配置 SSH 免密登录。</p>
+
+      <h4>路径写法</h4>
+      <ul>
+        <li>源/目标路径均可点浏览按钮通过 SFTP 目录选择器选取，常用路径自动记住。</li>
+        <li><strong>尾斜杠语义</strong> — "同步目录内容"开启时源路径带尾斜杠（同步目录内的内容）；关闭则在目标下创建同名子目录并同步。根目录 <code>/</code> 始终按同步内容处理。</li>
+        <li><strong>通配符</strong> — 源路径支持通配符（如 <code>/data/logs/*.txt</code>），按匹配到的文件列表同步；此模式下镜像删除不可用。</li>
+        <li><strong>$host 变量</strong> — 路径中的 <code>$host</code> 按各目标主机名展开为独立子目录，避免多台主机拉取时数据互相覆盖。</li>
+        <li><strong>daemon 语法</strong> — 远程路径支持 <code>host::module/path</code> 或 <code>rsync://</code> 形式，走 873 端口的 rsync 协议。</li>
+      </ul>
+
+      <h4>传输选项</h4>
+      <ul>
+        <li><strong>归档模式</strong>（<span class="kbd">-a</span>）— 递归同步并保留权限、时间戳等属性。</li>
+        <li><strong>压缩传输</strong>（<span class="kbd">-z</span>）— 跨主机时减少网络流量。</li>
+        <li><strong>镜像删除</strong>（<span class="kbd">--delete</span>）— 删除目标端源里不存在的文件。</li>
+        <li><strong>保留半截文件</strong>（<span class="kbd">--partial</span>）— 中断后保留已传输部分，便于续传。</li>
+        <li><strong>自动创建目标父目录</strong>（<span class="kbd">--mkpath</span>）— 需要 rsync ≥ 3.2.3。</li>
+        <li><strong>限速</strong>（<span class="kbd">--bwlimit</span>，KB/s）与<strong>排除规则</strong>（<span class="kbd">--exclude</span>，如 <code>*.log</code>、<code>cache/</code>、<code>.git</code>）。</li>
+      </ul>
+
+      <h4>预演与执行</h4>
+      <ol>
+        <li><strong>预演</strong> — 先以 dry-run 生成报告：新增 / 更新 / 属性变更 / 删除清单与预计传输量，不改动任何文件。</li>
+        <li><strong>确认执行</strong> — 含镜像删除的任务强制先预演，确认报告后才会真正执行；其余任务执行前也有命令确认弹窗。</li>
+        <li><strong>执行过程</strong> — 多台目标串行逐台执行，每台实时显示进度百分比、速率、剩余时间与文件数。</li>
+        <li><strong>结果</strong> — 每台主机独立显示成功 / 部分成功 / 失败；支持"停止"（当前台结束后停，避免半截文件）与一键重跑失败的台；rsync 退出码均有人话解读。</li>
+      </ol>
+
+      <h4>同步模板</h4>
+      <p>配置好的同步任务可<strong>存为模板</strong>，下次一键载入或"载入并执行"；模板会记录上次执行时间与结果摘要（如"上次 10:30 · 成功 3/3"）。模板绑定创建时的主机，在其他主机上仅可查看、不可执行。</p>
+
+      <div class="warning">镜像删除（--delete）配合"同步目录内容"（源带尾斜杠）会删除目标目录下所有多余文件，属高危操作——执行前务必先预演并核对删除清单。</div>
     </div>
 
     <!-- 14. 工具箱 -->

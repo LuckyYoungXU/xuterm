@@ -200,6 +200,7 @@
             <li><a href="#visual-docker">Docker Container Management</a></li>
             <li><a href="#visual-firewall">Firewall Management</a></li>
             <li><a href="#visual-cron">crontab Jobs</a></li>
+            <li><a href="#visual-rsync">Rsync Sync</a></li>
           </ol>
         </li>
         <li><a href="#toolbox">Toolbox</a>
@@ -561,7 +562,7 @@
         <li><strong>Excel / CSV files</strong> — Preview spreadsheet data in a tabular view.</li>
         <li><strong>Images</strong> — View images (PNG, JPG, GIF, BMP, WebP, SVG) with pinch-to-zoom.</li>
         <li><strong>Markdown</strong> — Render and preview Markdown files with proper formatting.</li>
-      </ol>
+      </ul>
       <div class="tip">In the code editor, use the <strong>Find</strong> feature to search within the file. Matched results are highlighted and you can navigate between them with previous/next buttons. The editor auto-detects the file language for syntax highlighting.</div>
 
       <h3 id="cellular">6.5 Cellular Data Transfer</h3>
@@ -849,6 +850,49 @@
         <li><strong>Enable / Disable</strong> — Comment out or restore a job with one tap, suspending it without deleting.</li>
       </ul>
       <div class="tip">The panel also includes an SFTP file management module, with the same features as the <a href="#sftp">SFTP File Browser</a>.</div>
+
+      <h3 id="visual-rsync">13.10 Rsync Sync</h3>
+      <p>Configure and run <strong>rsync</strong> jobs graphically — no need to write commands by hand. Entry points: <strong>Visual Ops Panel → Rsync Sync</strong>, or launch it from the <a href="#sftp">SFTP File Browser</a> with the current directory pre-filled as the source path. After connecting, XuTerm automatically detects whether rsync is installed on the remote host and its version (auto-creating target directories requires rsync ≥ 3.2.3).</p>
+
+      <h4>Sync Modes</h4>
+      <ul>
+        <li><strong>Local (same host)</strong> — Sync two directories on the same server; there is no network transfer, so compression is disabled automatically.</li>
+        <li><strong>Cross-host · Push</strong> — Use the current session host A as the relay and push a directory from A to remote host B.</li>
+        <li><strong>Cross-host · Pull</strong> — Pull data from remote host B back to A.</li>
+      </ul>
+      <p>Cross-host mode supports selecting multiple target hosts at once (multi-select by group, or enter an intranet IP manually, e.g. <code>192.168.1.10</code> or <code>user@192.168.1.10</code>). Targets run one by one in sequence, and each host can override the remote path individually. Passwordless SSH from host A to each target host is required.</p>
+
+      <h4>Path Syntax</h4>
+      <ul>
+        <li>Both source and target paths can be picked with the SFTP directory browser; recently used paths are remembered automatically.</li>
+        <li><strong>Trailing slash</strong> — With "sync directory contents" on, the source path gets a trailing slash (the contents inside are synced); off, a subdirectory of the same name is created under the target. The root <code>/</code> is always treated as a content sync.</li>
+        <li><strong>Wildcards</strong> — The source path supports wildcards (e.g. <code>/data/logs/*.txt</code>); the matched files are synced as a list. Mirror delete is unavailable in this mode.</li>
+        <li><strong>$host variable</strong> — <code>$host</code> in a path expands to a per-host subdirectory, preventing data from multiple pulled hosts from overwriting each other.</li>
+        <li><strong>Daemon syntax</strong> — Remote paths also accept the <code>host::module/path</code> or <code>rsync://</code> form, which uses the rsync protocol on port 873.</li>
+      </ul>
+
+      <h4>Transfer Options</h4>
+      <ul>
+        <li><strong>Archive mode</strong> (<span class="kbd">-a</span>) — Recursive sync preserving permissions, timestamps, and other attributes.</li>
+        <li><strong>Compression</strong> (<span class="kbd">-z</span>) — Reduces network traffic for cross-host sync.</li>
+        <li><strong>Mirror delete</strong> (<span class="kbd">--delete</span>) — Removes files on the target that no longer exist in the source.</li>
+        <li><strong>Keep partial files</strong> (<span class="kbd">--partial</span>) — Preserves partially transferred files after an interruption so they can be resumed.</li>
+        <li><strong>Auto-create target parent directories</strong> (<span class="kbd">--mkpath</span>) — Requires rsync ≥ 3.2.3.</li>
+        <li><strong>Bandwidth limit</strong> (<span class="kbd">--bwlimit</span>, KB/s) and <strong>exclude rules</strong> (<span class="kbd">--exclude</span>, e.g. <code>*.log</code>, <code>cache/</code>, <code>.git</code>).</li>
+      </ul>
+
+      <h4>Dry Run & Execution</h4>
+      <ol>
+        <li><strong>Dry run</strong> — Generates a report first: created / updated / attribute-changed / deleted lists plus the estimated transfer size, without touching any files.</li>
+        <li><strong>Confirm & run</strong> — Jobs with mirror delete must go through a dry run first and only run after you confirm the report; other jobs show a command confirmation dialog before executing.</li>
+        <li><strong>Progress</strong> — Multiple targets run serially, each showing a live progress percentage, transfer speed, ETA, and file count.</li>
+        <li><strong>Results</strong> — Each host shows its own success / partial / failed status; "Stop" waits for the current host to finish (avoiding half-written files), and failed hosts can be re-run in one tap. Every rsync exit code is explained in plain language.</li>
+      </ol>
+
+      <h4>Sync Templates</h4>
+      <p>Save a configured job as a <strong>template</strong> and reload it — or "load & run" it — with one tap next time. Templates record the last run time and result summary (e.g. "last run 10:30 · 3/3 succeeded") and are bound to the host they were created on; on other hosts they are read-only.</p>
+
+      <div class="warning">Mirror delete (--delete) combined with "sync directory contents" (a trailing slash on the source) will delete ALL extra files under the target directory. This is a high-risk operation — always dry-run first and review the deletion list carefully.</div>
     </div>
 
     <!-- 14. Toolbox -->
