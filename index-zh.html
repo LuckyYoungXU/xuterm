@@ -30,6 +30,10 @@
     "description": "免费、隐私优先的 SSH & Mosh 终端客户端，原生 tmux 集成、SFTP 文件管理、trzsz 传输、TOTP 双重验证与服务器监控。",
     "url": "https://xuterm.vercel.app/index-zh.html",
     "image": "https://xuterm.vercel.app/assets/images/h9.png",
+    "screenshot": "https://xuterm.vercel.app/assets/images/h9.png",
+    "datePublished": "2026-06-08",
+    "dateModified": "2026-09-21",
+    "author": { "@type": "Organization", "name": "XuTerm", "url": "https://xuterm.vercel.app/" },
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "featureList": [
       "SSH 与 Mosh 连接",
@@ -40,6 +44,60 @@
       "服务器监控",
       "端口转发",
       "20+ 运维工具"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "XuTerm",
+    "alternateName": "XuTerm SSH 终端",
+    "url": "https://xuterm.vercel.app/index-zh.html",
+    "inLanguage": "zh-CN",
+    "description": "XuTerm 官网：免费、隐私优先的 SSH 与 Mosh 终端客户端（Android 与 iOS）。"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "XuTerm 是什么？",
+        "acceptedAnswer": { "@type": "Answer", "text": "XuTerm 是一款免费、隐私优先的 SSH 与 Mosh 终端客户端，支持 Android 与 iOS。它提供适合手机的终端体验，具备原生 tmux 集成、SFTP 文件浏览与预览、trzsz 文件传输、TOTP 双重验证、服务器监控以及 20+ 内置运维工具。" }
+      },
+      {
+        "@type": "Question",
+        "name": "XuTerm 免费吗？",
+        "acceptedAnswer": { "@type": "Answer", "text": "完全免费——无广告、无订阅、无应用内购买。" }
+      },
+      {
+        "@type": "Question",
+        "name": "XuTerm 支持哪些平台？",
+        "acceptedAnswer": { "@type": "Answer", "text": "Android 版现已上架华为应用市场、APKPure、Uptodown、Appteka 与 GitHub Releases；iOS 版本正在开发中，敬请期待。" }
+      },
+      {
+        "@type": "Question",
+        "name": "XuTerm 支持 tmux 和 Mosh 吗？",
+        "acceptedAnswer": { "@type": "Answer", "text": "支持。XuTerm 原生集成 tmux——会话在网络切换和应用重启后依然保留；同时完整支持 Mosh，在移动网络不稳定时也能保持可靠连接。" }
+      },
+      {
+        "@type": "Question",
+        "name": "我的服务器数据安全吗？",
+        "acceptedAnswer": { "@type": "Answer", "text": "安全。所有敏感数据（密码、密钥、配置）均使用 AES-256 加密并仅存储在您的设备上。XuTerm 无任何统计埋点与追踪，凭据永远不会发送到任何服务器。" }
+      },
+      {
+        "@type": "Question",
+        "name": "如何快速导入服务器？",
+        "acceptedAnswer": { "@type": "Answer", "text": "可以手动添加主机，也可以扫描其他设备分享的二维码批量导入；快捷命令同样支持二维码分享与导入。" }
+      },
+      {
+        "@type": "Question",
+        "name": "在哪里可以下载 XuTerm？",
+        "acceptedAnswer": { "@type": "Answer", "text": "可从华为应用市场、APKPure、Uptodown、Appteka 或 GitHub Releases 下载，所有下载链接均可在官网获取。" }
+      }
     ]
   }
   </script>
@@ -155,6 +213,19 @@
     .security-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
     .security-card p { font-size: 14px; color: #94a3b8; }
 
+    /* 常见问题 */
+    .faq { padding: 80px 24px; background: var(--bg); }
+    .faq .inner { max-width: 800px; margin: 0 auto; }
+    .faq h2 { text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 40px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 12px; background: var(--bg); transition: border-color .2s; }
+    .faq-item:hover { border-color: #94a3b8; }
+    .faq-item summary { cursor: pointer; padding: 16px 20px; font-size: 16px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--primary); font-weight: 400; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p { padding: 0 20px 16px; font-size: 14.5px; color: var(--text-light); }
+
     /* CTA */
     .cta { padding: 80px 24px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, #eff6ff 100%); }
     .cta h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
@@ -208,7 +279,7 @@
       .highlight .image .tablet { width: 80%; max-width: 300px; }
       .feature-grid { grid-template-columns: 1fr; }
       .section-title h2, .security h2, .cta h2 { font-size: 24px; }
-      .features, .highlight, .security, .cta { padding: 48px 16px; }
+      .features, .highlight, .security, .cta, .faq { padding: 48px 16px; }
       .security-grid { grid-template-columns: 1fr; }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
@@ -592,8 +663,8 @@
         </ul>
       </div>
       <div class="image">
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp3.png" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp3.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp3.png" alt="XuTerm 平板端 Mosh 移动 Shell" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp3.png" alt="XuTerm 移动网络下的 Mosh 会话" style="width:100%;border-radius:16px;"></div></div>
       </div>
     </div>
   </section>
@@ -679,6 +750,42 @@
           <h3>公开隐私政策</h3>
           <p>清晰透明的隐私政策，点击<a href="privacy-policy-zh.html" style="color:#60a5fa">查看</a>。</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="inner">
+      <h2>常见问题</h2>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>XuTerm 是什么？</summary>
+          <p>XuTerm 是一款免费、隐私优先的 SSH 与 Mosh 终端客户端，支持 Android 与 iOS。它提供适合手机的终端体验，具备原生 tmux 集成、SFTP 文件浏览与预览、trzsz 文件传输、TOTP 双重验证、服务器监控以及 20+ 内置运维工具。</p>
+        </details>
+        <details class="faq-item">
+          <summary>XuTerm 免费吗？</summary>
+          <p>完全免费——无广告、无订阅、无应用内购买。</p>
+        </details>
+        <details class="faq-item">
+          <summary>XuTerm 支持哪些平台？</summary>
+          <p>Android 版现已上架华为应用市场、APKPure、Uptodown、Appteka 与 GitHub Releases；iOS 版本正在开发中，敬请期待。</p>
+        </details>
+        <details class="faq-item">
+          <summary>XuTerm 支持 tmux 和 Mosh 吗？</summary>
+          <p>支持。XuTerm 原生集成 tmux——会话在网络切换和应用重启后依然保留；同时完整支持 Mosh，在移动网络不稳定时也能保持可靠连接。</p>
+        </details>
+        <details class="faq-item">
+          <summary>我的服务器数据安全吗？</summary>
+          <p>安全。所有敏感数据（密码、密钥、配置）均使用 AES-256 加密并仅存储在您的设备上。XuTerm 无任何统计埋点与追踪，凭据永远不会发送到任何服务器。</p>
+        </details>
+        <details class="faq-item">
+          <summary>如何快速导入服务器？</summary>
+          <p>可以手动添加主机，也可以扫描其他设备分享的二维码批量导入；快捷命令同样支持二维码分享与导入。</p>
+        </details>
+        <details class="faq-item">
+          <summary>在哪里可以下载 XuTerm？</summary>
+          <p>可从华为应用市场、APKPure、Uptodown、Appteka 或 GitHub Releases 下载，所有下载链接均可在官网获取。</p>
+        </details>
       </div>
     </div>
   </section>

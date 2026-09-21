@@ -30,6 +30,10 @@
     "description": "Free, privacy-first SSH & Mosh terminal client with native tmux integration, SFTP browser, trzsz file transfer, TOTP 2FA and server monitoring.",
     "url": "https://xuterm.vercel.app/",
     "image": "https://xuterm.vercel.app/assets/images/h9.png",
+    "screenshot": "https://xuterm.vercel.app/assets/images/h9.png",
+    "datePublished": "2026-06-08",
+    "dateModified": "2026-09-21",
+    "author": { "@type": "Organization", "name": "XuTerm", "url": "https://xuterm.vercel.app/" },
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "featureList": [
       "SSH & Mosh connections",
@@ -40,6 +44,60 @@
       "Server monitoring",
       "Port forwarding",
       "20+ DevOps tools"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "XuTerm",
+    "alternateName": "XuTerm SSH Terminal",
+    "url": "https://xuterm.vercel.app/",
+    "inLanguage": ["en", "zh-CN"],
+    "description": "Official website of XuTerm, a free privacy-first SSH & Mosh terminal client for Android & iOS."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is XuTerm?",
+        "acceptedAnswer": { "@type": "Answer", "text": "XuTerm is a free, privacy-first SSH and Mosh terminal client for Android and iOS. It provides a mobile-friendly terminal with native tmux integration, an SFTP file browser with preview, trzsz file transfer, TOTP two-factor authentication, server monitoring and 20+ built-in DevOps tools." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is XuTerm free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. XuTerm is completely free — no ads, no subscriptions, no in-app purchases." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which platforms does XuTerm support?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Android is available now on Huawei AppGallery, APKPure, Uptodown, Appteka and GitHub Releases. The iOS version is in development and coming soon." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does XuTerm support tmux and Mosh?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. XuTerm has native tmux integration — sessions survive network switches and app restarts — and full Mosh support for reliable connections over unstable mobile networks." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my server data safe with XuTerm?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. All sensitive data (passwords, keys, configs) is encrypted with AES-256 and stored only on your device. XuTerm has zero analytics and zero tracking; your credentials are never sent to any server." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I import my servers quickly?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can add hosts manually, or import them in bulk by scanning QR codes shared from another device. Quick commands can also be shared and imported via QR codes." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I download XuTerm?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can download XuTerm from Huawei AppGallery, APKPure, Uptodown, Appteka or GitHub Releases — all links are available on the official website." }
+      }
     ]
   }
   </script>
@@ -155,6 +213,19 @@
     .security-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
     .security-card p { font-size: 14px; color: #94a3b8; }
 
+    /* FAQ */
+    .faq { padding: 80px 24px; background: var(--bg); }
+    .faq .inner { max-width: 800px; margin: 0 auto; }
+    .faq h2 { text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 40px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { border: 1px solid var(--border); border-radius: 12px; background: var(--bg); transition: border-color .2s; }
+    .faq-item:hover { border-color: #94a3b8; }
+    .faq-item summary { cursor: pointer; padding: 16px 20px; font-size: 16px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--primary); font-weight: 400; }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-item p { padding: 0 20px 16px; font-size: 14.5px; color: var(--text-light); }
+
     /* CTA */
     .cta { padding: 80px 24px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, #eff6ff 100%); }
     .cta h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
@@ -208,7 +279,7 @@
       .highlight .image .tablet { width: 80%; max-width: 300px; }
       .feature-grid { grid-template-columns: 1fr; }
       .section-title h2, .security h2, .cta h2 { font-size: 24px; }
-      .features, .highlight, .security, .cta { padding: 48px 16px; }
+      .features, .highlight, .security, .cta, .faq { padding: 48px 16px; }
       .security-grid { grid-template-columns: 1fr; }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
@@ -459,8 +530,8 @@
       <img src="assets/images/h9.png" alt="XuTerm SSH terminal app overview with tmux, SFTP and server monitoring features">
     </div>
     <div class="hero-imgs">
-      <div class="device phone"><div class="placeholder"><img src="assets/images/sp1.png" style="width:100%;border-radius:16px;"></div></div>
-      <div class="device tablet"><div class="placeholder"><img src="assets/images/bp1.png" style="width:100%;border-radius:16px;"></div></div>
+      <div class="device phone"><div class="placeholder"><img src="assets/images/sp1.png" alt="XuTerm home screen with server list and quick actions" style="width:100%;border-radius:16px;"></div></div>
+      <div class="device tablet"><div class="placeholder"><img src="assets/images/bp1.png" alt="XuTerm tablet view of the server dashboard" style="width:100%;border-radius:16px;"></div></div>
     </div>
   </section>
 
@@ -573,8 +644,8 @@
         </ul>
       </div>
       <div class="image">
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp2.png" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp2.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp2.png" alt="XuTerm native tmux session on phone" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp2.png" alt="XuTerm native tmux integration on tablet" style="width:100%;border-radius:16px;"></div></div>
       </div>
     </div>
   </section>
@@ -592,8 +663,8 @@
         </ul>
       </div>
       <div class="image">
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp3.png" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp3.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp3.png" alt="XuTerm Mosh mobile shell on tablet" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp3.png" alt="XuTerm Mosh session over mobile network" style="width:100%;border-radius:16px;"></div></div>
       </div>
     </div>
   </section>
@@ -611,8 +682,8 @@
         </ul>
       </div>
       <div class="image">
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp4.png" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp4.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp4.png" alt="XuTerm multi-session and SFTP file transfer on phone" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp4.png" alt="XuTerm multi-session management and file transfer on tablet" style="width:100%;border-radius:16px;"></div></div>
       </div>
     </div>
   </section>
@@ -630,8 +701,8 @@
         </ul>
       </div>
       <div class="image">
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp5.png" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp5.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp5.png" alt="XuTerm quick commands editor on tablet" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp5.png" alt="XuTerm quick commands and shortcuts on phone" style="width:100%;border-radius:16px;"></div></div>
       </div>
     </div>
   </section>
@@ -648,8 +719,8 @@
         </ul>
       </div>
       <div class="image">
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp6.png" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp6.png" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device phone"><div class="placeholder"><img src="assets/images/sp6.png" alt="XuTerm data sync and backup on phone" style="width:100%;border-radius:16px;"></div></div>
+        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp6.png" alt="XuTerm data and sync settings on tablet" style="width:100%;border-radius:16px;"></div></div>
       </div>
     </div>
   </section>
@@ -679,6 +750,42 @@
           <h3>Open Privacy Policy</h3>
           <p>Clear, straightforward privacy policy. Read it <a href="privacy-policy-en.html" style="color:#60a5fa">here</a>.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="inner">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>What is XuTerm?</summary>
+          <p>XuTerm is a free, privacy-first SSH and Mosh terminal client for Android and iOS. It provides a mobile-friendly terminal with native tmux integration, an SFTP file browser with preview, trzsz file transfer, TOTP two-factor authentication, server monitoring and 20+ built-in DevOps tools.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is XuTerm free?</summary>
+          <p>Yes. XuTerm is completely free — no ads, no subscriptions, no in-app purchases.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which platforms does XuTerm support?</summary>
+          <p>Android is available now on Huawei AppGallery, APKPure, Uptodown, Appteka and GitHub Releases. The iOS version is in development and coming soon.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does XuTerm support tmux and Mosh?</summary>
+          <p>Yes. XuTerm has native tmux integration — sessions survive network switches and app restarts — and full Mosh support for reliable connections over unstable mobile networks.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is my server data safe with XuTerm?</summary>
+          <p>Yes. All sensitive data (passwords, keys, configs) is encrypted with AES-256 and stored only on your device. XuTerm has zero analytics and zero tracking; your credentials are never sent to any server.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I import my servers quickly?</summary>
+          <p>You can add hosts manually, or import them in bulk by scanning QR codes shared from another device. Quick commands can also be shared and imported via QR codes.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where can I download XuTerm?</summary>
+          <p>You can download XuTerm from Huawei AppGallery, APKPure, Uptodown, Appteka or GitHub Releases — all links are available on this page.</p>
+        </details>
       </div>
     </div>
   </section>
