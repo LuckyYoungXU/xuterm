@@ -28,9 +28,23 @@ Free, privacy-first SSH & Mosh terminal for Android, built for DevOps and system
 ### File Transfer
 - Native trzsz bidirectional file transfer with resume support
 
+### Visual Ops Dashboard
+- At-a-glance system summary: ring charts for CPU / memory / disk / swap, plus CPU model, load average and real-time network throughput
+- Modular visual management for disks, systemd services, processes, network, Docker containers, firewall, crontab, rsync, system logs
+- One-tap or pull-to-refresh to fetch the latest metrics
+- Slide gesture to terminate high-load processes directly from the dashboard
+- Enter straight from the host list, no terminal commands needed
+
 ### Server Monitoring
 - Real-time server resource status monitoring
 - Slide gesture to terminate high-load running processes
+
+### Batch Command Execution & Fleet Health Inspection (New in v1.0.29)
+- Run a command on multiple hosts at once, with multi-select by host group
+- Named task templates: save host selection together with command / inspection items, one-tap rerun anytime
+- One-tap fleet health inspection: OOM events, failed services, disk & inode usage, memory / swap, load average, exposed ports & SSH password auth, pending reboots, certificate expiry, recent error logs — per-host health cards with ✅ / ⚠️ / 🔴 verdicts
+- Result cards with one-tap copy / rerun / connect actions, status filter chips, and result export
+- Safety guards: exit confirmation while tasks are running, automatic retry on connection failure, per-item timeout protection
 
 ### Configuration Sync & Backup
 - QR-code cross-device configuration synchronization
@@ -55,6 +69,10 @@ Free, privacy-first SSH & Mosh terminal for Android, built for DevOps and system
 - TCP Port Test, check connectivity of single host port
 - CIDR Subnet Calculator, quickly calculate IP subnet, netmask and address range
 - Number base converter: Convert between decimal, hex and octal
+- Built‑in QR‑code utility for quick encode/decode operations.
+- Added ASCII tools for text conversion and formatting tasks.
+- Added regex tester 
+- JWT parser & validator
 
 ## 📊 Feature Comparison with mainstream Android SSH clients
 | Function | XuTerm | JuiceSSH | Termius |
@@ -69,12 +87,17 @@ Free, privacy-first SSH & Mosh terminal for Android, built for DevOps and system
 | Remote file hash calculation over SSH | ✅ | ❌ | ❌ |
 | Vertical color strip to separate input and output logs | ✅ | ❌ | ❌ |
 | Server monitoring + kill processes | ✅ | ❌ | ❌ |
+| Visual ops dashboard (CPU / memory / disk / swap rings, disks, services, processes, Docker, Firewall, crontab, rsync) | ✅ | ❌ | ⚠️ Subscription |
+| Batch command broadcast to multiple hosts | ✅ | ⚠️ Paid | ❌ |
+| One-tap multi-host health inspection with per-host report | ✅ | ❌ | ❌ |
+| Built-in DevOps toolkit (keygen, password, WHOIS, DNS, SSL check, encode/decode, CIDR, 15+ tools) | ✅ | ❌ | ❌ |
 | Encrypted config import/export with custom password | ✅ | ❌ | ⚠️ Subscription |
 | All sensitive data stored locally & encrypted | ✅ | Partial | Partial |
 | 100% free, all features unlocked, no ads, no subscriptions, no in-app purchases | ✅ | Partial IAP | Pure subscription |
 
 ## 📥 Official Download Channels
 - Official Website: https://xuterm.vercel.app
+- Google Play: https://play.google.com/store/apps/details?id=com.yongqing.xuterm
 - GitHub Releases: https://github.com/LuckyYoungXu/tools/releases/latest
 - Huawei AppGallery: https://appgallery.huawei.com/app/C118106679
 - APKPure: https://apkpure.com/p/com.yongqing.xuterm
@@ -82,14 +105,52 @@ Free, privacy-first SSH & Mosh terminal for Android, built for DevOps and system
 - Appteka: https://appteka.store/user/566539
 
 ### File SHA256 Checksum
+> v1.0.29: 137112021092CEB4C70363163617FE8F6338698ED241898BA807660B25F27F89
+
+<details>
+<summary>Checksums for older versions</summary>
+
+> v1.0.28: 218B9A01E3D8AEAE0A87D48603E76CF020CB4D58EAE3418DD645B14FF22E43F7
+
+> v1.0.27: A855572D0CE47B4A6F9DDE14DA2A5BAB00F487B9DEB69F45977EAF029D4D83A3
+
+> v1.0.26: F035D5B13E4365E18117AA3D7FEF532982EECED49EA44D939BC6BC9FB13B0D9C
+
+> v1.0.25: 7FBB29D885BB405A954469A7D0241E49976D916D221EBCFD046E1DC85B5ED4AA
+
+> v1.0.24: DA45F46223EAECD14580DA899862289855E18B660B30E14BF6004D0BA383F50F
+
+> v1.0.23: 5628EB319F096B8A8D887D19F5F02EFC8DD01B3B194AF7DBF343B75E2E397D7E
+
 > v1.0.22: 5E739CFEF45C7C37107EE1EE9DF4EB5A42FBA187BBF461E6919167604D8D82A3
 
 > v1.0.20: E93FE9AA41BA75BB29A9A6EA2CB150F803BDBA29D8BD0F6BBA7720A5B5E12D42
 
+</details>
+
 ### File SHA1 Checksum
+> v1.0.29: EAF997F1E423AC2B3B1ECAC69042EB3C47639373
+
+<details>
+<summary>Checksums for older versions</summary>
+
+> v1.0.28: 51BC709FF000C7365EDC1B2D1B8982A594460906
+
+> v1.0.27: 8BF8DEDB236B1B7F15E51404A84566417B97CE1E
+
+> v1.0.26: F9FA398F1E69E66AAF44821B9A0665445214CDDD
+
+> v1.0.25: B4DE881FAA71776F1ABFAC634D1E0BA6AB172A03
+
+> v1.0.24: 5D76A7BC15B10075E6AB770C40758FC4CA101664
+
+> v1.0.23: 1EBB2315FB4B5AC288F0B30D0366413F51451181
+
 > v1.0.22: 79AEB61599031CB7A4DF9228D03D389505EBAAF7
 
 > v1.0.20: 84265AA9A8F623980E834CDF3D44B7DC41489B13
+
+</details>
 
 ## 📍 Software Directory Listings
 - AlternativeTo: https://alternativeto.net/software/xuterm/
@@ -144,9 +205,23 @@ XuTerm 是面向 Android 的隐私优先 SSH & Mosh 终端，专为运维工程�
 ### 文件传输
 - 原生 trzsz 双向文件传输，支持断点续传
 
+### 可视化运维仪表盘
+- 系统摘要一目了然：CPU / 内存 / 磁盘 / Swap 环形进度图，CPU 型号、负载均值、实时网速
+- 模块化可视化管理：磁盘、系统服务、进程、网络、Docker 容器、防火墙、定时任务、rsync、系统日志
+- 一键或下拉刷新，随时获取最新指标
+- 仪表盘中滑动手势直接终止高负载进程
+- 主机列表一键进入，无需记忆任何终端命令
+
 ### 服务器状态监控
 - 实时查看服务器资源负载状态
 - 滑动手势直接终止高负载进程
+
+### 批量命令执行与健康巡检（v1.0.29 新增）
+- 一次向多台主机下发命令，支持按分组批量勾选主机
+- 命名任务模板：保存主机组合与命令/巡检项，随时一键重跑
+- 一键主机健康巡检：OOM 事件、异常服务、磁盘与 inode、内存/Swap、负载、公网端口与 SSH 密码认证、待重启、证书到期、近期错误日志，逐主机生成 ✅/⚠️/🔴 三色健康卡片
+- 结果卡片一键复制 / 重跑 / 连接，健康度筛选标签，支持导出结果
+- 安全防护：执行中退出需确认、连接失败自动重试、逐项超时保护
 
 ### 配置迁移与备份
 - 扫码跨设备同步主机配置
@@ -171,6 +246,10 @@ XuTerm 是面向 Android 的隐私优先 SSH & Mosh 终端，专为运维工程�
 - TCP 端口测试，检测单个主机端口连通性
 - CIDR 网段计算，快速计算 IP 网段、掩码、地址范围
 - 进制转换：十 / 十六 / 八进制数字互转
+- 内置二维码工具，支持快速编码与解码
+- ASCII 工具，用于文本转换与格式处理
+- 正则表达式测试工具
+- JWT 解析验签工具
 
 ## 📊 主流安卓SSH客户端功能对比
 | 功能 | XuTerm | JuiceSSH | Termius |
@@ -185,12 +264,17 @@ XuTerm 是面向 Android 的隐私优先 SSH & Mosh 终端，专为运维工程�
 | SSH远程计算文件哈希 | ✅ | ❌ | ❌ |
 | 竖向彩色条区分输入输出日志 | ✅ | ❌ | ❌ |
 | 服务器监控 + 结束高负载进程 | ✅ | ❌ | ❌ |
+| 可视化运维仪表盘（CPU/内存/磁盘/Swap环形图、磁盘、服务、进程、Docker、防火墙、定时任务与rsync） | ✅ | ❌ | ⚠️ 需要订阅 |
+| 多主机批量命令下发 | ✅ | ⚠️ 需要付费 | ❌ |
+| 一键多主机健康巡检报告 | ✅ | ❌ | ❌ |
+| 内置运维工具箱（密钥/密码生成、WHOIS、DNS、SSL检测、编解码、网段计算等15+工具） | ✅ | ❌ | ❌ |
 | 带自定义密码的加密配置导入导出 | ✅ | ❌ | ⚠️ 需要订阅 |
 | 全部敏感数据本地加密保存 | ✅ | 部分支持 | 部分支持 |
 | 完全免费，全部功能开放，无广告、无订阅、无内购 | ✅ | 部分内购 | 纯订阅制 |
 
 ## 📥 下载渠道
 - 官方网站：https://xuterm.vercel.app
+- Google Play：https://play.google.com/store/apps/details?id=com.yongqing.xuterm
 - GitHub发行版：https://github.com/LuckyYoungXu/tools/releases/latest
 - 华为应用市场：https://appgallery.huawei.com/app/C118106679
 - APKPure：https://apkpure.com/p/com.yongqing.xuterm
@@ -198,14 +282,52 @@ XuTerm 是面向 Android 的隐私优先 SSH & Mosh 终端，专为运维工程�
 - Appteka：https://appteka.store/user/566539
 
 ### 安装包 SHA256 校验
+> v1.0.29: 137112021092CEB4C70363163617FE8F6338698ED241898BA807660B25F27F89
+
+<details>
+<summary>历史版本校验值，点击展开</summary>
+
+> v1.0.28: 218B9A01E3D8AEAE0A87D48603E76CF020CB4D58EAE3418DD645B14FF22E43F7
+
+> v1.0.27: A855572D0CE47B4A6F9DDE14DA2A5BAB00F487B9DEB69F45977EAF029D4D83A3
+
+> v1.0.26: F035D5B13E4365E18117AA3D7FEF532982EECED49EA44D939BC6BC9FB13B0D9C
+
+> v1.0.25: 7FBB29D885BB405A954469A7D0241E49976D916D221EBCFD046E1DC85B5ED4AA
+
+> v1.0.24: DA45F46223EAECD14580DA899862289855E18B660B30E14BF6004D0BA383F50F
+
+> v1.0.23: 5628EB319F096B8A8D887D19F5F02EFC8DD01B3B194AF7DBF343B75E2E397D7E
+
 > v1.0.22: 5E739CFEF45C7C37107EE1EE9DF4EB5A42FBA187BBF461E6919167604D8D82A3
 
 > v1.0.20: E93FE9AA41BA75BB29A9A6EA2CB150F803BDBA29D8BD0F6BBA7720A5B5E12D42
 
+</details>
+
 ### 安装包 SHA1 校验
+> v1.0.29: EAF997F1E423AC2B3B1ECAC69042EB3C47639373
+
+<details>
+<summary>历史版本校验值，点击展开</summary>
+
+> v1.0.28: 51BC709FF000C7365EDC1B2D1B8982A594460906
+
+> v1.0.27: 8BF8DEDB236B1B7F15E51404A84566417B97CE1E
+
+> v1.0.26: F9FA398F1E69E66AAF44821B9A0665445214CDDD
+
+> v1.0.25: B4DE881FAA71776F1ABFAC634D1E0BA6AB172A03
+
+> v1.0.24: 5D76A7BC15B10075E6AB770C40758FC4CA101664
+
+> v1.0.23: 1EBB2315FB4B5AC288F0B30D0366413F51451181
+
 > v1.0.22: 79AEB61599031CB7A4DF9228D03D389505EBAAF7
 
 > v1.0.20: 84265AA9A8F623980E834CDF3D44B7DC41489B13
+
+</details>
 
 ## 📍 收录平台
 - AlternativeTo：https://alternativeto.net/software/xuterm/
