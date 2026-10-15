@@ -231,6 +231,19 @@
     .cta h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
     .cta p { color: var(--text-light); margin-bottom: 28px; font-size: 16px; }
 
+    /* More apps (sibling product entry) */
+    .more-apps { padding: 24px 24px 72px; text-align: center; background: var(--bg); }
+    .more-apps .sub { color: var(--text-light); font-size: 14px; margin: 0 0 16px; }
+    .more-apps .channel-item { text-align: left; }
+    .more-apps .channel-icon img { border-radius: 10px !important; }
+    .sibling-pill { display: inline-flex; align-items: center; gap: 10px; margin: 0 auto 24px; padding: 8px 18px 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 40px; font-size: 14px; color: var(--text-light); box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all .2s; }
+    .sibling-pill:hover { border-color: var(--primary); color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .sibling-pill img { width: 28px; height: 28px; border-radius: 8px; }
+    .sibling-pill strong { color: var(--text); font-weight: 700; }
+    .sibling-pill .arrow { color: var(--primary); font-weight: 700; margin-left: 2px; }
+    .sibling-pill .tag { flex: none; font-size: 11px; font-weight: 700; color: var(--primary); background: #eff6ff; padding: 2px 8px; border-radius: 999px; margin-right: 2px; }
+    @media (max-width: 640px) { .sibling-pill .desc { display: none; } .sibling-pill { padding: 7px 14px 7px 9px; } }
+
     /* Footer */
     footer { padding: 32px 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-light); font-size: 13px; }
     footer a { color: var(--text-light); }
@@ -309,6 +322,12 @@
   </nav>
 
   <section class="hero">
+    <a class="sibling-pill" href="https://xuturn.vercel.app/" target="_blank" rel="noopener">
+      <img src="assets/images/xuturn-icon.png" alt="XuTurn">
+      <span class="tag">From the same developer</span>
+      <span><strong>XuTurn</strong><span class="desc"> — Local file toolbox: image, PDF, ZIP, vault &amp; Wi-Fi transfer</span></span>
+      <span class="arrow">&rarr;</span>
+    </a>
     <h1>Powerful SSH Terminal<br>in Your <em>Pocket</em></h1>
     <p>XuTerm is a professional SSH terminal client for iOS &amp; Android. Manage servers, run commands, and stay connected — anywhere.</p>
     <div class="download-channels">
@@ -806,6 +825,27 @@
 	  <a href="https://xuterm.en.uptodown.com/android" class="btn btn-outline">Download from Uptodown</a>
       <a href="https://appteka.store/user/566539" class="btn btn-outline">Download from Appteka</a>
       <a href="https://github.com/LuckyYoungXU/tools/releases/latest" class="btn btn-outline">Download from GitHub</a>
+    </div>
+  </section>
+
+  <section class="more-apps">
+    <div class="download-channels">
+      <h3>More from Xu Apps</h3>
+      <p class="sub">Free tools by the same developer — privacy-first, no ads, no subscriptions.</p>
+      <div class="channel-list">
+        <div class="channel-item">
+          <div class="channel-info">
+            <div class="channel-icon" style="background:transparent"><img src="assets/images/xuturn-icon.png" alt="XuTurn" style="width:100%;height:100%;border-radius:10px"></div>
+            <div>
+              <div class="channel-name">XuTurn — Local File Toolbox</div>
+              <div class="channel-desc">Image editing &amp; compression, full PDF suite, ZIP, QR codes, AES-256 encrypted vault and Wi-Fi file transfer. Everything stays on your device.</div>
+            </div>
+          </div>
+          <div class="channel-action">
+            <a href="https://xuturn.vercel.app/" class="btn btn-outline">Visit Site</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
