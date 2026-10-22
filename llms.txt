@@ -1,0 +1,20 @@
+# XuTerm
+
+> XuTerm is a free, privacy-first SSH & Mosh terminal client for Android & iOS with native tmux integration, SFTP browser, trzsz file transfer, TOTP two-factor authentication, server monitoring and 20+ built-in DevOps tools. No ads, no subscriptions, no tracking.
+
+## Pages
+
+- [Home](https://xuterm.vercel.app/): Product overview, features and download links
+- [Home (Chinese)](https://xuterm.vercel.app/index-zh.html): Chinese product page
+- [User Guide](https://xuterm.vercel.app/user-guide.html): Setup and usage documentation
+- [User Guide (Chinese)](https://xuterm.vercel.app/user-guide-zh.html): Chinese documentation
+- [License](https://xuterm.vercel.app/license.html): Licensing terms
+- [License (Chinese)](https://xuterm.vercel.app/license-zh.html): Chinese licensing terms
+- [Privacy Policy (English)](https://xuterm.vercel.app/privacy-policy-en.html): Privacy policy
+- [Privacy Policy (Chinese)](https://xuterm.vercel.app/privacy-policy-zh.html): Chinese privacy policy
+- [Privacy Policy (Japanese)](https://xuterm.vercel.app/privacy-policy-ja.html): Japanese privacy policy
+- [Privacy Policy (Russian)](https://xuterm.vercel.app/privacy-policy-ru.html): Russian privacy policy
+
+## Download
+
+Official download channels, all listed on the home page: Google Play, Huawei AppGallery, APKPure, Uptodown, Appteka, itch.io and GitHub Releases.
