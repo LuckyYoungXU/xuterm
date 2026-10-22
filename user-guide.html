@@ -201,6 +201,17 @@
             <li><a href="#visual-firewall">Firewall Management</a></li>
             <li><a href="#visual-cron">crontab Jobs</a></li>
             <li><a href="#visual-rsync">Rsync Sync</a></li>
+            <li><a href="#visual-logs">System Log Viewer</a></li>
+          </ol>
+        </li>
+        <li><a href="#batch-commands">Batch Commands &amp; Inspection</a>
+          <ol>
+            <li><a href="#batch-entry">Opening the Batch Console</a></li>
+            <li><a href="#batch-custom">Custom Command Execution</a></li>
+            <li><a href="#batch-settings">Execution Settings &amp; Safety</a></li>
+            <li><a href="#batch-inspect">Host Inspection</a></li>
+            <li><a href="#batch-templates">Task Templates</a></li>
+            <li><a href="#batch-results">Results, Filtering &amp; Export</a></li>
           </ol>
         </li>
         <li><a href="#toolbox">Toolbox</a>
@@ -893,21 +904,81 @@
       <p>Save a configured job as a <strong>template</strong> and reload it — or "load & run" it — with one tap next time. Templates record the last run time and result summary (e.g. "last run 10:30 · 3/3 succeeded") and are bound to the host they were created on; on other hosts they are read-only.</p>
 
       <div class="warning">Mirror delete (--delete) combined with "sync directory contents" (a trailing slash on the source) will delete ALL extra files under the target directory. This is a high-risk operation — always dry-run first and review the deletion list carefully.</div>
+
+      <h3 id="visual-logs">13.11 System Log Viewer</h3>
+      <p>Analyze system logs visually — no need to type journalctl commands by hand:</p>
+      <ul>
+        <li><strong>Auto-detected sources</strong> — Automatically probes journalctl, syslog, dmesg and auth logs, using the first available source (sudo elevation supported when needed).</li>
+        <li><strong>Structured entries</strong> — Each log line is parsed into time, level, source and message fields for easy scanning.</li>
+        <li><strong>Filter &amp; search</strong> — Filter by level, search by keyword, or toggle "errors only" to focus on problems.</li>
+        <li><strong>Live follow</strong> — Streams new entries in real time like <code>tail -f</code>. Scrolling up pauses auto-scroll and shows a "+N new" badge; scroll back to the bottom (or tap the badge) to resume following.</li>
+      </ul>
     </div>
 
-    <!-- 14. Toolbox -->
+    <!-- 14. Batch Commands & Inspection -->
+    <div class="guide-section" id="batch-commands">
+      <h2>14. Batch Commands &amp; Inspection</h2>
+      <p>Run commands on many hosts at once and perform one-tap health inspections — ideal for routine fleet maintenance. Open it from the <strong>orange terminal icon</strong> in the host list toolbar.</p>
+
+      <h3 id="batch-entry">14.1 Opening the Batch Console</h3>
+      <p>On the host management screen, tap the orange terminal button in the top-right. The console has two tabs — <strong>Custom Command</strong> and <strong>Host Inspection</strong> — each with its own host selection, results, filters and run state, so work in one tab never interferes with the other.</p>
+
+      <h3 id="batch-custom">14.2 Custom Command Execution</h3>
+      <ol>
+        <li>Tap the host banner at the top and pick the target hosts.</li>
+        <li>Tap the command field to open the command dialog. Pick a preset from the built-in library (grouped into System Info, Disk, Memory, Load &amp; Process, Service, Network, Security) or type your own; quick symbols can be inserted at the cursor.</li>
+        <li>Tap <strong>Execute on N hosts</strong> — results stream in as each host finishes.</li>
+      </ol>
+      <ul>
+        <li><strong>Command snippets</strong> — Save frequently used commands as named snippets for one-tap reuse.</li>
+        <li><strong>Non-interactive execution</strong> — Commands run once over SSH exec, not in an interactive shell: shell aliases don't work (use full commands), and resident commands like <code>tail -f</code>, <code>watch</code> or <code>top</code> will hang until timeout — XuTerm detects these and warns first.</li>
+        <li><strong>Output handling</strong> — ANSI color codes are stripped, stdout and stderr are merged, and output is truncated (default 500 lines) so huge outputs can't bloat the result list.</li>
+      </ul>
+
+      <h3 id="batch-settings">14.3 Execution Settings &amp; Safety</h3>
+      <ul>
+        <li><strong>Timeout</strong> — Per-host command timeout (default 30 seconds).</li>
+        <li><strong>Parallelism</strong> — 1–16 concurrent hosts (default 4); the lowest level is strict serial. Very high values may trigger server rate limiting.</li>
+        <li><strong>Auto-retry on connection failure</strong> — Failed connections are retried once automatically to reduce "false failures" in bulk runs (can be disabled).</li>
+        <li><strong>Dangerous command confirmation</strong> — Destructive commands (reboot, shutdown, <code>rm -rf</code>, mkfs, dd, fdisk, etc.) pop up a confirmation listing the affected hosts before execution; the toggle can turn this off for trusted routines.</li>
+      </ul>
+
+      <h3 id="batch-inspect">14.4 Host Inspection</h3>
+      <p>The inspection tab runs a curated health-check script on the selected hosts and concludes each host's condition:</p>
+      <ul>
+        <li><strong>Faults</strong> — OOM killer events, failed systemd units.</li>
+        <li><strong>Capacity</strong> — Disk usage, inode usage, memory pressure, CPU load.</li>
+        <li><strong>Security</strong> — Publicly exposed ports, weak SSH auth configuration, pending system reboot.</li>
+        <li><strong>Signals</strong> — Certificate expiry, error log anomalies.</li>
+      </ul>
+      <p>Tick only the checks you need, then tap <strong>Start Inspection</strong>. Each host is concluded as Healthy / Warning / Critical; warnings and anomalies are listed right on the result card, and tapping detail opens the full health report. Results can be filtered by level — All / Healthy / Warning / Critical.</p>
+
+      <h3 id="batch-templates">14.5 Task Templates</h3>
+      <p>The current configuration — host set, command or inspection items, timeout and parallelism — can be saved as a named <strong>template</strong>. Templates are sorted by last use and support one-tap reload or re-run. Frequently used commands can alternatively be stored as command snippets (see 14.2).</p>
+
+      <h3 id="batch-results">14.6 Results, Filtering &amp; Export</h3>
+      <ul>
+        <li><strong>Six statuses</strong> — Waiting / Running / Success / Failed / Timeout / Cancelled; every card shows exit code, duration and output.</li>
+        <li><strong>Per-card actions</strong> — View full detail, copy output, redo on just that host, or jump straight into an SSH session.</li>
+        <li><strong>Filter &amp; search</strong> — Filter by status (command tab) or by health level (inspection tab); search across results with highlighted matches.</li>
+        <li><strong>Stopping</strong> — Tap Stop to cancel the remaining hosts; finished results are kept. Leaving mid-run asks for confirmation first.</li>
+        <li><strong>Export</strong> — Share all results or the current filter as a Markdown report via the system share sheet.</li>
+      </ul>
+    </div>
+
+    <!-- 15. Toolbox -->
     <div class="guide-section" id="toolbox">
-      <h2>14. Toolbox</h2>
+      <h2>15. Toolbox</h2>
       <p>The Toolbox provides 16 built-in ops tools, all running locally with no server connection required. Open it from the <strong>Toolbox</strong> tab in the bottom navigation bar; list and grid views are both supported.</p>
 
-      <h3 id="toolbox-security">14.1 Security Tools</h3>
+      <h3 id="toolbox-security">15.1 Security Tools</h3>
       <ul>
         <li><strong>RSA Key Generator</strong> — Generate SSH key pairs (RSA and Ed25519) with an optional name and passphrase. Copy the private key PEM, public key string, and fingerprint for direct use in host configuration.</li>
         <li><strong>Password Generator</strong> — Configure length, upper/lowercase letters, digits, and special characters; optionally exclude confusable characters (0/O, 1/l). Generate and copy a strong random password in one tap.</li>
         <li><strong>JWT Tool</strong> — Paste a JWT to decode its header and payload; verify the signature with a secret; or generate a new token signed with HS256.</li>
       </ul>
 
-      <h3 id="toolbox-network">14.2 Network Tools</h3>
+      <h3 id="toolbox-network">15.2 Network Tools</h3>
       <ul>
         <li><strong>DNS Resolver</strong> — Look up DNS records for a domain.</li>
         <li><strong>Whois</strong> — Query domain registration details (registrar, expiry, name servers, etc.).</li>
@@ -916,7 +987,7 @@
         <li><strong>CIDR Calculator</strong> — Enter an <code>IP/prefix</code> to compute the network address, broadcast address, subnet mask, wildcard mask, and usable host range, plus the IP class and whether it is private.</li>
       </ul>
 
-      <h3 id="toolbox-coding">14.3 Coding &amp; Dev Tools</h3>
+      <h3 id="toolbox-coding">15.3 Coding &amp; Dev Tools</h3>
       <ul>
         <li><strong>Base64 Codec</strong> — Encode and decode in standard Base64, URL-safe, hex, and Unicode modes.</li>
         <li><strong>JSON Formatter</strong> — Paste JSON to pretty-print or minify it; tolerantly fixes common format issues and pinpoints error positions.</li>
@@ -928,13 +999,13 @@
         <li><strong>QR Code</strong> — Decode QR codes via camera scan or image import.</li>
       </ul>
 
-      <h3 id="toolbox-history">14.4 Query History</h3>
+      <h3 id="toolbox-history">15.4 Query History</h3>
       <p>Query tools such as DNS, Whois, SSL, and Ping automatically record your queries: duplicates are merged and moved to the top, and tapping a history entry re-runs it instantly — no retyping needed.</p>
     </div>
 
     <!-- 15. Session Snapshots -->
     <div class="guide-section" id="session-snapshots">
-      <h2>15. Session Snapshots</h2>
+      <h2>16. Session Snapshots</h2>
       <p>Save and restore terminal session states for quick recovery:</p>
       <ol>
         <li>While connected, tap the <strong>Snapshot</strong> button in the terminal toolbar.</li>
@@ -953,7 +1024,7 @@
 
     <!-- 16. Multi-Session -->
     <div class="guide-section" id="multi-session">
-      <h2>16. Multi-Session Management</h2>
+      <h2>17. Multi-Session Management</h2>
       <p>XuTerm supports connecting to multiple servers simultaneously:</p>
       <ul>
         <li><strong>Connect to multiple hosts</strong> — Each connection opens a new terminal tab.</li>
@@ -966,9 +1037,9 @@
 
     <!-- 17. Settings -->
     <div class="guide-section" id="settings">
-      <h2>17. Settings</h2>
+      <h2>18. Settings</h2>
 
-      <h3 id="biometric">17.1 Biometric Lock</h3>
+      <h3 id="biometric">18.1 Biometric Lock</h3>
       <p>Protect XuTerm with biometric authentication:</p>
       <ol>
         <li>Go to Settings and toggle <strong>Biometric Unlock</strong>.</li>
@@ -976,7 +1047,7 @@
         <li>After enabling, you'll need to authenticate each time you open the app.</li>
       </ol>
 
-      <h3 id="terminal-settings">17.2 Terminal Settings</h3>
+      <h3 id="terminal-settings">18.2 Terminal Settings</h3>
       <p>Access via Settings &gt; Terminal. Configure:</p>
       <ul>
         <li><strong>Quick Commands</strong> — Manage your saved quick commands.</li>
@@ -985,7 +1056,7 @@
         <li><strong>tmux</strong> — Configure tmux integration behavior.</li>
       </ul>
 
-      <h3 id="font-settings">17.3 Font Settings</h3>
+      <h3 id="font-settings">18.3 Font Settings</h3>
       <p>Access via Settings &gt; Terminal Font. Configure:</p>
       <ul>
         <li><strong>Font Size</strong> — Default terminal font size (adjustable from 8 to 28).</li>
@@ -1000,7 +1071,7 @@
         </li>
       </ul>
 
-      <h3 id="color-bar">17.4 Color Bar</h3>
+      <h3 id="color-bar">18.4 Color Bar</h3>
       <p>The color bar is a vertical colored strip on the left side of the terminal that visually distinguishes user input from server output:</p>
       <ul>
         <li>Go to Settings &gt; Color Bar to configure.</li>
@@ -1010,7 +1081,7 @@
       </ul>
       <div class="tip">The color bar is especially useful when scrolling through long logs — it helps you quickly find where you entered a command and where the output begins.</div>
 
-      <h3 id="connection-settings">17.5 Connection Settings</h3>
+      <h3 id="connection-settings">18.5 Connection Settings</h3>
       <p>Access via Settings &gt; Connection. Configure:</p>
       <ul>
         <li><strong>Port Forwarding Auto-Start</strong> — Whether to automatically establish port forwarding rules when connecting.</li>
@@ -1019,10 +1090,10 @@
         <li><strong>trzsz Settings</strong> — Configure default upload/download directories for trzsz.</li>
       </ul>
 
-      <h3 id="monitor-settings">17.6 Monitor Settings</h3>
+      <h3 id="monitor-settings">18.6 Monitor Settings</h3>
       <p>Configure server monitoring refresh intervals (see <a href="#server-monitor">Server Monitoring</a>).</p>
 
-      <h3 id="theme">17.7 Theme &amp; Appearance</h3>
+      <h3 id="theme">18.7 Theme &amp; Appearance</h3>
       <p>Go to Settings and configure:</p>
       <ul>
         <li><strong>Theme Mode</strong> — Choose from:
@@ -1035,7 +1106,7 @@
         <li><strong>Screen Orientation Lock</strong> — Lock the screen orientation to prevent rotation.</li>
       </ul>
 
-      <h3 id="language">17.8 Language</h3>
+      <h3 id="language">18.8 Language</h3>
       <p>XuTerm supports multiple languages:</p>
       <ul>
         <li>Simplified Chinese</li>
@@ -1050,9 +1121,9 @@
 
     <!-- 18. Data Management -->
     <div class="guide-section" id="data-management">
-      <h2>18. Data Management</h2>
+      <h2>19. Data Management</h2>
 
-      <h3 id="export">18.1 Exporting Configuration</h3>
+      <h3 id="export">19.1 Exporting Configuration</h3>
       <p>Back up your XuTerm configuration to a file:</p>
       <ol>
         <li>Go to Settings &gt; Data Management &gt; Export.</li>
@@ -1070,7 +1141,7 @@
         <li>Tap <strong>Export</strong> to save the configuration file to your device.</li>
       </ol>
 
-      <h3 id="import">18.2 Importing Configuration</h3>
+      <h3 id="import">19.2 Importing Configuration</h3>
       <p>Restore a previously exported configuration:</p>
       <ol>
         <li>Go to Settings &gt; Data Management &gt; Import.</li>
@@ -1080,7 +1151,7 @@
         <li>Imported data is merged with existing data — duplicates are handled intelligently.</li>
       </ol>
 
-      <h3 id="icloud">18.3 iCloud Sync (iOS)</h3>
+      <h3 id="icloud">19.3 iCloud Sync (iOS)</h3>
       <p>On iOS devices, XuTerm supports iCloud sync to keep your configuration consistent across all your Apple devices:</p>
       <ol>
         <li>Go to Settings &gt; Data Management &gt; iCloud Sync.</li>
@@ -1092,7 +1163,7 @@
 
     <!-- 19. Security -->
     <div class="guide-section" id="security">
-      <h2>19. Security &amp; Privacy</h2>
+      <h2>20. Security &amp; Privacy</h2>
       <p>XuTerm is designed with security and privacy as top priorities:</p>
       <ul>
         <li><strong>AES-256 Encryption</strong> — All sensitive data (passwords, SSH keys, TOTP secrets) is encrypted with AES-256 before storage.</li>
