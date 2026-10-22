@@ -125,11 +125,10 @@
     nav .links a:hover { color: var(--primary); }
 
     /* Hero */
-    .hero { padding: 140px 24px 80px; text-align: center; background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 100%); }
+    .hero { padding: 100px 24px 64px; text-align: center; background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 100%); }
     .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
     .hero h1 em { font-style: normal; color: var(--primary); }
     .hero p { font-size: 18px; color: var(--text-light); max-width: 600px; margin: 0 auto 32px; }
-    .hero .buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
     .btn-primary { background: var(--primary); color: #fff; }
     .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
@@ -143,7 +142,7 @@
     .channel-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; transition: all .2s; }
     .channel-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
     .channel-item .channel-info { display: flex; align-items: center; gap: 12px; }
-    .channel-item .channel-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .channel-item .channel-icon { width: 36px; height: 36px; flex: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
     .channel-item .channel-icon.ios { background: transparent; }
     .channel-item .channel-icon.huawei { background: transparent; }
     .channel-item .channel-icon.apkpure { background: transparent; }
@@ -158,7 +157,7 @@
     .listed-badge svg { height: 22px; width: 22px; }
     .listed-badge .badge-text { font-weight: 600; color: var(--text); }
     .featured-section { max-width: 680px; margin: 36px auto 0; }
-    .featured-label { font-size: 13px; color: var(--text-light); margin-bottom: 16px; letter-spacing: .03em; }
+    .featured-label { text-align: center; font-size: 15px; font-weight: 700; color: var(--text); text-transform: uppercase; margin-bottom: 20px; letter-spacing: .06em; }
     .featured-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
     .featured-badges.secondary { margin-top: 10px; }
     .featured-badges .listed-badge { margin-top: 0; height: 44px; padding: 6px 16px; }
@@ -166,15 +165,34 @@
     .featured-badges .listed-badge svg.dbadge { height: 30px; width: auto; }
     .hero-banner { max-width: 900px; margin: 48px auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
     .hero-banner img { width: 100%; display: block; }
-    .hero-imgs { max-width: 900px; margin: 48px auto 0; display: flex; gap: 24px; justify-content: center; align-items: flex-end; }
-    .hero-imgs .device { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
-    .hero-imgs .phone { width: 220px; }
-    .hero-imgs .phone .placeholder { width: 100%; aspect-ratio: 9/19.5; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 13px; }
-    .hero-imgs .tablet { width: 440px; }
-    .hero-imgs .tablet .placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 13px; }
+    /* --- hero download + featured-on --- */
+    .store-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .store-btn { display: flex; align-items: center; gap: 12px; padding: 10px 20px; background: #0f172a; color: #fff; border-radius: 12px; text-decoration: none; border: none; cursor: pointer; min-width: 210px; transition: all .2s; text-align: left; font-family: inherit; }
+    .store-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(15,23,42,.28); }
+    .store-btn.soon { opacity: .65; }
+    .store-btn.soon:hover { transform: none; box-shadow: none; }
+    .store-btn small { display: block; font-size: 11px; font-weight: 500; opacity: .8; letter-spacing: .02em; }
+    .store-btn strong { display: block; font-size: 17px; font-weight: 700; line-height: 1.25; }
+    .channel-chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+    .channel-chip { display: flex; align-items: center; gap: 9px; padding: 8px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none; transition: all .2s; overflow: hidden; }
+    .channel-chip:hover { box-shadow: 0 4px 12px rgba(0,0,0,.08); border-color: #cbd5e1; }
+    .channel-chip .chip-icon { width: 24px; height: 24px; flex: none; display: flex; align-items: center; justify-content: center; }
+    .channel-chip .chip-icon img { width: 100%; height: 100%; border-radius: 6px; object-fit: contain; }
+    .featured-more { margin-top: 12px; text-align: center; }
+    .featured-more summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border: 1px dashed var(--border); border-radius: 999px; font-size: 13px; color: var(--text-light); user-select: none; }
+    .featured-more summary::-webkit-details-marker { display: none; }
+    .featured-more summary::after { content: '▾'; font-size: 11px; }
+    .featured-more[open] summary::after { content: '▴'; }
+    .featured-more summary:hover { color: var(--text); border-color: #cbd5e1; }
+    .featured-more .featured-badges.secondary { margin-top: 12px; }
+    .featured-on { padding: 48px 24px 24px; }
+    .featured-on .featured-section { margin: 0 auto; }
+    @media (max-width: 860px) {
+      .channel-chips { grid-template-columns: repeat(2, 1fr); }
+    }
 
     /* Features */
-    .features { padding: 80px 24px; background: var(--bg-alt); }
+    .features { padding: 64px 24px; background: var(--bg-alt); }
     .features .inner { max-width: 1120px; margin: 0 auto; }
     .section-title { text-align: center; margin-bottom: 48px; }
     .section-title h2 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
@@ -187,7 +205,7 @@
     .feature-card p { font-size: 14px; color: var(--text-light); }
 
     /* Highlight Sections */
-    .highlight { padding: 80px 24px; }
+    .highlight { padding: 64px 24px; }
     .highlight .inner { max-width: 1120px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
     .highlight.reverse { flex-direction: row-reverse; background: var(--bg-alt); }
     .highlight .text { flex: 1; }
@@ -204,7 +222,7 @@
     .highlight .image .tablet .placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 12px; }
 
     /* Security */
-    .security { padding: 80px 24px; background: #0f172a; color: #fff; }
+    .security { padding: 64px 24px; background: #0f172a; color: #fff; }
     .security .inner { max-width: 1120px; margin: 0 auto; text-align: center; }
     .security h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
     .security > .inner > p { color: #94a3b8; margin-bottom: 40px; font-size: 16px; }
@@ -215,7 +233,7 @@
     .security-card p { font-size: 14px; color: #94a3b8; }
 
     /* 常见问题 */
-    .faq { padding: 80px 24px; background: var(--bg); }
+    .faq { padding: 64px 24px 56px; background: var(--bg); }
     .faq .inner { max-width: 800px; margin: 0 auto; }
     .faq h2 { text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 40px; }
     .faq-list { display: flex; flex-direction: column; gap: 12px; }
@@ -228,15 +246,17 @@
     .faq-item p { padding: 0 20px 16px; font-size: 14.5px; color: var(--text-light); }
 
     /* CTA */
-    .cta { padding: 80px 24px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, #eff6ff 100%); }
+    .cta { padding: 56px 24px 80px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, #eff6ff 100%); }
     .cta h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
     .cta p { color: var(--text-light); margin-bottom: 28px; font-size: 16px; }
 
     /* 更多应用（兄弟产品入口） */
     .more-apps { padding: 24px 24px 72px; text-align: center; background: var(--bg); }
     .more-apps .sub { color: var(--text-light); font-size: 14px; margin: 0 0 16px; }
-    .more-apps .channel-item { text-align: left; }
-    .more-apps .channel-icon img { border-radius: 10px !important; }
+    .more-apps .channel-item { text-align: left; text-decoration: none; }
+    .more-apps .channel-item:hover { border-color: #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .more-apps .channel-action .btn { white-space: nowrap; }
+    .more-apps .channel-icon img { border-radius: 10px !important; object-fit: contain; }
     .sibling-pill { display: inline-flex; align-items: center; gap: 10px; margin: 0 auto 24px; padding: 8px 18px 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 40px; font-size: 14px; color: var(--text-light); box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all .2s; }
     .sibling-pill:hover { border-color: var(--primary); color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     .sibling-pill img { width: 28px; height: 28px; border-radius: 8px; }
@@ -268,7 +288,7 @@
       nav .links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); flex-direction: column; padding: 12px 24px; gap: 12px; }
       nav .links.open { display: flex; }
       nav .links .hide-mobile { display: block; }
-      .hero { padding: 110px 20px 60px; }
+      .hero { padding: 90px 20px 60px; }
       .hero h1 { font-size: 28px; }
       .hero p { font-size: 15px; }
       .download-channels { max-width: 100%; }
@@ -276,15 +296,10 @@
       .channel-item .channel-name { font-size: 13px; }
       .channel-item .channel-desc { font-size: 11px; }
       .channel-item .channel-action .btn { padding: 6px 14px; font-size: 12px; }
-      .hero .buttons { flex-direction: column; align-items: center; }
-      .hero .buttons .btn { width: 100%; max-width: 280px; justify-content: center; }
       .featured-badges .listed-badge { height: 38px; padding: 4px 14px; }
       .featured-badges .listed-badge img,
       .featured-badges .listed-badge svg.dbadge { height: 26px; }
       .hero-banner { margin: 32px auto 0; }
-      .hero-imgs { flex-direction: column; align-items: center; gap: 16px; }
-      .hero-imgs .phone { width: 160px; }
-      .hero-imgs .tablet { width: 90%; max-width: 360px; }
       .highlight .inner { flex-direction: column; gap: 32px; }
       .highlight.reverse .inner { flex-direction: column; }
       .highlight .text h2 { font-size: 22px; }
@@ -297,8 +312,6 @@
       .security-grid { grid-template-columns: 1fr; }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
-      .hero-imgs .phone { width: 180px; }
-      .hero-imgs .tablet { width: 360px; }
       .highlight .image .phone { width: 150px; }
       .highlight .image .tablet { width: 260px; }
     }
@@ -333,255 +346,27 @@
     <p>XuTerm 是一款面向 iOS 和 Android 的专业 SSH 终端客户端，随时随地管理服务器、执行命令、保持连接。</p>
     <div class="download-channels">
       <h3>下载 XuTerm</h3>
-      <div class="channel-list">
-        <div class="channel-item">
-          <div class="channel-info">
-            <div class="channel-icon ios"><img src="assets/images/apple.png" alt="Apple" style="width:100%;height:100%;border-radius:8px"></div>
-            <div>
-              <div class="channel-name">App Store</div>
-              <div class="channel-desc">iOS — 即将上线，敬请期待</div>
-            </div>
-          </div>
-          <div class="channel-action">
-            <button class="btn btn-disabled" onclick="event.preventDefault();document.getElementById('iosModal').classList.add('active')">即将上线</button>
-          </div>
-        </div>
-        <div class="channel-item">
-          <div class="channel-info">
-            <div class="channel-icon" style="background:transparent"><svg viewBox="0 0 512 512" width="36" height="36"><path fill="#00C4FF" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00E676" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#FFD500" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#FF3A44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg></div>
-            <div>
-              <div class="channel-name">Google Play</div>
-              <div class="channel-desc">Android — 官方 Google Play 商店</div>
-            </div>
-          </div>
-          <div class="channel-action">
-            <a href="https://play.google.com/store/apps/details?id=com.yongqing.xuterm" class="btn btn-outline">下载</a>
-          </div>
-        </div>
-        <div class="channel-item">
-          <div class="channel-info">
-            <div class="channel-icon huawei"><img src="assets/images/huawei.png" alt="Huawei" style="width:100%;height:100%;border-radius:8px"></div>
-            <div>
-              <div class="channel-name">华为应用市场</div>
-              <div class="channel-desc">Android — 华为设备</div>
-            </div>
-          </div>
-          <div class="channel-action">
-            <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">下载</a>
-          </div>
-        </div>
-        <div class="channel-item">
-          <div class="channel-info">
-            <div class="channel-icon apkpure"><img src="assets/images/apkpure.png" alt="APKPure" style="width:100%;height:100%;border-radius:8px"></div>
-            <div>
-              <div class="channel-name">APKPure</div>
-              <div class="channel-desc">Android — 第三方应用商店</div>
-            </div>
-          </div>
-          <div class="channel-action">
-            <a href="https://apkpure.com/p/com.yongqing.xuterm" class="btn btn-outline">下载</a>
-          </div>
-        </div>
-		<div class="channel-item">
-		  <div class="channel-info">
-            <div class="channel-icon apkpure"><img src="assets/images/uptodown.png" alt="Uptodown" style="width:100%;height:100%;border-radius:8px"></div>
-            <div>
-              <div class="channel-name">Uptodown</div>
-              <div class="channel-desc">Android — 第三方应用商店</div>
-            </div>
-          </div>
-          <div class="channel-action">
-            <a href="https://xuterm.cn.uptodown.com/android" class="btn btn-outline">下载</a>
-		  </div>
-		</div>
-        <div class="channel-item">
-          <div class="channel-info">
-            <div class="channel-icon appteka"><svg viewBox="0 0 260 260" fill="#E5FFE5" width="20" height="20"><path d="M23.9276 120.32L120.32 23.9276C152.36 -7.97588 204.032 -7.97588 236.072 23.9276C267.976 55.8311 267.976 107.64 236.072 139.68L139.68 236.072C107.64 267.976 55.8311 267.976 23.9276 236.072C-7.97588 204.032 -7.97588 152.36 23.9276 120.32ZM43.2879 139.68C28.9722 153.859 24.2003 174.174 29.1085 192.307L110.776 110.776L168.584 168.584L216.712 120.32C238.117 99.0509 238.117 64.5569 216.712 43.2879C195.443 21.8825 160.949 21.8825 139.68 43.2879L43.2879 139.68Z"></path></svg></div>
-            <div>
-              <div class="channel-name">Appteka.store</div>
-              <div class="channel-desc">Android — 第三方应用商店</div>
-            </div>
-          </div>
-          <div class="channel-action">
-            <a href="https://appteka.store/user/566539" class="btn btn-outline">下载</a>
-          </div>
-        </div>
-        <div class="channel-item">
-          <div class="channel-info">
-            <div class="channel-icon itch"><img src="assets/images/itch.svg" alt="itch.io" style="width:100%;height:100%;border-radius:8px"></div>
-            <div>
-              <div class="channel-name">itch.io</div>
-              <div class="channel-desc">Android — itch.io 商店</div>
-            </div>
-          </div>
-          <div class="channel-action">
-            <a href="https://xuterm.itch.io/xuterm" class="btn btn-outline">下载</a>
-          </div>
-        </div>
-        <div class="channel-item">
-          <div class="channel-info">
-            <div class="channel-icon" style="background:transparent"><svg viewBox="0 0 16 16" width="28" height="28"><path fill="#24292f" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></div>
-            <div>
-              <div class="channel-name">GitHub Releases</div>
-              <div class="channel-desc">Android — APK 直接下载</div>
-            </div>
-          </div>
-          <div class="channel-action">
-            <a href="https://github.com/LuckyYoungXU/tools/releases/latest" class="btn btn-outline">下载</a>
-          </div>
-        </div>
+            <div class="store-buttons">
+        <button type="button" class="store-btn soon" onclick="document.getElementById('iosModal').classList.add('active')">
+          <svg viewBox="0 0 384 512" width="26" height="26" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          <span><small>即将上线</small><strong>App Store</strong></span>
+        </button>
+        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.yongqing.xuterm">
+          <svg viewBox="0 0 512 512" width="28" height="28" aria-hidden="true"><path fill="#00C4FF" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00E676" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#FFD500" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#FF3A44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+          <span><small>前往下载</small><strong>Google Play</strong></span>
+        </a>
       </div>
-    </div>
-    <div class="featured-section">
-      <p class="featured-label">收录平台</p>
-      <div class="featured-badges">
-    <a href="https://alternativeto.net/software/xuterm/" target="_blank" rel="noopener noreferrer" class="listed-badge">
-      <svg viewBox="0 0 500 500"><path fill="#0CB4D0" d="M250,8.66c133.29,0,241.34,108.05,241.34,241.34s-108.05,241.34-241.34,241.34S8.66,383.28,8.66,250,116.71,8.66,250,8.66M250,0C112.15,0,0,112.15,0,250s112.15,250,250,250,250-112.15,250-250S387.84,0,250,0Z"/><path fill="#0CB4D0" d="M385.6,377.84c-.39.08-.77.17-1.16.25.71,2.47,1.37,4.82,1.96,7.19,1.4,5.64,2.81,11.28,4.21,16.91,9.54-8.85,18.25-18.57,26.01-29.04-6.35.75-12.86,1.53-19.23,2.43-3.92.55-7.75,1.38-11.8,2.26h0Z"/><path fill="#0CB4D0" d="M405,288.35c-78.81-12.75-161.7,12.77-228.94,53.36-15.77,9.52-33.12,18.95-44.36,34-7.65,10.28-11.68,22.52-14.14,35,6.45,5.28,13.23,10.18,20.31,14.67.01-.69.02-1.38.04-2.07.27-8.54,1.34-17.22,4.77-25.12,3.8-8.75,9.96-14.14,17.56-19.54,15.75-11.21,33.3-20.14,50.25-29.01,1.16-.61,2.81-.6,4.22-.88.32,1.28.99,2.59.9,3.85-.43,5.88-.3,11.81-.16,17.71.46,21.16,1.84,42.32,3.27,63.47.49,7.29,1,14.58,1.5,21.85,9.48,1.32,19.15,2.02,28.99,2.02,47.79,0,91.82-16.12,126.94-43.21-2.94-10.22-5.89-20.43-8.85-30.64-.12-.44-.27-.87-.43-1.3-.45.1-.9.21-1.33.34-25.77,7.16-51.97,17.21-80.11,30.75-.24.12-.49.25-.74.38-1.23.65-2.91,1.54-4.94,1.55h-.04c-2.47,0-5.79-1.37-7.08-3.94-1.33-2.67-.35-6.37,1.33-8.29,1.37-1.57,3.16-2.52,4.59-3.29l.79-.43c25.08-14.05,51.75-25.24,79.26-33.27.75-.22,1.5-.45,2.25-.68-.48-1.23-.97-2.47-1.45-3.73-2.1-5.43-4.28-11.04-6.68-16.45-3.08-6.93-6.59-13.87-9.99-20.58l-1.75-3.47c-1.13-2.24-2.28-5.18-1.14-8.09.5-1.28,1.65-3.01,4.27-3.99,3.64-1.35,9.07,1.35,10.65,4.46,8.63,17,16.03,32.19,22.63,46.44.29.62.49.98.62,1.17.19-.02.51-.06.97-.16,16.55-3.77,32.97-5.37,48.79-4.77,7.55-12.57,13.73-25.91,18.46-39.79-11.35-14.57-24.88-25.64-41.25-28.3h0Z"/><path fill="#0CB4D0" d="M455.59,229.46c-.46-4.53-1.19-9.03-2.04-13.52-.63-3.33-1.32-6.65-2.01-9.96-.74-3.57-1.38-7.17-2.26-10.71-1.25-5.12-2.71-10.19-4.38-15.19-1.64-4.93-3.49-9.78-5.53-14.57-2.02-4.72-4.22-9.36-6.61-13.9-2.37-4.51-4.92-8.92-7.62-13.22-2.7-4.28-5.56-8.45-8.58-12.5-3.01-4.04-6.17-7.96-9.48-11.76-3.3-3.79-6.74-7.45-10.31-10.98-3.56-3.52-7.26-6.92-11.07-10.17-3.81-3.26-7.75-6.36-11.78-9.33-4.04-2.97-8.18-5.79-12.42-8.47-4.24-2.68-8.58-5.20-13-7.56-4.43-2.37-8.94-4.58-13.52-6.64-9.18-4.12-18.65-7.58-28.32-10.37-9.71-2.8-19.61-4.89-29.62-6.28-5.03-.69-10.08-1.21-15.14-1.54-5.09-.33-10.18-.47-15.28-.43-5.12.05-10.25.29-15.35.71-5.14.44-10.27,1.06-15.36,1.89-10.35,1.68-20.55,4.16-30.51,7.42-5.08,1.66-10.09,3.52-15.01,5.59-5.02,2.1-9.94,4.39-14.77,6.88-2.28,1.17-4.52,2.42-6.77,3.64-59.26,34.17-98.24,95-104.51,163.13-1.04,19.63.34,39.3,4.04,58.6h-.03s3.98,23.43,6.22,27.81c10.96,41.42,30.06,77.99,55.15,71.21,1.84-.55,2.88-2.48,2.33-4.32-.05-.15-.1-.31-.17-.45-4.43-1.27-8.29-4.04-10.91-7.84-13.87-23.27,56.73-73.11,153.16-109.78,88.57-33.73,168.56-44.67,186.77-26.77,3.6,2.95,5,7.84,3.49,12.25-3.5,11.59-10.25,21.94-19.45,29.8-.76.73-1.2,1.74-1.2,2.79s.43,2.07,1.19,2.8c1.38,1.39,3.59,1.49,5.1.24,11.39-9.03,19.87-21.22,24.37-35.04.58-1.78.7-3.89.94-5.75.24-1.96.42-3.93.52-5.9.2-3.93.11-7.89-.29-11.83h0ZM130.28,305.59c-11.8,8.37-32.37,23.36-40.98,40.1-3.36,6.45-6.5,1.43-8.46-2.24-4.62-10.21-8.39-20.78-11.27-31.61-.01-.02-.02-.05-.03-.07-1.38-5.03-5.87-21.66-6.31-26.6.01-.01.02-.03.03-.03-3.56-18.08-4.87-36.54-3.9-54.95,5.86-62.88,41.87-119,96.56-150.56,4.94-2.76,9.9-5.27,14.9-7.55,4.9-2.23,24.81-9.65,5.11,7.81-32.6,29.59-52.88,70.36-56.81,114.21-1.91,22.42,4.6,64.4,16.1,95.21,3.62,9.65.66,12.34-4.95,16.29h0ZM363.74,202.09c-1.4,2.15-3.63,3.61-6.16,4.02-22.25,3.09-44.15,8.29-65.42,15.52-2.48.75-5.17.42-7.4-.93-2.22-1.35-3.76-3.58-4.23-6.14l-1.68-7.68c-.41-1.94.57-3.91,2.37-4.74,24.87-9.94,51.13-16,77.84-17.97,1.99-.1,3.75,1.29,4.12,3.26l1.75,7.39c.64,2.48.21,5.12-1.19,7.26ZM406.09,163.01c-.58,1.55-2.18,2.47-3.82,2.2-61.41-9.13-147.26,22.36-147.26,22.36-29.7,9.65-58.05,23.04-84.37,39.83-4.73,3.11-11.09,1.79-14.2-2.95-.74-1.13-1.25-2.39-1.5-3.71-1.48-7.84-2.38-15.77-2.73-23.73-1.71-21.62,2.42-43.3,11.97-62.77.58-1.08,1.16-2.16,1.82-3.2.08-.27.21-.53.38-.76l.3-.54.74-1.25.36-.55c29.76-48.75,96.58-68.19,149.92-52.31,26.73,8.2,50.75,23.48,69.49,44.23,2.93,3.44,22.71,30.94,18.9,43.15h0Z"/><path fill="#0CB4D0" d="M374.15,129.69l-.05.11c-9.14-15.58-23.07-27.79-39.72-34.8-18.57-7.82-38.78-10.89-58.84-8.95-7.13.56-14.13,2.11-20.83,4.58-1.34.39-2.19,1.69-2.02,3.07.18,1.38,1.34,2.42,2.74,2.45,15.11-1.6,30.35-1.19,45.36,1.21,55.24,11.04,72.92,37.62,74.86,38.67.55.27,1.21-.27.94-.82-.72-1.88-1.54-3.73-2.44-5.53h0Z"/></svg>
-      <span class="badge-text">AlternativeTo</span>
-    </a>
-    <a href="https://www.producthunt.com/posts/xuterm/" target="_blank" rel="noopener noreferrer" class="listed-badge">
-      <svg viewBox="0 0 40 40"><path fill="#FF6154" d="M40 20c0 11.046-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0s20 8.954 20 20"/><path fill="#fff" d="M24 12h-8v16h4v-5h4a5.5 5.5 0 1 0 0-11zm0 7.5h-4V14h4a2.75 2.75 0 0 1 0 5.5z"/></svg>
-      <span class="badge-text">Product Hunt</span>
-    </a>
-    <a href="https://www.saashub.com/u/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-      <img src="assets/images/saashub.png" alt="Saashub">
-    </a>
-      </div>
-      <div class="featured-badges secondary">
-	<a href="https://lookingfortools.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">LookingFor Tools</text></svg>
-	</a>
-	<a href="https://smolspot.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Spot</text></svg>
-	</a>
-	<a href="https://smollaunchpad.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol LaunchPad</text></svg>
-	</a>
-	<a href="https://smolbest.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Best</text></svg>
-	</a>
-	<a href="https://smolstartup.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Startup</text></svg>
-	</a>
-	<a href="https://smolsaas.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol SaaS</text></svg>
-	</a>
-	<a href="https://tinyhunt.dev/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">TinyHunt</text></svg>
-	</a>
-	<a href="https://shipthing.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">ShipThing</text></svg>
-	</a>
-	<a href="https://smollist.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol List</text></svg>
-	</a>
-	<a href="https://smolrank.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Rank</text></svg>
-	</a>
-	<a href="https://launchzone.co/p/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">LaunchZone</text></svg>
-	</a>
-	<a href="https://supalaun.ch/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Supa Launch</text></svg>
-	</a>
-	<a href="https://smolshow.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Show</text></svg>
-	</a>
-	<a href="https://newtool.site/item/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">NewTool Site</text></svg>
-	</a>
-	<a href="https://smolfind.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Find</text></svg>
-	</a>
-	<a href="https://smoltop.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Top</text></svg>
-	</a>
-	<a href="https://findtoolfor.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">FindToolFor</text></svg>
-	</a>
-	<a href="https://theresatoolfor.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">TheresaTool</text></svg>
-	</a>
-	<a href="https://smolhunt.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Hunt</text></svg>
-	</a>
-	<a href="https://microhunts.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Micro Hunts</text></svg>
-	</a>
-	<a href="https://launchranking.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Ranking</text></svg>
-	</a>
-	<a href="https://devlanz.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Dev Lanz</text></svg>
-	</a>
-	<a href="https://discovernewtools.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Discover</text></svg>
-	</a>
-	<a href="https://saashunt.best/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Saas Hunt</text></svg>
-	</a>
-	<a href="https://golanz.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">G</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Go Lanz</text></svg>
-	</a>
-	<a href="https://buildfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">B</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Build Finds</text></svg>
-	</a>
-	<a href="https://disvera.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Disvera</text></svg>
-	</a>
-	<a href="https://indiepocket.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">P</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Indie Pocket</text></svg>
-	</a>
-	<a href="https://launchfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch Finds</text></svg>
-	</a>
-	<a href="https://makerpocket.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">M</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Maker Pocket</text></svg>
-	</a>
-	<a href="https://startupfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Startup Finds</text></svg>
-	</a>
-	<a href="https://indiescroll.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">I</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Indie Scroll</text></svg>
-	</a>
-	<a href="https://spotbuilds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">B</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Spot Builds</text></svg>
-	</a>
-	<a href="https://launchfeeds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">F</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch Feeds</text></svg>
-	</a>
-	<a href="https://findscove.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">F</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Finds Cove</text></svg>
-	</a>
-	<a href="https://apptooling.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">App Tooling</text></svg>
-	</a>
-	<a href="https://startupscrolls.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">StartupScrolls</text></svg>
-	</a>
-	<a href="https://linksalad.me/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Link Salad</text></svg>
-	</a>
-	<a href="https://1000tools.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000 Tools</text></svg>
-	</a>
-	<a href="https://1000ai.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000AI Best</text></svg>
-	</a>
-	<a href="https://1000saas.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000SaaS Best</text></svg>
-	</a>
-	<a href="https://launch01.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch01</text></svg>
-	</a>
+      <div class="channel-chips">
+        <a class="channel-chip" href="https://appgallery.huawei.com/app/C118106679"><span class="chip-icon"><img src="assets/images/huawei.png" alt="Huawei"></span><span>华为应用市场</span></a>
+        <a class="channel-chip" href="https://apkpure.com/p/com.yongqing.xuterm"><span class="chip-icon"><img src="assets/images/apkpure.png" alt="APKPure"></span><span>APKPure</span></a>
+        <a class="channel-chip" href="https://xuterm.en.uptodown.com/android"><span class="chip-icon"><img src="assets/images/uptodown.png" alt="Uptodown"></span><span>Uptodown</span></a>
+        <a class="channel-chip" href="https://appteka.store/user/566539"><span class="chip-icon"><svg viewBox="0 0 260 260" width="24" height="24" fill="#16a34a"><path d="M23.9276 120.32L120.32 23.9276C152.36 -7.97588 204.032 -7.97588 236.072 23.9276C267.976 55.8311 267.976 107.64 236.072 139.68L139.68 236.072C107.64 267.976 55.8311 267.976 23.9276 236.072C-7.97588 204.032 -7.97588 152.36 23.9276 120.32ZM43.2879 139.68C28.9722 153.859 24.2003 174.174 29.1085 192.307L110.776 110.776L168.584 168.584L216.712 120.32C238.117 99.0509 238.117 64.5569 216.712 43.2879C195.443 21.8825 160.949 21.8825 139.68 43.2879L43.2879 139.68Z"/></svg></span><span>Appteka.store</span></a>
+        <a class="channel-chip" href="https://xuterm.itch.io/xuterm"><span class="chip-icon"><img src="assets/images/itch.svg" alt="itch.io"></span><span>itch.io</span></a>
+        <a class="channel-chip" href="https://github.com/LuckyYoungXU/tools/releases/latest"><span class="chip-icon"><svg viewBox="0 0 16 16" width="24" height="24" fill="#24292f"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></span><span>GitHub Releases</span></a>
       </div>
     </div>
     <div class="hero-banner">
       <img src="assets/images/h9.png" alt="XuTerm SSH 终端应用总览，含 tmux、SFTP 与服务器监控功能">
-    </div>
-    <div class="hero-imgs">
-      <div class="device phone"><div class="placeholder"><img src="assets/images/sp1-zh.png" style="width:100%;border-radius:16px;"></div></div>
-      <div class="device tablet"><div class="placeholder"><img src="assets/images/bp1-zh.png" style="width:100%;border-radius:16px;"></div></div>
     </div>
   </section>
 
@@ -848,13 +633,168 @@
   <section class="cta">
     <h2>准备就绪？</h2>
     <p>下载 XuTerm，随时随地掌控你的服务器。</p>
-    <div class="buttons">
-      <a href="https://play.google.com/store/apps/details?id=com.yongqing.xuterm" class="btn btn-primary">Google Play 下载</a>
-      <a href="https://appgallery.huawei.com/app/C118106679" class="btn btn-outline">华为应用市场下载</a>
-      <a href="https://apkpure.com/p/com.yongqing.xuterm" class="btn btn-outline">APKPure 下载</a>
-	  <a href="https://xuterm.en.uptodown.com/android" class="btn btn-outline">Uptodown 下载</a>
-      <a href="https://appteka.store/user/566539" class="btn btn-outline">Appteka 下载</a>
-      <a href="https://github.com/LuckyYoungXU/tools/releases/latest" class="btn btn-outline">GitHub 下载</a>
+    <div class="store-buttons">
+      <button type="button" class="store-btn soon" onclick="document.getElementById('iosModal').classList.add('active')">
+        <svg viewBox="0 0 384 512" width="26" height="26" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        <span><small>即将上线</small><strong>App Store</strong></span>
+      </button>
+      <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.yongqing.xuterm">
+        <svg viewBox="0 0 512 512" width="28" height="28" aria-hidden="true"><path fill="#00C4FF" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00E676" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#FFD500" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#FF3A44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+        <span><small>前往下载</small><strong>Google Play</strong></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="featured-on">
+<div class="featured-section">
+      <p class="featured-label">收录平台</p>
+      <div class="featured-badges">
+    <a href="https://alternativeto.net/software/xuterm/" target="_blank" rel="noopener noreferrer" class="listed-badge">
+      <svg viewBox="0 0 500 500"><path fill="#0CB4D0" d="M250,8.66c133.29,0,241.34,108.05,241.34,241.34s-108.05,241.34-241.34,241.34S8.66,383.28,8.66,250,116.71,8.66,250,8.66M250,0C112.15,0,0,112.15,0,250s112.15,250,250,250,250-112.15,250-250S387.84,0,250,0Z"/><path fill="#0CB4D0" d="M385.6,377.84c-.39.08-.77.17-1.16.25.71,2.47,1.37,4.82,1.96,7.19,1.4,5.64,2.81,11.28,4.21,16.91,9.54-8.85,18.25-18.57,26.01-29.04-6.35.75-12.86,1.53-19.23,2.43-3.92.55-7.75,1.38-11.8,2.26h0Z"/><path fill="#0CB4D0" d="M405,288.35c-78.81-12.75-161.7,12.77-228.94,53.36-15.77,9.52-33.12,18.95-44.36,34-7.65,10.28-11.68,22.52-14.14,35,6.45,5.28,13.23,10.18,20.31,14.67.01-.69.02-1.38.04-2.07.27-8.54,1.34-17.22,4.77-25.12,3.8-8.75,9.96-14.14,17.56-19.54,15.75-11.21,33.3-20.14,50.25-29.01,1.16-.61,2.81-.6,4.22-.88.32,1.28.99,2.59.9,3.85-.43,5.88-.3,11.81-.16,17.71.46,21.16,1.84,42.32,3.27,63.47.49,7.29,1,14.58,1.5,21.85,9.48,1.32,19.15,2.02,28.99,2.02,47.79,0,91.82-16.12,126.94-43.21-2.94-10.22-5.89-20.43-8.85-30.64-.12-.44-.27-.87-.43-1.3-.45.1-.9.21-1.33.34-25.77,7.16-51.97,17.21-80.11,30.75-.24.12-.49.25-.74.38-1.23.65-2.91,1.54-4.94,1.55h-.04c-2.47,0-5.79-1.37-7.08-3.94-1.33-2.67-.35-6.37,1.33-8.29,1.37-1.57,3.16-2.52,4.59-3.29l.79-.43c25.08-14.05,51.75-25.24,79.26-33.27.75-.22,1.5-.45,2.25-.68-.48-1.23-.97-2.47-1.45-3.73-2.1-5.43-4.28-11.04-6.68-16.45-3.08-6.93-6.59-13.87-9.99-20.58l-1.75-3.47c-1.13-2.24-2.28-5.18-1.14-8.09.5-1.28,1.65-3.01,4.27-3.99,3.64-1.35,9.07,1.35,10.65,4.46,8.63,17,16.03,32.19,22.63,46.44.29.62.49.98.62,1.17.19-.02.51-.06.97-.16,16.55-3.77,32.97-5.37,48.79-4.77,7.55-12.57,13.73-25.91,18.46-39.79-11.35-14.57-24.88-25.64-41.25-28.3h0Z"/><path fill="#0CB4D0" d="M455.59,229.46c-.46-4.53-1.19-9.03-2.04-13.52-.63-3.33-1.32-6.65-2.01-9.96-.74-3.57-1.38-7.17-2.26-10.71-1.25-5.12-2.71-10.19-4.38-15.19-1.64-4.93-3.49-9.78-5.53-14.57-2.02-4.72-4.22-9.36-6.61-13.9-2.37-4.51-4.92-8.92-7.62-13.22-2.7-4.28-5.56-8.45-8.58-12.5-3.01-4.04-6.17-7.96-9.48-11.76-3.3-3.79-6.74-7.45-10.31-10.98-3.56-3.52-7.26-6.92-11.07-10.17-3.81-3.26-7.75-6.36-11.78-9.33-4.04-2.97-8.18-5.79-12.42-8.47-4.24-2.68-8.58-5.20-13-7.56-4.43-2.37-8.94-4.58-13.52-6.64-9.18-4.12-18.65-7.58-28.32-10.37-9.71-2.8-19.61-4.89-29.62-6.28-5.03-.69-10.08-1.21-15.14-1.54-5.09-.33-10.18-.47-15.28-.43-5.12.05-10.25.29-15.35.71-5.14.44-10.27,1.06-15.36,1.89-10.35,1.68-20.55,4.16-30.51,7.42-5.08,1.66-10.09,3.52-15.01,5.59-5.02,2.1-9.94,4.39-14.77,6.88-2.28,1.17-4.52,2.42-6.77,3.64-59.26,34.17-98.24,95-104.51,163.13-1.04,19.63.34,39.3,4.04,58.6h-.03s3.98,23.43,6.22,27.81c10.96,41.42,30.06,77.99,55.15,71.21,1.84-.55,2.88-2.48,2.33-4.32-.05-.15-.1-.31-.17-.45-4.43-1.27-8.29-4.04-10.91-7.84-13.87-23.27,56.73-73.11,153.16-109.78,88.57-33.73,168.56-44.67,186.77-26.77,3.6,2.95,5,7.84,3.49,12.25-3.5,11.59-10.25,21.94-19.45,29.8-.76.73-1.2,1.74-1.2,2.79s.43,2.07,1.19,2.8c1.38,1.39,3.59,1.49,5.1.24,11.39-9.03,19.87-21.22,24.37-35.04.58-1.78.7-3.89.94-5.75.24-1.96.42-3.93.52-5.9.2-3.93.11-7.89-.29-11.83h0ZM130.28,305.59c-11.8,8.37-32.37,23.36-40.98,40.1-3.36,6.45-6.5,1.43-8.46-2.24-4.62-10.21-8.39-20.78-11.27-31.61-.01-.02-.02-.05-.03-.07-1.38-5.03-5.87-21.66-6.31-26.6.01-.01.02-.03.03-.03-3.56-18.08-4.87-36.54-3.9-54.95,5.86-62.88,41.87-119,96.56-150.56,4.94-2.76,9.9-5.27,14.9-7.55,4.9-2.23,24.81-9.65,5.11,7.81-32.6,29.59-52.88,70.36-56.81,114.21-1.91,22.42,4.6,64.4,16.1,95.21,3.62,9.65.66,12.34-4.95,16.29h0ZM363.74,202.09c-1.4,2.15-3.63,3.61-6.16,4.02-22.25,3.09-44.15,8.29-65.42,15.52-2.48.75-5.17.42-7.4-.93-2.22-1.35-3.76-3.58-4.23-6.14l-1.68-7.68c-.41-1.94.57-3.91,2.37-4.74,24.87-9.94,51.13-16,77.84-17.97,1.99-.1,3.75,1.29,4.12,3.26l1.75,7.39c.64,2.48.21,5.12-1.19,7.26ZM406.09,163.01c-.58,1.55-2.18,2.47-3.82,2.2-61.41-9.13-147.26,22.36-147.26,22.36-29.7,9.65-58.05,23.04-84.37,39.83-4.73,3.11-11.09,1.79-14.2-2.95-.74-1.13-1.25-2.39-1.5-3.71-1.48-7.84-2.38-15.77-2.73-23.73-1.71-21.62,2.42-43.3,11.97-62.77.58-1.08,1.16-2.16,1.82-3.2.08-.27.21-.53.38-.76l.3-.54.74-1.25.36-.55c29.76-48.75,96.58-68.19,149.92-52.31,26.73,8.2,50.75,23.48,69.49,44.23,2.93,3.44,22.71,30.94,18.9,43.15h0Z"/><path fill="#0CB4D0" d="M374.15,129.69l-.05.11c-9.14-15.58-23.07-27.79-39.72-34.8-18.57-7.82-38.78-10.89-58.84-8.95-7.13.56-14.13,2.11-20.83,4.58-1.34.39-2.19,1.69-2.02,3.07.18,1.38,1.34,2.42,2.74,2.45,15.11-1.6,30.35-1.19,45.36,1.21,55.24,11.04,72.92,37.62,74.86,38.67.55.27,1.21-.27.94-.82-.72-1.88-1.54-3.73-2.44-5.53h0Z"/></svg>
+      <span class="badge-text">AlternativeTo</span>
+    </a>
+    <a href="https://www.producthunt.com/posts/xuterm/" target="_blank" rel="noopener noreferrer" class="listed-badge">
+      <svg viewBox="0 0 40 40"><path fill="#FF6154" d="M40 20c0 11.046-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0s20 8.954 20 20"/><path fill="#fff" d="M24 12h-8v16h4v-5h4a5.5 5.5 0 1 0 0-11zm0 7.5h-4V14h4a2.75 2.75 0 0 1 0 5.5z"/></svg>
+      <span class="badge-text">Product Hunt</span>
+    </a>
+    <a href="https://www.saashub.com/u/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+      <img src="assets/images/saashub.png" alt="Saashub">
+    </a>
+      </div>
+      <details class="featured-more">
+        <summary>更多收录平台（+43）</summary>
+      <div class="featured-badges secondary">
+	<a href="https://lookingfortools.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">LookingFor Tools</text></svg>
+	</a>
+	<a href="https://smolspot.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Spot</text></svg>
+	</a>
+	<a href="https://smollaunchpad.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol LaunchPad</text></svg>
+	</a>
+	<a href="https://smolbest.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Best</text></svg>
+	</a>
+	<a href="https://smolstartup.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Startup</text></svg>
+	</a>
+	<a href="https://smolsaas.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol SaaS</text></svg>
+	</a>
+	<a href="https://tinyhunt.dev/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">TinyHunt</text></svg>
+	</a>
+	<a href="https://shipthing.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">ShipThing</text></svg>
+	</a>
+	<a href="https://smollist.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol List</text></svg>
+	</a>
+	<a href="https://smolrank.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Rank</text></svg>
+	</a>
+	<a href="https://launchzone.co/p/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">LaunchZone</text></svg>
+	</a>
+	<a href="https://supalaun.ch/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Supa Launch</text></svg>
+	</a>
+	<a href="https://smolshow.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Show</text></svg>
+	</a>
+	<a href="https://newtool.site/item/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">NewTool Site</text></svg>
+	</a>
+	<a href="https://smolfind.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Find</text></svg>
+	</a>
+	<a href="https://smoltop.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Top</text></svg>
+	</a>
+	<a href="https://findtoolfor.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">FindToolFor</text></svg>
+	</a>
+	<a href="https://theresatoolfor.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">TheresaTool</text></svg>
+	</a>
+	<a href="https://smolhunt.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Hunt</text></svg>
+	</a>
+	<a href="https://microhunts.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Micro Hunts</text></svg>
+	</a>
+	<a href="https://launchranking.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Ranking</text></svg>
+	</a>
+	<a href="https://devlanz.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Dev Lanz</text></svg>
+	</a>
+	<a href="https://discovernewtools.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Discover</text></svg>
+	</a>
+	<a href="https://saashunt.best/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Saas Hunt</text></svg>
+	</a>
+	<a href="https://golanz.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">G</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Go Lanz</text></svg>
+	</a>
+	<a href="https://buildfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">B</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Build Finds</text></svg>
+	</a>
+	<a href="https://disvera.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Disvera</text></svg>
+	</a>
+	<a href="https://indiepocket.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">P</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Indie Pocket</text></svg>
+	</a>
+	<a href="https://launchfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch Finds</text></svg>
+	</a>
+	<a href="https://makerpocket.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">M</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Maker Pocket</text></svg>
+	</a>
+	<a href="https://startupfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Startup Finds</text></svg>
+	</a>
+	<a href="https://indiescroll.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">I</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Indie Scroll</text></svg>
+	</a>
+	<a href="https://spotbuilds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">B</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Spot Builds</text></svg>
+	</a>
+	<a href="https://launchfeeds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">F</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch Feeds</text></svg>
+	</a>
+	<a href="https://findscove.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">F</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Finds Cove</text></svg>
+	</a>
+	<a href="https://apptooling.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">App Tooling</text></svg>
+	</a>
+	<a href="https://startupscrolls.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">StartupScrolls</text></svg>
+	</a>
+	<a href="https://linksalad.me/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Link Salad</text></svg>
+	</a>
+	<a href="https://1000tools.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000 Tools</text></svg>
+	</a>
+	<a href="https://1000ai.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000AI Best</text></svg>
+	</a>
+	<a href="https://1000saas.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000SaaS Best</text></svg>
+	</a>
+	<a href="https://launch01.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch01</text></svg>
+	</a>
+	<a href="https://saascity.io" target="_blank" rel="noopener noreferrer" class="listed-badge">
+	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">SaaSCity.io</text></svg>
+	</a>
+      </div>
+      </details>
     </div>
   </section>
 
@@ -863,7 +803,7 @@
       <h3>同系列更多应用</h3>
       <p class="sub">同一开发者出品的免费工具，同样隐私优先、无广告、无订阅。</p>
       <div class="channel-list">
-        <div class="channel-item">
+        <a class="channel-item" href="https://xuturn.vercel.app/">
           <div class="channel-info">
             <div class="channel-icon" style="background:transparent"><img src="assets/images/xuturn-icon.png" alt="XuTurn" style="width:100%;height:100%;border-radius:10px"></div>
             <div>
@@ -872,9 +812,9 @@
             </div>
           </div>
           <div class="channel-action">
-            <a href="https://xuturn.vercel.app/" class="btn btn-outline">前往了解</a>
+            <span class="btn btn-outline">前往了解</span>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
