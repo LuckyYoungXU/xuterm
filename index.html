@@ -1,882 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XuTerm - Free SSH & Mosh Terminal Client for Android & iOS</title>
-  <meta name="description" content="XuTerm is a free, privacy-first SSH & Mosh terminal client for Android & iOS. Native tmux integration, SFTP browser, trzsz file transfer, TOTP 2FA, server monitoring and 20+ DevOps tools. No ads, no subscriptions.">
-  <link rel="canonical" href="https://xuterm.vercel.app/">
-  <link rel="alternate" hreflang="en" href="https://xuterm.vercel.app/">
-  <link rel="alternate" hreflang="zh-CN" href="https://xuterm.vercel.app/index-zh.html">
-  <link rel="alternate" hreflang="x-default" href="https://xuterm.vercel.app/">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="XuTerm">
-  <meta property="og:title" content="XuTerm - Free SSH & Mosh Terminal Client">
-  <meta property="og:description" content="Powerful SSH terminal in your pocket. Native tmux, SFTP, Mosh, trzsz and server monitoring. Privacy-first, no ads, no subscriptions.">
-  <meta property="og:url" content="https://xuterm.vercel.app/">
-  <meta property="og:image" content="https://xuterm.vercel.app/assets/images/h9.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="XuTerm - Free SSH & Mosh Terminal Client">
-  <meta name="twitter:description" content="Powerful SSH terminal in your pocket. Native tmux, SFTP, Mosh, trzsz and server monitoring.">
-  <meta name="twitter:image" content="https://xuterm.vercel.app/assets/images/h9.png">
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XuTurn - 纯本地文件处理工具 | 不上云 · 隐私优先</title>
+  <meta name="description" content="XuTurn 是一款纯本地运行的安卓/iOS 文件工具箱：图片编辑与压缩、PDF 全套处理、表格提取、文字识别提取、ZIP 解压缩、二维码、AES-256 加密保险箱、局域网互传。所有处理都在设备内完成，数据不上云。" />
+  <meta name="keywords" content="XuTurn,本地文件处理,文件工具,图片压缩,PDF工具,表格提取,文字提取,OCR识别,解压缩,加密保险箱,局域网传输,隐私安全,离线" />
+  <meta name="author" content="XuTurn" />
+  <link rel="canonical" href="https://xuturn.vercel.app/index.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://xuturn.vercel.app/index.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://xuturn.vercel.app/index-zh.html" />
+  <link rel="alternate" hreflang="en" href="https://xuturn.vercel.app/index-en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://xuturn.vercel.app/index.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="XuTurn" />
+  <meta property="og:title" content="XuTurn - 纯本地文件处理工具 | 不上云 · 隐私优先" />
+  <meta property="og:description" content="图片编辑压缩、PDF 全套处理、表格提取、文字识别提取、ZIP 解压缩、二维码、加密保险箱、局域网互传，全程不上云。" />
+  <meta property="og:url" content="https://xuturn.vercel.app/index.html" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta name="geo.region" content="CN" />
+  <meta name="geo.placename" content="China" />
+  <link rel="icon" type="image/png" href="assets/icon192.png" />
+  <link rel="apple-touch-icon" href="assets/icon512.png" />
+  <meta property="og:image" content="https://xuturn.vercel.app/assets/shots/promo_zh.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="500" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://xuturn.vercel.app/assets/shots/promo_zh.png" />
+  <link rel="stylesheet" href="assets/style.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "XuTerm",
+    "name": "XuTurn",
+    "image": "https://xuturn.vercel.app/assets/icon512.png",
     "operatingSystem": "Android, iOS",
     "applicationCategory": "UtilitiesApplication",
-    "description": "Free, privacy-first SSH & Mosh terminal client with native tmux integration, SFTP browser, trzsz file transfer, TOTP 2FA and server monitoring.",
-    "url": "https://xuterm.vercel.app/",
-    "image": "https://xuterm.vercel.app/assets/images/h9.png",
-    "screenshot": "https://xuterm.vercel.app/assets/images/h9.png",
-    "datePublished": "2026-06-08",
-    "dateModified": "2026-09-21",
-    "author": { "@type": "Organization", "name": "XuTerm", "url": "https://xuterm.vercel.app/" },
+    "description": "纯本地运行的文件工具箱：图片编辑与压缩、PDF 全套处理、ZIP 解压缩、二维码、AES-256 加密保险箱、局域网互传，数据不上云。",
+    "url": "https://xuturn.vercel.app/",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "featureList": [
-      "SSH & Mosh connections",
-      "Native tmux integration",
-      "SFTP file browser with preview",
-      "trzsz file transfer",
-      "TOTP two-factor authentication",
-      "Server monitoring",
-      "Port forwarding",
-      "20+ DevOps tools"
-    ]
+    "author": { "@type": "Organization", "name": "XuTurn", "url": "https://xuturn.vercel.app/" }
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "XuTerm",
-    "alternateName": "XuTerm SSH Terminal",
-    "url": "https://xuterm.vercel.app/",
-    "inLanguage": ["en", "zh-CN"],
-    "description": "Official website of XuTerm, a free privacy-first SSH & Mosh terminal client for Android & iOS."
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is XuTerm?",
-        "acceptedAnswer": { "@type": "Answer", "text": "XuTerm is a free, privacy-first SSH and Mosh terminal client for Android and iOS. It provides a mobile-friendly terminal with native tmux integration, an SFTP file browser with preview, trzsz file transfer, TOTP two-factor authentication, server monitoring and 20+ built-in DevOps tools." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is XuTerm free?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. XuTerm is completely free — no ads, no subscriptions, no in-app purchases." }
-      },
-      {
-        "@type": "Question",
-        "name": "Which platforms does XuTerm support?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Android is available now on Huawei AppGallery, APKPure, Uptodown, Appteka, itch.io and GitHub Releases. The iOS version is in development and coming soon." }
-      },
-      {
-        "@type": "Question",
-        "name": "Does XuTerm support tmux and Mosh?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. XuTerm has native tmux integration — sessions survive network switches and app restarts — and full Mosh support for reliable connections over unstable mobile networks." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is my server data safe with XuTerm?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. All sensitive data (passwords, keys, configs) is encrypted with AES-256 and stored only on your device. XuTerm has zero analytics and zero tracking; your credentials are never sent to any server." }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I import my servers quickly?",
-        "acceptedAnswer": { "@type": "Answer", "text": "You can add hosts manually, or import them in bulk by scanning QR codes shared from another device. Quick commands can also be shared and imported via QR codes." }
-      },
-      {
-        "@type": "Question",
-        "name": "Where can I download XuTerm?",
-        "acceptedAnswer": { "@type": "Answer", "text": "You can download XuTerm from Huawei AppGallery, APKPure, Uptodown, Appteka, itch.io or GitHub Releases — all links are available on the official website." }
-      }
-    ]
-  }
-  </script>
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --bg: #ffffff;
-      --bg-alt: #f8fafc;
-      --text: #1e293b;
-      --text-light: #64748b;
-      --border: #e2e8f0;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; }
-    a { color: var(--primary); text-decoration: none; }
-
-    /* Nav */
-    nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 100; }
-    nav .inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    nav .logo { font-size: 20px; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-    nav .logo span { font-size: 24px; }
-    nav .links { display: flex; gap: 24px; align-items: center; font-size: 14px; }
-    nav .links a { color: var(--text-light); transition: color .2s; }
-    nav .links a:hover { color: var(--primary); }
-
-    /* Hero */
-    .hero { padding: 100px 24px 64px; text-align: center; background: linear-gradient(180deg, #eff6ff 0%, var(--bg) 100%); }
-    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
-    .hero h1 em { font-style: normal; color: var(--primary); }
-    .hero p { font-size: 18px; color: var(--text-light); max-width: 600px; margin: 0 auto 32px; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all .2s; }
-    .btn-primary { background: var(--primary); color: #fff; }
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-    .btn-outline { background: var(--bg); color: var(--primary); border: 2px solid var(--primary); }
-    .btn-outline:hover { background: #eff6ff; }
-    .btn-disabled { background: #e2e8f0; color: #94a3b8; cursor: default; }
-    .btn-disabled:hover { transform: none; }
-    .download-channels { max-width: 600px; margin: 0 auto; }
-    .download-channels h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
-    .channel-list { display: flex; flex-direction: column; gap: 10px; }
-    .channel-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; transition: all .2s; }
-    .channel-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-    .channel-item .channel-info { display: flex; align-items: center; gap: 12px; }
-    .channel-item .channel-icon { width: 36px; height: 36px; flex: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-    .channel-item .channel-icon.ios { background: transparent; }
-    .channel-item .channel-icon.huawei { background: transparent; }
-    .channel-item .channel-icon.apkpure { background: transparent; }
-	.channel-item .channel-icon.uptodown { background: transparent; }
-    .channel-item .channel-icon.appteka { background: linear-gradient(135deg, #16a34a, #65a30d); box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
-    .channel-item .channel-icon.itch { background: transparent; }
-    .channel-item .channel-name { font-weight: 600; font-size: 14px; }
-    .channel-item .channel-desc { font-size: 12px; color: var(--text-light); }
-    .channel-item .channel-action .btn { padding: 8px 18px; font-size: 13px; border-radius: 8px; }
-    .listed-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 20px; background: var(--bg); border: 1px solid var(--border); border-radius: 40px; font-size: 14px; color: var(--text-light); transition: all .2s; text-decoration: none; }
-    .listed-badge:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: #64748b; }
-    .listed-badge svg { height: 22px; width: 22px; }
-    .listed-badge .badge-text { font-weight: 600; color: var(--text); }
-    .featured-section { max-width: 680px; margin: 36px auto 0; }
-    .featured-label { text-align: center; font-size: 15px; font-weight: 700; color: var(--text); text-transform: uppercase; margin-bottom: 20px; letter-spacing: .06em; }
-    .featured-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
-    .featured-badges.secondary { margin-top: 10px; }
-    .featured-badges .listed-badge { margin-top: 0; height: 44px; padding: 6px 16px; }
-    .featured-badges .listed-badge img,
-    .featured-badges .listed-badge svg.dbadge { height: 30px; width: auto; }
-    .hero-banner { max-width: 900px; margin: 48px auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
-    .hero-banner img { width: 100%; display: block; }
-    /* --- hero download + featured-on --- */
-    .store-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-    .store-btn { display: flex; align-items: center; gap: 12px; padding: 10px 20px; background: #0f172a; color: #fff; border-radius: 12px; text-decoration: none; border: none; cursor: pointer; min-width: 210px; transition: all .2s; text-align: left; font-family: inherit; }
-    .store-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(15,23,42,.28); }
-    .store-btn.soon { opacity: .65; }
-    .store-btn.soon:hover { transform: none; box-shadow: none; }
-    .store-btn small { display: block; font-size: 11px; font-weight: 500; opacity: .8; letter-spacing: .02em; }
-    .store-btn strong { display: block; font-size: 17px; font-weight: 700; line-height: 1.25; }
-    .channel-chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
-    .channel-chip { display: flex; align-items: center; gap: 9px; padding: 8px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none; transition: all .2s; overflow: hidden; }
-    .channel-chip:hover { box-shadow: 0 4px 12px rgba(0,0,0,.08); border-color: #cbd5e1; }
-    .channel-chip .chip-icon { width: 24px; height: 24px; flex: none; display: flex; align-items: center; justify-content: center; }
-    .channel-chip .chip-icon img { width: 100%; height: 100%; border-radius: 6px; object-fit: contain; }
-    .featured-more { margin-top: 12px; text-align: center; }
-    .featured-more summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 5px 14px; border: 1px dashed var(--border); border-radius: 999px; font-size: 13px; color: var(--text-light); user-select: none; }
-    .featured-more summary::-webkit-details-marker { display: none; }
-    .featured-more summary::after { content: '▾'; font-size: 11px; }
-    .featured-more[open] summary::after { content: '▴'; }
-    .featured-more summary:hover { color: var(--text); border-color: #cbd5e1; }
-    .featured-more .featured-badges.secondary { margin-top: 12px; }
-    .featured-on { padding: 48px 24px 24px; }
-    .featured-on .featured-section { margin: 0 auto; }
-    @media (max-width: 860px) {
-      .channel-chips { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* Features */
-    .features { padding: 64px 24px; background: var(--bg-alt); }
-    .features .inner { max-width: 1120px; margin: 0 auto; }
-    .section-title { text-align: center; margin-bottom: 48px; }
-    .section-title h2 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-    .section-title p { color: var(--text-light); font-size: 16px; }
-    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .feature-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; transition: all .2s; }
-    .feature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
-    .feature-card .icon { width: 44px; height: 44px; border-radius: 10px; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
-    .feature-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
-    .feature-card p { font-size: 14px; color: var(--text-light); }
-
-    /* Highlight Sections */
-    .highlight { padding: 64px 24px; }
-    .highlight .inner { max-width: 1120px; margin: 0 auto; display: flex; gap: 60px; align-items: center; }
-    .highlight.reverse { flex-direction: row-reverse; background: var(--bg-alt); }
-    .highlight .text { flex: 1; }
-    .highlight .text h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
-    .highlight .text p { color: var(--text-light); margin-bottom: 16px; font-size: 15px; }
-    .highlight .text ul { list-style: none; }
-    .highlight .text li { padding: 6px 0; font-size: 14px; color: var(--text-light); display: flex; align-items: center; gap: 8px; }
-    .highlight .text li::before { content: '✓'; color: var(--primary); font-weight: 700; }
-    .highlight .image { flex: 1; display: flex; gap: 16px; justify-content: center; align-items: flex-end; }
-    .highlight .image .device { border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.10); }
-    .highlight .image .phone { width: 180px; }
-    .highlight .image .phone .placeholder { width: 100%; aspect-ratio: 9/19.5; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 12px; }
-    .highlight .image .tablet { width: 320px; }
-    .highlight .image .tablet .placeholder { width: 100%; aspect-ratio: 3/4; background: linear-gradient(135deg, #1e293b, #334155); display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 12px; }
-
-    /* Security */
-    .security { padding: 64px 24px; background: #0f172a; color: #fff; }
-    .security .inner { max-width: 1120px; margin: 0 auto; text-align: center; }
-    .security h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
-    .security > .inner > p { color: #94a3b8; margin-bottom: 40px; font-size: 16px; }
-    .security-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
-    .security-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; text-align: left; }
-    .security-card .icon { font-size: 28px; margin-bottom: 12px; }
-    .security-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
-    .security-card p { font-size: 14px; color: #94a3b8; }
-
-    /* FAQ */
-    .faq { padding: 64px 24px 56px; background: var(--bg); }
-    .faq .inner { max-width: 800px; margin: 0 auto; }
-    .faq h2 { text-align: center; font-size: 32px; font-weight: 700; margin-bottom: 40px; }
-    .faq-list { display: flex; flex-direction: column; gap: 12px; }
-    .faq-item { border: 1px solid var(--border); border-radius: 12px; background: var(--bg); transition: border-color .2s; }
-    .faq-item:hover { border-color: #94a3b8; }
-    .faq-item summary { cursor: pointer; padding: 16px 20px; font-size: 16px; font-weight: 600; color: var(--text); list-style: none; position: relative; padding-right: 44px; }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 20px; color: var(--primary); font-weight: 400; }
-    .faq-item[open] summary::after { content: '−'; }
-    .faq-item p { padding: 0 20px 16px; font-size: 14.5px; color: var(--text-light); }
-
-    /* CTA */
-    .cta { padding: 56px 24px 80px; text-align: center; background: linear-gradient(180deg, var(--bg) 0%, #eff6ff 100%); }
-    .cta h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
-    .cta p { color: var(--text-light); margin-bottom: 28px; font-size: 16px; }
-
-    /* More apps (sibling product entry) */
-    .more-apps { padding: 24px 24px 72px; text-align: center; background: var(--bg); }
-    .more-apps .sub { color: var(--text-light); font-size: 14px; margin: 0 0 16px; }
-    .more-apps .channel-item { text-align: left; text-decoration: none; }
-    .more-apps .channel-item:hover { border-color: #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
-    .more-apps .channel-action .btn { white-space: nowrap; }
-    .more-apps .channel-icon img { border-radius: 10px !important; object-fit: contain; }
-    .sibling-pill { display: inline-flex; align-items: center; gap: 10px; margin: 0 auto 24px; padding: 8px 18px 8px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: 40px; font-size: 14px; color: var(--text-light); box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: all .2s; }
-    .sibling-pill:hover { border-color: var(--primary); color: var(--text); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    .sibling-pill img { width: 28px; height: 28px; border-radius: 8px; }
-    .sibling-pill strong { color: var(--text); font-weight: 700; }
-    .sibling-pill .arrow { color: var(--primary); font-weight: 700; margin-left: 2px; }
-    .sibling-pill .tag { flex: none; font-size: 11px; font-weight: 700; color: var(--primary); background: #eff6ff; padding: 2px 8px; border-radius: 999px; margin-right: 2px; }
-    @media (max-width: 640px) { .sibling-pill .desc { display: none; } .sibling-pill { padding: 7px 14px 7px 9px; } }
-
-    /* Footer */
-    footer { padding: 32px 24px; border-top: 1px solid var(--border); text-align: center; color: var(--text-light); font-size: 13px; }
-    footer a { color: var(--text-light); }
-    footer a:hover { color: var(--primary); }
-    footer .links { display: flex; gap: 20px; justify-content: center; margin-bottom: 12px; }
-
-    /* Modal */
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; }
-    .modal-overlay.active { display: flex; }
-    .modal-box { background: var(--bg); border-radius: 16px; padding: 36px 32px 28px; max-width: 360px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
-    .modal-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .modal-box p { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
-    .modal-box .btn { width: 100%; justify-content: center; }
-
-    /* Hamburger */
-    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px 0; transition: all .3s; border-radius: 2px; }
-
-    @media (max-width: 768px) {
-      .hamburger { display: block; }
-      nav .links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); flex-direction: column; padding: 12px 24px; gap: 12px; }
-      nav .links.open { display: flex; }
-      nav .links .hide-mobile { display: block; }
-      .hero { padding: 90px 20px 60px; }
-      .hero h1 { font-size: 28px; }
-      .hero p { font-size: 15px; }
-      .download-channels { max-width: 100%; }
-      .channel-item { padding: 10px 12px; }
-      .channel-item .channel-name { font-size: 13px; }
-      .channel-item .channel-desc { font-size: 11px; }
-      .channel-item .channel-action .btn { padding: 6px 14px; font-size: 12px; }
-      .featured-badges .listed-badge { height: 38px; padding: 4px 14px; }
-      .featured-badges .listed-badge img,
-      .featured-badges .listed-badge svg.dbadge { height: 26px; }
-      .hero-banner { margin: 32px auto 0; }
-      .highlight .inner { flex-direction: column; gap: 32px; }
-      .highlight.reverse .inner { flex-direction: column; }
-      .highlight .text h2 { font-size: 22px; }
-      .highlight .image { flex-direction: column; align-items: center; gap: 16px; }
-      .highlight .image .phone { width: 140px; }
-      .highlight .image .tablet { width: 80%; max-width: 300px; }
-      .feature-grid { grid-template-columns: 1fr; }
-      .section-title h2, .security h2, .cta h2 { font-size: 24px; }
-      .features, .highlight, .security, .cta, .faq { padding: 48px 16px; }
-      .security-grid { grid-template-columns: 1fr; }
-    }
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .highlight .image .phone { width: 150px; }
-      .highlight .image .tablet { width: 260px; }
-    }
-  </style>
 </head>
 <body>
-  <nav>
-    <div class="inner">
-      <div class="logo"><img src="assets/images/logo48.png" alt="XuTerm" style="height:32px;width:32px;border-radius:6px"> XuTerm</div>
-      <div class="links" id="navLinks">
-        <a href="#features" class="hide-mobile">Features</a>
-        <a href="#security" class="hide-mobile">Security</a>
-        <a href="user-guide.html" class="hide-mobile">Guide</a>
-        <a href="privacy-policy-en.html">Privacy</a>
-        <a href="license.html" class="hide-mobile">License</a>
-        <a href="index-zh.html">中文</a>
-      </div>
-      <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
-        <span></span><span></span><span></span>
-      </button>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html"><img class="logo" src="assets/icon192.png" alt="XuTurn" width="34" height="34" /><span class="name">XuTurn</span></a>
+      <nav class="nav">
+        <a href="#features">功能</a>
+        <a href="#shots" class="hide-sm">界面</a>
+        <a href="privacy.html">隐私政策</a>
+        <span class="lang-switch">
+          <a href="index.html" class="active">简</a>
+          <a href="index-zh.html">繁</a>
+          <a href="index-en.html">EN</a>
+        </span>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <section class="hero">
-    <a class="sibling-pill" href="https://xuturn.vercel.app/index-en.html" target="_blank" rel="noopener">
-      <img src="assets/images/xuturn-icon.png" alt="XuTurn">
-      <span class="tag">From the same developer</span>
-      <span><strong>XuTurn</strong><span class="desc"> — Local file toolbox: image, PDF, ZIP, vault &amp; Wi-Fi transfer</span></span>
-      <span class="arrow">&rarr;</span>
-    </a>
-    <h1>Powerful SSH Terminal<br>in Your <em>Pocket</em></h1>
-    <p>XuTerm is a professional SSH terminal client for iOS &amp; Android. Manage servers, run commands, and stay connected — anywhere.</p>
-    <div class="download-channels">
-      <h3>Download XuTerm</h3>
-            <div class="store-buttons">
-        <button type="button" class="store-btn soon" onclick="document.getElementById('iosModal').classList.add('active')">
-          <svg viewBox="0 0 384 512" width="26" height="26" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-          <span><small>Download on the</small><strong>App Store</strong></span>
-        </button>
-        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.yongqing.xuterm">
+    <div class="container">
+      <a class="sibling-pill" href="https://xuterm.vercel.app/index-zh.html" target="_blank" rel="noopener">
+        <img src="assets/xuterm-logo.png" alt="XuTerm">
+        <span class="tag">同一开发者出品</span>
+        <span><strong>XuTerm</strong><span class="desc"> — SSH / Mosh 终端 · tmux · SFTP · 服务器监控</span></span>
+        <span class="arrow">&rarr;</span>
+      </a>
+      <h1>文件操作<em>纯本地</em>，电脑只需<em>浏览器</em></h1>
+      <p class="lead">一款纯本地的文件工具箱：图片编辑、PDF 工具、批量处理、加密保险箱与局域网互传，全部在设备内完成，数据不上云、不收集、不分析。</p>
+      <div class="cta-row">
+        <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.yongqing.xuturn" target="_blank" rel="noopener">
           <svg viewBox="0 0 512 512" width="28" height="28" aria-hidden="true"><path fill="#00C4FF" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00E676" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#FFD500" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#FF3A44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-          <span><small>Get it on</small><strong>Google Play</strong></span>
+          <span><small>前往下载</small><strong>Google Play</strong></span>
         </a>
+        <span class="store-btn soon">
+          <svg viewBox="0 0 384 512" width="26" height="26" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          <span><small>即将上线</small><strong>App Store</strong></span>
+        </span>
+        <a class="btn btn-primary" href="#download">更多下载渠道</a>
       </div>
-      <div class="channel-chips">
-        <a class="channel-chip" href="https://appgallery.huawei.com/app/C118106679"><span class="chip-icon"><img src="assets/images/huawei.png" alt="Huawei"></span><span>Huawei AppGallery</span></a>
-        <a class="channel-chip" href="https://apkpure.com/p/com.yongqing.xuterm"><span class="chip-icon"><img src="assets/images/apkpure.png" alt="APKPure"></span><span>APKPure</span></a>
-        <a class="channel-chip" href="https://xuterm.en.uptodown.com/android"><span class="chip-icon"><img src="assets/images/uptodown.png" alt="Uptodown"></span><span>Uptodown</span></a>
-        <a class="channel-chip" href="https://appteka.store/user/566539"><span class="chip-icon"><svg viewBox="0 0 260 260" width="24" height="24" fill="#16a34a"><path d="M23.9276 120.32L120.32 23.9276C152.36 -7.97588 204.032 -7.97588 236.072 23.9276C267.976 55.8311 267.976 107.64 236.072 139.68L139.68 236.072C107.64 267.976 55.8311 267.976 23.9276 236.072C-7.97588 204.032 -7.97588 152.36 23.9276 120.32ZM43.2879 139.68C28.9722 153.859 24.2003 174.174 29.1085 192.307L110.776 110.776L168.584 168.584L216.712 120.32C238.117 99.0509 238.117 64.5569 216.712 43.2879C195.443 21.8825 160.949 21.8825 139.68 43.2879L43.2879 139.68Z"/></svg></span><span>Appteka.store</span></a>
-        <a class="channel-chip" href="https://xuterm.itch.io/xuterm"><span class="chip-icon"><img src="assets/images/itch.svg" alt="itch.io"></span><span>itch.io</span></a>
-        <a class="channel-chip" href="https://github.com/LuckyYoungXU/tools/releases/latest"><span class="chip-icon"><svg viewBox="0 0 16 16" width="24" height="24" fill="#24292f"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></span><span>GitHub Releases</span></a>
-      </div>
-    </div>
-    <div class="hero-banner">
-      <img src="assets/images/h9.png" alt="XuTerm SSH terminal app overview with tmux, SFTP and server monitoring features">
+      <figure class="promo-figure">
+        <img src="assets/shots/promo_zh.png" alt="XuTurn：手机提供算力，电脑只需浏览器" />
+      </figure>
     </div>
   </section>
 
-  <section class="features" id="features">
-    <div class="inner">
-      <div class="section-title">
-        <h2>Everything You Need</h2>
-        <p>From connection management to advanced terminal features</p>
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Features</span>
+        <h2>核心功能</h2>
+        <p>九大类工具，覆盖你日常 90% 的文件处理需求，全部在本机运行。</p>
       </div>
       <div class="feature-grid">
         <div class="feature-card">
-          <div class="icon">&#128274;</div>
-          <h3>SSH Key Authentication</h3>
-          <p>Generate, import, and manage SSH keys. Support for RSA, ECDSA, and Ed25519 with encrypted storage.</p>
+          <div class="ic c1">图</div>
+          <h3>图片处理</h3>
+          <p>编辑（裁剪、旋转、调尺寸、透明度、色彩）、智能压缩、模板拼图与长图拼接、图片拆分。</p>
         </div>
         <div class="feature-card">
-          <div class="icon">&#128274;</div>
-          <h3>TOTP Two-Factor Auth</h3>
-          <p>Built-in TOTP token manager. Auto-generate 2FA codes linked to your hosts, one-tap fill in terminal.</p>
+          <div class="ic c2">P</div>
+          <h3>PDF 工具</h3>
+          <p>图片转 PDF、PDF 转图片、合并、拆分、压缩、页面管理、水印、密码保护。</p>
         </div>
         <div class="feature-card">
-          <div class="icon">&#128737;</div>
-          <h3>Secure Storage</h3>
-          <p>AES-256 encryption for sensitive data, keys stored in system secure chip (Keychain/Keystore), biometric unlock protection.</p>
+          <div class="ic c8">表</div>
+          <h3>表格提取</h3>
+          <p>图片、PDF 一键转 Excel，框线表格与无线对齐表格均可识别，跨页表格逐页提取不遗漏。</p>
         </div>
         <div class="feature-card">
-          <div class="icon">&#128228;</div>
-          <h3>trzsz File Transfer</h3>
-          <p>Upload and download files with trz/tsz commands. Fully compatible with tmux sessions.</p>
+          <div class="ic c9">识</div>
+          <h3>文字提取</h3>
+          <p>图片、PDF 快速识别文字，扫描件也能读，结果可复制、可编辑、可导出；支持批量多文件识别，进度实时可见。</p>
         </div>
         <div class="feature-card">
-          <div class="icon">&#128221;</div>
-          <h3>Script Editor</h3>
-          <p>Built-in code editor with syntax highlighting. Edit remote files in-place via SFTP without extra tools.</p>
+          <div class="ic c3">Z</div>
+          <h3>解压缩</h3>
+          <p>创建 ZIP 压缩包，解压常见压缩格式，无需联网或第三方应用。</p>
         </div>
         <div class="feature-card">
-          <div class="icon">&#128065;</div>
-          <h3>File Preview</h3>
-          <p>Preview PDF, Excel, and images; edit text files online; calculate file hash (MD5/SHA1/SHA256).</p>
+          <div class="ic c4">码</div>
+          <h3>二维码</h3>
+          <p>自定义颜色与纠错等级的二维码生成，支持扫码识别与导出。</p>
         </div>
         <div class="feature-card">
-          <div class="icon">&#127912;</div>
-          <h3>Vertical Color Bar</h3>
-          <p>Left-side color bar distinguishes user input from server output. Quickly locate command boundaries in long logs.</p>
+          <div class="ic c5">锁</div>
+          <h3>文件保险箱</h3>
+          <p>AES-256 加密存储，PIN 码 + 手势双重解锁，私密文件与设备绑定。</p>
         </div>
         <div class="feature-card">
-          <div class="icon">&#128300;</div>
-          <h3>Server Monitor</h3>
-          <p>Real-time CPU, memory, disk, load &amp; process monitoring for SSH sessions. Kill processes and custom refresh interval.</p>
+          <div class="ic c6">传</div>
+          <h3>局域网互传</h3>
+          <p>与电脑在同一 Wi-Fi 下点对点互传文件，不经过任何外部服务器。</p>
         </div>
         <div class="feature-card">
-          <div class="icon">&#128279;</div>
-          <h3>Proxy Jump</h3>
-          <p>Seamlessly connect through bastion hosts and jump servers with multi-hop proxy chain support.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">&#128269;</div>
-          <h3>Terminal Search</h3>
-          <p>Find anything in your terminal output with real-time search and highlight.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">&#128241;</div>
-          <h3>Gesture Zoom</h3>
-          <p>Pinch to zoom the terminal for the perfect text size. Comfortable coding on any screen.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">&#128196;</div>
-          <h3>Select to Copy</h3>
-          <p>Intuitive text selection with copy/paste. Long press to select, drag to extend.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">&#8734;</div>
-          <h3>Unlimited Hosts</h3>
-          <p>No artificial limits on host count. Manage all your servers without restrictions or hidden fees.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">&#128243;</div>
-          <h3>QR Code Sharing</h3>
-          <p>Share host configurations instantly via QR code. Scan to import on another device.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">&#127912;</div>
-          <h3>Multi-Theme Support</h3>
-          <p>Built-in dark and light themes plus custom color schemes. Your terminal, your style.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">&#128295;</div>
-          <h3>DevOps Toolkit</h3>
-          <p>15+ built-in tools: SSH key generator, password generator, WHOIS, DNS lookup, SSL certificate check, encode/decode, JSON formatter, CIDR calculator, port test and more.</p>
-        </div>
-        <div class="feature-card">
-          <div class="icon">&#128202;</div>
-          <h3>Visual Ops Dashboard</h3>
-          <p>Ring charts for CPU, memory, disk and swap at a glance. Visually manage disks, services, processes, network and Docker containers without terminal commands.</p>
-        </div>
-		<div class="feature-card">
-          <div class="icon">&#9889;</div>
-          <h3>Batch Commands &amp; Inspection</h3>
-          <p>Run commands on many hosts in parallel with concurrency control, task templates and dangerous-command confirmation. One-tap health inspection covers load, memory, disk, ports, certificates and more.</p>
+          <div class="ic c7">文</div>
+          <h3>文件管理</h3>
+          <p>集中查看、分享沙盒内的所有文件与处理成果，一键导出或删除。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="highlight">
-    <div class="inner">
-      <div class="text">
-        <h2>Native tmux Integration</h2>
-        <p>Full tmux support built right in — not just compatibility, but deep integration that makes tmux feel native on mobile.</p>
-        <ul>
-          <li>Visual window tab bar for quick switching</li>
-          <li>Split-pane view support</li>
-          <li>Custom tmux theme styling</li>
-          <li>Background keep-alive for long sessions</li>
-        </ul>
+  <section id="shots" class="shots-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Screens</span>
+        <h2>界面预览</h2>
+        <p>真实界面截图，简洁直观的工具箱设计。</p>
       </div>
-      <div class="image">
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp2.png" alt="XuTerm native tmux session on phone" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp2.png" alt="XuTerm native tmux integration on tablet" style="width:100%;border-radius:16px;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="highlight reverse">
-    <div class="inner">
-      <div class="text">
-        <h2>Mosh — Mobile Shell</h2>
-        <p>Switch between SSH and Mosh protocols. Mosh handles intermittent connections, roaming, and high-latency networks gracefully.</p>
-        <ul>
-          <li>Smart protocol auto-detection</li>
-          <li>Seamless network roaming</li>
-          <li>Instant response on high-latency links</li>
-          <li>Automatic reconnection</li>
-        </ul>
-      </div>
-      <div class="image">
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp3.png" alt="XuTerm Mosh mobile shell on tablet" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp3.png" alt="XuTerm Mosh session over mobile network" style="width:100%;border-radius:16px;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="highlight">
-    <div class="inner">
-      <div class="text">
-        <h2>Multi-Session &amp; File Transfer</h2>
-        <p>Work with multiple servers simultaneously. Browse files over SFTP and transfer with network-aware optimization.</p>
-        <ul>
-          <li>Multi-session tab management</li>
-          <li>Built-in SFTP file browser</li>
-          <li>Local &amp; remote port forwarding</li>
-          <li>Network-aware transfer optimization</li>
-        </ul>
-      </div>
-      <div class="image">
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp4.png" alt="XuTerm multi-session and SFTP file transfer on phone" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp4.png" alt="XuTerm multi-session management and file transfer on tablet" style="width:100%;border-radius:16px;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="highlight reverse">
-    <div class="inner">
-      <div class="text">
-        <h2>Quick Commands &amp; Shortcuts</h2>
-        <p>Save your frequently used commands and share configurations via QR code. Built-in keyboard shortcuts for efficient mobile input.</p>
-        <ul>
-          <li>Custom quick command library</li>
-          <li>QR code config sharing</li>
-          <li>SSH key management hub</li>
-          <li>Smart keyboard shortcut bar</li>
-        </ul>
-      </div>
-      <div class="image">
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp5.png" alt="XuTerm quick commands editor on tablet" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp5.png" alt="XuTerm quick commands and shortcuts on phone" style="width:100%;border-radius:16px;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="highlight">
-    <div class="inner">
-      <div class="text">
-        <h2>Data &amp; Sync</h2>
-        <p>Your configurations travel with you. iCloud sync on iOS, import/export on all platforms, and session snapshots for quick recovery.</p>
-        <ul>
-          <li>iCloud sync (iOS)</li>
-          <li>Config import &amp; export</li>
-          <li>Session snapshot &amp; restore</li>
-        </ul>
-      </div>
-      <div class="image">
-        <div class="device phone"><div class="placeholder"><img src="assets/images/sp6.png" alt="XuTerm data sync and backup on phone" style="width:100%;border-radius:16px;"></div></div>
-        <div class="device tablet"><div class="placeholder"><img src="assets/images/bp6.png" alt="XuTerm data and sync settings on tablet" style="width:100%;border-radius:16px;"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="security" id="security">
-    <div class="inner">
-      <h2>Security &amp; Privacy First</h2>
-      <p>Your data stays on your device. We never collect or transmit personal information.</p>
-      <div class="security-grid">
-        <div class="security-card">
-          <div class="icon">&#128272;</div>
-          <h3>Biometric Lock</h3>
-          <p>Protect the app with Face ID, Touch ID, or fingerprint. No one accesses your servers without you.</p>
+      <div class="shots">
+        <div class="shot">
+          <img src="assets/shots/home_zh_c.jpg" alt="主界面" loading="lazy" />
+          <div class="shot-label">主界面</div>
         </div>
-        <div class="security-card">
-          <div class="icon">&#128273;</div>
-          <h3>AES Encryption</h3>
-          <p>All sensitive data — passwords, keys, configs — encrypted with AES-256 before storage.</p>
+        <div class="shot">
+          <img src="assets/shots/image_zh_c.jpg" alt="图片工具" loading="lazy" />
+          <div class="shot-label">图片工具</div>
         </div>
-        <div class="security-card">
-          <div class="icon">&#128737;</div>
-          <h3>No Data Collection</h3>
-          <p>Zero analytics, zero tracking. Your server credentials and activity are never sent anywhere.</p>
+        <div class="shot">
+          <img src="assets/shots/pdf_zh_c.jpg" alt="PDF 工具" loading="lazy" />
+          <div class="shot-label">PDF 工具</div>
         </div>
-        <div class="security-card">
-          <div class="icon">&#128196;</div>
-          <h3>Open Privacy Policy</h3>
-          <p>Clear, straightforward privacy policy. Read it <a href="privacy-policy-en.html" style="color:#60a5fa">here</a>.</p>
+        <div class="shot">
+          <img src="assets/shots/vault_zh_c.jpg" alt="保险箱" loading="lazy" />
+          <div class="shot-label">保险箱</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="faq" id="faq">
-    <div class="inner">
-      <h2>Frequently Asked Questions</h2>
-      <div class="faq-list">
-        <details class="faq-item" open>
-          <summary>What is XuTerm?</summary>
-          <p>XuTerm is a free, privacy-first SSH and Mosh terminal client for Android and iOS. It provides a mobile-friendly terminal with native tmux integration, an SFTP file browser with preview, trzsz file transfer, TOTP two-factor authentication, server monitoring and 20+ built-in DevOps tools.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is XuTerm free?</summary>
-          <p>Yes. XuTerm is completely free — no ads, no subscriptions, no in-app purchases.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Which platforms does XuTerm support?</summary>
-          <p>Android is available now on Huawei AppGallery, APKPure, Uptodown, Appteka, itch.io and GitHub Releases. The iOS version is in development and coming soon.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Does XuTerm support tmux and Mosh?</summary>
-          <p>Yes. XuTerm has native tmux integration — sessions survive network switches and app restarts — and full Mosh support for reliable connections over unstable mobile networks.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is my server data safe with XuTerm?</summary>
-          <p>Yes. All sensitive data (passwords, keys, configs) is encrypted with AES-256 and stored only on your device. XuTerm has zero analytics and zero tracking; your credentials are never sent to any server.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How do I import my servers quickly?</summary>
-          <p>You can add hosts manually, or import them in bulk by scanning QR codes shared from another device. Quick commands can also be shared and imported via QR codes.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Where can I download XuTerm?</summary>
-          <p>You can download XuTerm from Huawei AppGallery, APKPure, Uptodown, Appteka, itch.io or GitHub Releases — all links are available on this page.</p>
-        </details>
+  <section class="promise">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Privacy</span>
+        <h2>隐私优先，是默认而非选项</h2>
+        <p>我们不依赖云端，也不依赖账号。你的文件从头到尾都在你自己手里。</p>
+      </div>
+      <div class="promise-grid">
+        <div class="promise-item">
+          <div class="check">✓</div>
+          <h4>数据不上云</h4>
+          <p>所有处理在设备本地沙盒完成，不上传、不收集、不分析任何用户数据。</p>
+        </div>
+        <div class="promise-item">
+          <div class="check">✓</div>
+          <h4>端到端本地</h4>
+          <p>局域网互传仅在本地 Wi-Fi 内直连，收发文件不经过任何外部服务器。</p>
+        </div>
+        <div class="promise-item">
+          <div class="check">✓</div>
+          <h4>加密保险箱</h4>
+          <p>保险箱文件 AES-256 加密，仅本机保存密码校验值，遗忘无法找回。</p>
+        </div>
+        <div class="promise-item">
+          <div class="check">✓</div>
+          <h4>最小权限</h4>
+          <p>仅在使用拍照 / 扫码时调用相机；不申请定位、通讯录、麦克风等敏感权限。</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h2>Ready to Take Control?</h2>
-    <p>Download XuTerm and manage your servers from anywhere.</p>
-    <div class="store-buttons">
-      <button type="button" class="store-btn soon" onclick="document.getElementById('iosModal').classList.add('active')">
-        <svg viewBox="0 0 384 512" width="26" height="26" fill="#fff" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-        <span><small>Download on the</small><strong>App Store</strong></span>
-      </button>
-      <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.yongqing.xuterm">
-        <svg viewBox="0 0 512 512" width="28" height="28" aria-hidden="true"><path fill="#00C4FF" d="M47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0z"/><path fill="#00E676" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/><path fill="#FFD500" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/><path fill="#FF3A44" d="M104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-        <span><small>Get it on</small><strong>Google Play</strong></span>
-      </a>
-    </div>
-  </section>
-
-  <section class="featured-on">
-<div class="featured-section">
-      <p class="featured-label">Featured On</p>
-      <div class="featured-badges">
-    <a href="https://alternativeto.net/software/xuterm/" target="_blank" rel="noopener noreferrer" class="listed-badge">
-      <svg viewBox="0 0 500 500"><path fill="#0CB4D0" d="M250,8.66c133.29,0,241.34,108.05,241.34,241.34s-108.05,241.34-241.34,241.34S8.66,383.28,8.66,250,116.71,8.66,250,8.66M250,0C112.15,0,0,112.15,0,250s112.15,250,250,250,250-112.15,250-250S387.84,0,250,0Z"/><path fill="#0CB4D0" d="M385.6,377.84c-.39.08-.77.17-1.16.25.71,2.47,1.37,4.82,1.96,7.19,1.4,5.64,2.81,11.28,4.21,16.91,9.54-8.85,18.25-18.57,26.01-29.04-6.35.75-12.86,1.53-19.23,2.43-3.92.55-7.75,1.38-11.8,2.26h0Z"/><path fill="#0CB4D0" d="M405,288.35c-78.81-12.75-161.7,12.77-228.94,53.36-15.77,9.52-33.12,18.95-44.36,34-7.65,10.28-11.68,22.52-14.14,35,6.45,5.28,13.23,10.18,20.31,14.67.01-.69.02-1.38.04-2.07.27-8.54,1.34-17.22,4.77-25.12,3.8-8.75,9.96-14.14,17.56-19.54,15.75-11.21,33.3-20.14,50.25-29.01,1.16-.61,2.81-.6,4.22-.88.32,1.28.99,2.59.9,3.85-.43,5.88-.3,11.81-.16,17.71.46,21.16,1.84,42.32,3.27,63.47.49,7.29,1,14.58,1.5,21.85,9.48,1.32,19.15,2.02,28.99,2.02,47.79,0,91.82-16.12,126.94-43.21-2.94-10.22-5.89-20.43-8.85-30.64-.12-.44-.27-.87-.43-1.3-.45.1-.9.21-1.33.34-25.77,7.16-51.97,17.21-80.11,30.75-.24.12-.49.25-.74.38-1.23.65-2.91,1.54-4.94,1.55h-.04c-2.47,0-5.79-1.37-7.08-3.94-1.33-2.67-.35-6.37,1.33-8.29,1.37-1.57,3.16-2.52,4.59-3.29l.79-.43c25.08-14.05,51.75-25.24,79.26-33.27.75-.22,1.5-.45,2.25-.68-.48-1.23-.97-2.47-1.45-3.73-2.1-5.43-4.28-11.04-6.68-16.45-3.08-6.93-6.59-13.87-9.99-20.58l-1.75-3.47c-1.13-2.24-2.28-5.18-1.14-8.09.5-1.28,1.65-3.01,4.27-3.99,3.64-1.35,9.07,1.35,10.65,4.46,8.63,17,16.03,32.19,22.63,46.44.29.62.49.98.62,1.17.19-.02.51-.06.97-.16,16.55-3.77,32.97-5.37,48.79-4.77,7.55-12.57,13.73-25.91,18.46-39.79-11.35-14.57-24.88-25.64-41.25-28.3h0Z"/><path fill="#0CB4D0" d="M455.59,229.46c-.46-4.53-1.19-9.03-2.04-13.52-.63-3.33-1.32-6.65-2.01-9.96-.74-3.57-1.38-7.17-2.26-10.71-1.25-5.12-2.71-10.19-4.38-15.19-1.64-4.93-3.49-9.78-5.53-14.57-2.02-4.72-4.22-9.36-6.61-13.9-2.37-4.51-4.92-8.92-7.62-13.22-2.7-4.28-5.56-8.45-8.58-12.5-3.01-4.04-6.17-7.96-9.48-11.76-3.3-3.79-6.74-7.45-10.31-10.98-3.56-3.52-7.26-6.92-11.07-10.17-3.81-3.26-7.75-6.36-11.78-9.33-4.04-2.97-8.18-5.79-12.42-8.47-4.24-2.68-8.58-5.20-13-7.56-4.43-2.37-8.94-4.58-13.52-6.64-9.18-4.12-18.65-7.58-28.32-10.37-9.71-2.8-19.61-4.89-29.62-6.28-5.03-.69-10.08-1.21-15.14-1.54-5.09-.33-10.18-.47-15.28-.43-5.12.05-10.25.29-15.35.71-5.14.44-10.27,1.06-15.36,1.89-10.35,1.68-20.55,4.16-30.51,7.42-5.08,1.66-10.09,3.52-15.01,5.59-5.02,2.1-9.94,4.39-14.77,6.88-2.28,1.17-4.52,2.42-6.77,3.64-59.26,34.17-98.24,95-104.51,163.13-1.04,19.63.34,39.3,4.04,58.6h-.03s3.98,23.43,6.22,27.81c10.96,41.42,30.06,77.99,55.15,71.21,1.84-.55,2.88-2.48,2.33-4.32-.05-.15-.1-.31-.17-.45-4.43-1.27-8.29-4.04-10.91-7.84-13.87-23.27,56.73-73.11,153.16-109.78,88.57-33.73,168.56-44.67,186.77-26.77,3.6,2.95,5,7.84,3.49,12.25-3.5,11.59-10.25,21.94-19.45,29.8-.76.73-1.2,1.74-1.2,2.79s.43,2.07,1.19,2.8c1.38,1.39,3.59,1.49,5.1.24,11.39-9.03,19.87-21.22,24.37-35.04.58-1.78.7-3.89.94-5.75.24-1.96.42-3.93.52-5.9.2-3.93.11-7.89-.29-11.83h0ZM130.28,305.59c-11.8,8.37-32.37,23.36-40.98,40.1-3.36,6.45-6.5,1.43-8.46-2.24-4.62-10.21-8.39-20.78-11.27-31.61-.01-.02-.02-.05-.03-.07-1.38-5.03-5.87-21.66-6.31-26.6.01-.01.02-.03.03-.03-3.56-18.08-4.87-36.54-3.9-54.95,5.86-62.88,41.87-119,96.56-150.56,4.94-2.76,9.9-5.27,14.9-7.55,4.9-2.23,24.81-9.65,5.11,7.81-32.6,29.59-52.88,70.36-56.81,114.21-1.91,22.42,4.6,64.4,16.1,95.21,3.62,9.65.66,12.34-4.95,16.29h0ZM363.74,202.09c-1.4,2.15-3.63,3.61-6.16,4.02-22.25,3.09-44.15,8.29-65.42,15.52-2.48.75-5.17.42-7.4-.93-2.22-1.35-3.76-3.58-4.23-6.14l-1.68-7.68c-.41-1.94.57-3.91,2.37-4.74,24.87-9.94,51.13-16,77.84-17.97,1.99-.1,3.75,1.29,4.12,3.26l1.75,7.39c.64,2.48.21,5.12-1.19,7.26ZM406.09,163.01c-.58,1.55-2.18,2.47-3.82,2.2-61.41-9.13-147.26,22.36-147.26,22.36-29.7,9.65-58.05,23.04-84.37,39.83-4.73,3.11-11.09,1.79-14.2-2.95-.74-1.13-1.25-2.39-1.5-3.71-1.48-7.84-2.38-15.77-2.73-23.73-1.71-21.62,2.42-43.3,11.97-62.77.58-1.08,1.16-2.16,1.82-3.2.08-.27.21-.53.38-.76l.3-.54.74-1.25.36-.55c29.76-48.75,96.58-68.19,149.92-52.31,26.73,8.2,50.75,23.48,69.49,44.23,2.93,3.44,22.71,30.94,18.9,43.15h0Z"/><path fill="#0CB4D0" d="M374.15,129.69l-.05.11c-9.14-15.58-23.07-27.79-39.72-34.8-18.57-7.82-38.78-10.89-58.84-8.95-7.13.56-14.13,2.11-20.83,4.58-1.34.39-2.19,1.69-2.02,3.07.18,1.38,1.34,2.42,2.74,2.45,15.11-1.6,30.35-1.19,45.36,1.21,55.24,11.04,72.92,37.62,74.86,38.67.55.27,1.21-.27.94-.82-.72-1.88-1.54-3.73-2.44-5.53h0Z"/></svg>
-      <span class="badge-text">AlternativeTo</span>
-    </a>
-    <a href="https://www.producthunt.com/posts/xuterm/" target="_blank" rel="noopener noreferrer" class="listed-badge">
-      <svg viewBox="0 0 40 40"><path fill="#FF6154" d="M40 20c0 11.046-8.954 20-20 20S0 31.046 0 20 8.954 0 20 0s20 8.954 20 20"/><path fill="#fff" d="M24 12h-8v16h4v-5h4a5.5 5.5 0 1 0 0-11zm0 7.5h-4V14h4a2.75 2.75 0 0 1 0 5.5z"/></svg>
-      <span class="badge-text">Product Hunt</span>
-    </a>
-    <a href="https://www.saashub.com/u/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-      <img src="assets/images/saashub.png" alt="Saashub">
-    </a>
+  <section id="download">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Download</span>
+        <h2>下载 XuTurn</h2>
+        <p>各大应用市场陆续上架中，选择你的平台获取应用。</p>
       </div>
-      <details class="featured-more">
-        <summary>+51 more listings</summary>
-      <div class="featured-badges secondary">
-	<a href="https://lookingfortools.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">LookingFor Tools</text></svg>
-	</a>
-	<a href="https://smolspot.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Spot</text></svg>
-	</a>
-	<a href="https://smollaunchpad.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol LaunchPad</text></svg>
-	</a>
-	<a href="https://smolbest.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Best</text></svg>
-	</a>
-	<a href="https://smolstartup.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Startup</text></svg>
-	</a>
-	<a href="https://smolsaas.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol SaaS</text></svg>
-	</a>
-	<a href="https://tinyhunt.dev/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">TinyHunt</text></svg>
-	</a>
-	<a href="https://shipthing.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">ShipThing</text></svg>
-	</a>
-	<a href="https://smollist.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol List</text></svg>
-	</a>
-	<a href="https://smolrank.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Rank</text></svg>
-	</a>
-	<a href="https://launchzone.co/p/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">LaunchZone</text></svg>
-	</a>
-	<a href="https://supalaun.ch/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Supa Launch</text></svg>
-	</a>
-	<a href="https://smolshow.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Show</text></svg>
-	</a>
-	<a href="https://devtoolsdir.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">DevToolsDir</text></svg>
-	</a>
-	<a href="https://smolfind.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Find</text></svg>
-	</a>
-	<a href="https://smoltop.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Top</text></svg>
-	</a>
-	<a href="https://findtoolfor.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">FindToolFor</text></svg>
-	</a>
-	<a href="https://theresatoolfor.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">TheresaTool</text></svg>
-	</a>
-	<a href="https://smolhunt.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Hunt</text></svg>
-	</a>
-	<a href="https://microhunts.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Micro Hunts</text></svg>
-	</a>
-	<a href="https://launchranking.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Smol Ranking</text></svg>
-	</a>
-	<a href="https://devlanz.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Dev Lanz</text></svg>
-	</a>
-	<a href="https://discovernewtools.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Discover</text></svg>
-	</a>
-	<a href="https://saashunt.best/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Saas Hunt</text></svg>
-	</a>
-	<a href="https://golanz.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">G</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Go Lanz</text></svg>
-	</a>
-	<a href="https://buildfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">B</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Build Finds</text></svg>
-	</a>
-	<a href="https://disvera.com/projects/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">D</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Disvera</text></svg>
-	</a>
-	<a href="https://indiepocket.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">P</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Indie Pocket</text></svg>
-	</a>
-	<a href="https://launchfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch Finds</text></svg>
-	</a>
-	<a href="https://makerpocket.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">M</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Maker Pocket</text></svg>
-	</a>
-	<a href="https://startupfinds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Startup Finds</text></svg>
-	</a>
-	<a href="https://indiescroll.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">I</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Indie Scroll</text></svg>
-	</a>
-	<a href="https://spotbuilds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">B</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Spot Builds</text></svg>
-	</a>
-	<a href="https://launchfeeds.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">F</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch Feeds</text></svg>
-	</a>
-	<a href="https://findscove.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">F</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Finds Cove</text></svg>
-	</a>
-	<a href="https://apptooling.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">App Tooling</text></svg>
-	</a>
-	<a href="https://startupscrolls.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">StartupScrolls</text></svg>
-	</a>
-	<a href="https://linksalad.me/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Link Salad</text></svg>
-	</a>
-	<a href="https://1000tools.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000 Tools</text></svg>
-	</a>
-	<a href="https://1000ai.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000AI Best</text></svg>
-	</a>
-	<a href="https://1000saas.best/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">1000SaaS Best</text></svg>
-	</a>
-	<a href="https://launch01.com/projects/xuterm?utm_source=badge" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">L</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Launch01</text></svg>
-	</a>
-	<a href="https://saascity.io" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">SaaSCity.io</text></svg>
-	</a>
-	<a href="https://newtool.site/item/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">NewTool Site</text></svg>
-	</a>
-	<a href="https://tooldirs.com/product/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">ToolDirs.com</text></svg>
-	</a>
-	<a href="https://saastool.site/item/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">SaasTool</text></svg>
-	</a>
-	<a href="https://findly.tools/xuterm?utm_source=xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">FindlyTools</text></svg>
-	</a>
-	<a href="https://firstlook.tools" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">Firstlook</text></svg>
-	</a>
-	<a href="https://toolfame.com/item/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">ToolFame</text></svg>
-	</a>
-	<a href="https://gets.tools" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">T</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">GetsTools</text></svg>
-	</a>
-	<a href="https://productfame.com" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">P</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">ProductFame</text></svg>
-	</a>
-	<a href="https://toolrain.com/item/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">P</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">ToolRain</text></svg>
-	</a>
-	<a href="https://smollaunch.com/products/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">S</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">SmolLaunch</text></svg>
-	</a>
-	<a href="https://ufind.best/products/xuterm" target="_blank" rel="noopener noreferrer" class="listed-badge">
-	  <svg class="dbadge" width="150" height="44" viewBox="0 0 150 44" xmlns="http://www.w3.org/2000/svg"><rect width="150" height="44" rx="8" fill="#fff"/><rect x="1" y="1" width="148" height="42" rx="7" fill="none" stroke="#FF6900" stroke-width="2"/><circle cx="23.5" cy="22" r="12.5" fill="#FF6900"/><text x="23.5" y="28" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="700">F</text><text x="45" y="19" fill="#FF6900" font-family="Arial,sans-serif" font-size="9">FEATURED ON</text><text x="45" y="33" fill="#FF6900" font-family="Arial,sans-serif" font-size="12" font-weight="700">ufind.best</text></svg>
-	</a>
-	<a href="https://saasbison.com" target="_blank" rel="dofollow" class="listed-badge"><img src="https://saasbison.com/badge.png" alt="Featured on SaaSBison" width="200" height="54" /></a>
-      </div>
-      </details>
-    </div>
-  </section>
-
-  <section class="more-apps">
-    <div class="download-channels">
-      <h3>More from Xu Apps</h3>
-      <p class="sub">Free tools by the same developer — privacy-first, no ads, no subscriptions.</p>
-      <div class="channel-list">
-        <a class="channel-item" href="https://xuturn.vercel.app/index-en.html">
-          <div class="channel-info">
-            <div class="channel-icon" style="background:transparent"><img src="assets/images/xuturn-icon.png" alt="XuTurn" style="width:100%;height:100%;border-radius:10px"></div>
-            <div>
-              <div class="channel-name">XuTurn — Local File Toolbox</div>
-              <div class="channel-desc">Image editing &amp; compression, full PDF suite, ZIP, QR codes, AES-256 encrypted vault and Wi-Fi file transfer. Everything stays on your device.</div>
-            </div>
+      <div class="dl-list">
+        <div class="dl-card">
+          <div class="dl-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#00A0FF" d="M3.3 2.1v19.8L14 12 3.3 2.1z"/>
+              <path fill="#00E573" d="M3.3 2.1c.2-.4.6-.7 1-.9.4-.1.9-.1 1.3.2L17.5 10.4 14 12 3.3 2.1z"/>
+              <path fill="#FF3A44" d="M3.3 21.9L14 12l3.5 1.6-11.9 6.9c-.4.2-.9.3-1.3.2-.4-.1-.8-.4-1-.8z"/>
+              <path fill="#FFC900" d="M17.5 10.4l3.2 1.8c1 .6 1 2 0 2.6l-3.2 1.8L14 12l3.5-1.6z"/>
+            </svg>
           </div>
-          <div class="channel-action">
-            <span class="btn btn-outline">Visit Site</span>
+          <div class="dl-info"><h3>Google Play</h3><p>Android — Google 官方应用商店</p></div>
+          <a class="dl-btn" href="https://play.google.com/store/apps/details?id=com.yongqing.xuturn" target="_blank" rel="noopener">前往下载</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="#111827" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
           </div>
-        </a>
+          <div class="dl-info"><h3>GitHub</h3><p>Android — APK 安装包，最新版本直下</p></div>
+          <a class="dl-btn" href="https://github.com/LuckyYoungXU/xuturn/releases/latest" target="_blank" rel="noopener">前往下载</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#CE0E2D" d="M3.67 6.14S1.82 7.91 1.72 9.78v.35c.08 1.51 1.22 2.4 1.22 2.4 1.83 1.79 6.26 4.04 7.3 4.55 0 0 .06.03.1-.01l.02-.04v-.04C7.52 10.8 3.67 6.14 3.67 6.14zM9.65 18.6c-.02-.08-.1-.08-.1-.08l-7.38.26c.8 1.43 2.15 2.53 3.56 2.2.96-.25 3.16-1.78 3.88-2.3.06-.05.04-.09.04-.09zm.08-.78C6.49 15.63.21 12.28.21 12.28c-.15.46-.2.9-.21 1.3v.07c0 1.07.4 1.82.4 1.82.8 1.69 2.34 2.2 2.34 2.2.7.3 1.4.31 1.4.31.12.02 4.4 0 5.54 0 .05 0 .08-.05.08-.05v-.06c0-.03-.03-.05-.03-.05zM9.06 3.19a3.42 3.42 0 00-2.57 3.15v.41c.03.6.16 1.05.16 1.05.66 2.9 3.86 7.65 4.55 8.65.05.05.1.03.1.03a.1.1 0 00.06-.1c1.06-10.6-1.11-13.42-1.11-13.42-.32.02-1.19.23-1.19.23zm8.299 2.27s-.49-1.8-2.44-2.28c0 0-.57-.14-1.17-.22 0 0-2.18 2.81-1.12 13.43.01.07.06.08.06.08.07.03.1-.03.1-.03.72-1.03 3.9-5.76 4.55-8.64 0 0 .36-1.4.02-2.34zm-2.92 13.07s-.07 0-.09.05c0 0-.01.07.03.1.7.51 2.85 2 3.88 2.3 0 0 .16.05.43.06h.14c.69-.02 1.9-.37 3-2.26l-7.4-.25zm7.83-8.41c.14-2.06-1.94-3.97-1.94-3.98 0 0-3.85 4.66-6.67 10.8 0 0-.03.08.02.13l.04.01h.06c1.06-.53 5.46-2.77 7.28-4.54 0 0 1.15-.93 1.21-2.42zm1.52 2.14s-6.28 3.37-9.52 5.55c0 0-.05.04-.03.11 0 0 .03.06.07.06 1.16 0 5.56 0 5.67-.02 0 0 .57-.02 1.27-.29 0 0 1.56-.5 2.37-2.27 0 0 .73-1.45.17-3.14z"/></svg>
+          </div>
+          <div class="dl-info"><h3>华为应用市场</h3><p>Android — AppGallery 已上架</p></div>
+          <a class="dl-btn" href="https://appgallery.huawei.com/app/C119295679" target="_blank" rel="noopener">前往下载</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon">
+            <img src="assets/apkpure.png" alt="APKPure">
+          </div>
+          <div class="dl-info"><h3>APKPure</h3><p>Android — APK 安装包市场</p></div>
+          <a class="dl-btn" href="https://apkpure.com/p/com.yongqing.xuturn" target="_blank" rel="noopener">前往下载</a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-icon appteka">
+            <svg viewBox="0 0 260 260" fill="#E5FFE5" width="26" height="26" aria-hidden="true"><path d="M23.9276 120.32L120.32 23.9276C152.36 -7.97588 204.032 -7.97588 236.072 23.9276C267.976 55.8311 267.976 107.64 236.072 139.68L139.68 236.072C107.64 267.976 55.8311 267.976 23.9276 236.072C-7.97588 204.032 -7.97588 152.36 23.9276 120.32ZM43.2879 139.68C28.9722 153.859 24.2003 174.174 29.1085 192.307L110.776 110.776L168.584 168.584L216.712 120.32C238.117 99.0509 238.117 64.5569 216.712 43.2879C195.443 21.8825 160.949 21.8825 139.68 43.2879L43.2879 139.68Z"></path></svg>
+          </div>
+          <div class="dl-info"><h3>Appteka</h3><p>Android — 第三方 APK 市场</p></div>
+          <a class="dl-btn" href="https://appteka.store/user/566539" target="_blank" rel="noopener">前往下载</a>
+        </div>
+        <!-- 上架后把 href="#" 替换为对应市场的实际链接 -->
+        <div class="dl-card">
+          <div class="dl-icon">
+            <svg viewBox="0 0 384 512" aria-hidden="true"><path fill="#111827" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+          </div>
+          <div class="dl-info"><h3>App Store</h3><p>iOS — 即将上线，敬请期待</p></div>
+          <span class="dl-btn soon">即将上线</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="links">
-      <a href="user-guide.html">User Guide</a>
-      <a href="privacy-policy-en.html">Privacy Policy</a>
-      <a href="license.html">License</a>
-      <a href="mailto:xuterm@gmail.com">Contact</a>
-      <a href="index-zh.html">中文</a>
+  <section id="more-apps">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Xu Apps</span>
+        <h2>同系列更多应用</h2>
+        <p>同一开发者出品的工具应用，同样免费、无广告、隐私优先。</p>
+      </div>
+      <div class="dl-list">
+        <div class="dl-card">
+          <div class="dl-icon"><img src="assets/xuterm-logo.png" alt="XuTerm"></div>
+          <div class="dl-info"><h3>XuTerm</h3><p>SSH / Mosh 终端客户端 — 原生 tmux、SFTP 文件管理、trzsz 传输、服务器监控与 20+ 运维工具，随身携带的口袋机房。</p></div>
+          <a class="dl-btn" href="https://xuterm.vercel.app/index-zh.html" target="_blank" rel="noopener">了解详情</a>
+        </div>
+      </div>
     </div>
-    <p>&copy; 2026 XuTerm. All rights reserved.</p>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>XuTurn</h4>
+          <p>纯本地文件处理工具，全程不上云。文件操作纯本地，电脑只需浏览器。</p>
+        </div>
+        <div>
+          <h4>产品</h4>
+          <ul>
+            <li><a href="#features">核心功能</a></li>
+            <li><a href="#shots">界面预览</a></li>
+            <li><a href="privacy.html">隐私政策</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>联系</h4>
+          <ul>
+            <li><a href="https://xuturn.vercel.app">官网：xuturn.vercel.app</a></li>
+            <li><a href="mailto:xuyq1113@outlook.com">邮箱：xuyq1113@outlook.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 XuTurn · 保留所有权利</div>
+    </div>
   </footer>
-  <div class="modal-overlay" id="iosModal" onclick="if(event.target===this)this.classList.remove('active')">
-    <div class="modal-box">
-      <h3>iOS Coming Soon</h3>
-      <p>XuTerm for iOS is coming soon. Stay tuned!</p>
-      <button class="btn btn-primary" onclick="document.getElementById('iosModal').classList.remove('active')">OK</button>
-    </div>
-  </div>
-  <div class="modal-overlay" id="gpModal" onclick="if(event.target===this)this.classList.remove('active')">
-    <div class="modal-box">
-      <h3>Now on Google Play</h3>
-      <p>XuTerm is now live on Google Play — <a href="https://play.google.com/store/apps/details?id=com.yongqing.xuterm">get it here</a>.</p>
-      <button class="btn btn-primary" onclick="document.getElementById('gpModal').classList.remove('active')">OK</button>
-    </div>
-  </div>
-
 </body>
 </html>
